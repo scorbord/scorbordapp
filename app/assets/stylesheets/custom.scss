@@ -1,0 +1,43 @@
+// Place all the styles related to the StaticPages controller here.
+// They will automatically be included in application.css.
+// You can use Sass (SCSS) here: http://sass-lang.com/
+
+@import "color-mixin.scss";
+@import "card-mixin.scss";
+
+.card {
+	background-color: white;
+	box-sizing: border-box;
+	padding: 24px;
+	@include card(1);
+	.title {
+		margin: 0;
+		padding: 0 0 16px 0;
+		//border-bottom: 1px solid #e6e6e6;
+		h1 {
+			font-size: 24px;
+			font-weight: 400;
+			margin: 0;
+		}
+		p {
+			font-size: 14px;
+			margin: 0;
+			opacity: .54;
+		}
+	}
+	.content {
+		padding: 0;
+		p {
+			font-size: 14px;
+			opacity: .87;
+			margin: 0;
+		}
+	}
+}
+
+.row {
+	div {
+		padding-top: 15px;
+		padding-bottom: 15px;
+	}	
+}

@@ -1,0 +1,14 @@
+- content_for(:title, "Login")
+%div.row
+	%div.col-sm-6.col-sm-offset-3
+		%div.card
+			%div.title
+				%h1
+					Login
+			%div.content
+				= form_for :session, url: login_path do |f|
+					%div.fieldset
+						= f.email_field :email, placeholder: "Email address"
+						= f.password_field :password, placeholder: "Password"
+					%div.form_action
+						= f.submit 'Login', class: "btn-flat"

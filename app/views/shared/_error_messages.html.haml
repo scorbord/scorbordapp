@@ -1,0 +1,13 @@
+- if @user.errors.any?
+  %div#error_explanation.card
+    %div.title
+      %h1
+        WOOPS!
+      It looks like you have 
+      = pluralize(@user.errors.count, "error")
+      \:
+    %div.content 
+      %ul
+        - @user.errors.full_messages.each do |msg|
+          %li
+            = msg

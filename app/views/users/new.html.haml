@@ -3,7 +3,15 @@
 		%div.card
 			%div.title
 				%h1
-					Users#new
+					Create your account
 			%div.content
-				%p
-					Find me in app/views/users/new.html.erb
+				= form_for @user do |f|
+					= render 'shared/error_messages'
+					%div.fieldset
+						= f.text_field :name, placeholder: 'Name', class: "input-field"
+						= f.email_field :email, placeholder: 'Email address'
+						= f.password_field :password, placeholder: 'Password'
+						= f.password_field :password_confirmation, placeholder: 'Password confirm'
+					%div.form_action
+						= f.submit 'Create account', class: "btn-flat"
+						= link_to 'cancel', '#', class: "btn-flat"

@@ -104,9 +104,19 @@
 	text-transform: uppercase;
 }
 
-.form_action {
+.form_actions {
 	padding-top: 8px;
 	text-align: right;
+}
+
+.cardcomment {
+	text-align: center;
+	padding: 24px 0;
+	color: $grey;
+	a {
+		color: $grey;
+		text-decoration: underline;
+	}
 }
 
 .row>div {

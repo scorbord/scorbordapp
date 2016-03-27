@@ -1,6 +1,6 @@
 - content_for(:title, "Profile")
 %div.row
-	%h2
+	%h1
 		User profile
 	%div.col-sm-8.col-sm-offset-2
 		%div.card
@@ -11,3 +11,6 @@
 				%p
 					Email:
 					= @user.email
+				- if current_user?(@user)
+					%div.form_actions
+						= link_to 'Edit', edit_user_path(current_user), class: 'btn-flat'

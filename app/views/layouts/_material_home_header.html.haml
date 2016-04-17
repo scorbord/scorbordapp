@@ -1,0 +1,60 @@
+%div.android-header.mdl-layout__header.mdl-layout__header--waterfall
+	%div.mdl-layout__header-row
+		%span.android-title.mdl-layout-title
+			= link_to root_path do
+				%img.android-logo-image{ :src => asset_url("scorbord-text-logo.png") }
+		%div.android-header-spacer.mdl-layout-spacer
+		/ Navigation
+		%div.android-navigation-container
+			%nav.android-navigation.mdl-navigation
+				= link_to "Features", features_path, class:"mdl-navigation__link mdl-typography--text-uppercase"
+				= link_to "Pricing", pricing_path, class:"mdl-navigation__link mdl-typography--text-uppercase"
+				/= link_to "Schedule", "", class:"mdl-navigation__link mdl-typography--text-uppercase"
+				/= link_to "Practice", "", class:"mdl-navigation__link mdl-typography--text-uppercase"
+				/= link_to "Weightroom", "", class:"mdl-navigation__link mdl-typography--text-uppercase"
+				/= link_to "Stats", "", class:"mdl-navigation__link mdl-typography--text-uppercase"
+				- if current_user
+					= link_to "My Scorbord", current_user, class:"mdl-navigation__link mdl-typography--text-uppercase"
+				- else
+					/= link_to "Get on 'bord", "", class:"mdl-navigation__link mdl-typography--text-uppercase"
+					= link_to "Login", login_path, class:"mdl-navigation__link mdl-typography--text-uppercase"
+		%span.android-mobile-title.mdl-layout-title
+			%img.android-logo-image{ :src => asset_url("scorbord-text-logo.png") }
+		%button.android-more-button.mdl-button.mdl-js-button.mdl-button--idon.mdl-js-ripple-effect{ :id => "more-button" }
+			%i.material-icons more_vert
+		%ul.mdl-menu.mdl-js-menu.mdl-menu--bottom-right.mdl-js-ripple-effect{ :for => "more-button" }
+			%li.mdl-menu__item Login
+			/%li.mdl-menu__item Register
+			%li.mdl-menu__item About
+			%li.mdl-menu__item Contact
+%div.android-drawer.mdl-layout__drawer
+	%span.mdl-layout-title
+		%img.android-logo-image{ :src => asset_url("scorbord-text-logo-white.png") }
+	%nav.mdl-navigation
+		= link_to "Features", features_path, class:"mdl-navigation__link"
+		= link_to "Pricing", pricing_path, class:"mdl-navigation__link"
+		/= link_to "Register", "", class:"mdl-navigation__link"
+		%div.android-drawer-separator
+		%span.mdl-navigation__link{ :href => "" } Coming Soon
+		= link_to "Messaging", "", class:"mdl-navigation__link"
+		= link_to "Schedule", "", class:"mdl-navigation__link"
+		= link_to "Practice Plan", "", class:"mdl-navigation__link"
+		= link_to "Weightroom", "", class:"mdl-navigation__link"
+		= link_to "Statistics", "", class:"mdl-navigation__link"
+		= link_to "", class:"mdl-navigation__link" do
+			%i.material-icons
+				add
+			Request a feature
+		/= link_to "KitKat 4.4", "", class:"mdl-navigation__link"
+		/= link_to "Jelly Bean 4.3", "", class:"mdl-navigation__link"
+		/= link_to "Android history", "", class:"mdl-navigation__link"
+		%div.android-drawer-separator
+		%span.mdl-navigation__link{ :href => "" } Resources
+		= link_to "FAQs", "", class:"mdl-navigation__link"
+		= link_to "Official blog", "", class:"mdl-navigation__link"
+		= link_to "Scorbord on Facebook", "https://www.facebook.com/scorbord/", class:"mdl-navigation__link"
+		= link_to "Scorbord on Twitter", "https://www.twitter.com/scorbordsports", class:"mdl-navigation__link"
+		%div.android-drawer-separator
+		%span.mdl-navigation__link{ :href => "" } For administrators
+		= link_to "FERPA & HIPAA", "", class:"mdl-navigation__link"
+		= link_to "Information security", "", class:"mdl-navigation__link"

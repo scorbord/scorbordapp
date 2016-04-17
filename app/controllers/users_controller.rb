@@ -4,10 +4,12 @@ class UsersController < ApplicationController
 
   def new
   	@user = User.new
+    render :layout => 'materialhome'
   end
 
   def show
-  	@user = User.find(params[:id])
+    @user = User.find(params[:id])
+    render :layout => 'material'
   end
 
   def create
@@ -16,12 +18,13 @@ class UsersController < ApplicationController
       log_in @user
   		redirect_back_or @user
   	else
-  		render 'new'
+  		render 'new', :layout => 'materialhome'
   	end
   end
 
   def edit
     @user = User.find(params[:id])
+    render :layout => 'material'
   end
 
   def update

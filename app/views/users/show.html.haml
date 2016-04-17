@@ -1,16 +1,26 @@
-- content_for(:title, "Profile")
-%div.row
-	%h1
-		User profile
-	%div.col-sm-8.col-sm-offset-2
-		%div.card
-			%div.title
-				%h1
-					= @user.name
-			%div.content
+- content_for(:title, "My Account")
+:scss
+/	.usercard {
+/		.mdl-card__title {
+/			background: url('https://scontent.xx.fbcdn.net/hphotos-xfp1/t31.0-8/1500880_10204173490673596_169029408953736445_o.jpg') center/cover;
+/		}
+/	}
+%div.mdl-cell.mdl-cell--6-col.mdl-grid
+	%div.mdl-cell.mdl-cell--12-col
+		%h5 Account Details
+		%div.mdl-cell.mdl-cell--12-col.mdl-card.mdl-shadow--2dp.usercard
+			%div.mdl-card__title
+			%div.mdl-card__supporting-text
 				%p
-					Email:
+					%strong Name:
+					= @user.name
+				%p
+					%strong Email: 
 					= @user.email
-				- if current_user?(@user)
-					%div.form_actions
-						= link_to 'Edit', edit_user_path(current_user), class: 'btn-flat'
+			- if current_user?(@user)
+				%div.mdl-card__actions.mdl-card--border
+					= link_to 'Edit Account', edit_user_path(current_user), class:"mdl-button mdl-button--colored mdl-js-button mdl-js-ripple-effect"
+%div.mdl-cell.mdl-cell--6-col.mdl-grid
+	%div.mdl-cell.mdl-cell--12-col
+		%h5 My Teams
+		%div.mdl-cell.mdl-cell--12-col.mdl-card.mdl-shadow--2dp

@@ -1,10 +1,109 @@
-- content_for(:title, "Home")
-%div.row
-	%div.col-sm-8.col-sm-offset-2
-		%div.card
-			%div.title
-				%h1
-					The hottest site to manage your team
-			%div.content
-				%p
-					There are a ton of features and ideas and dreams that we have for building a tool that helps you, Coach, manage the day-to-day operations of your team.  From keeping track of player and parent contact information to managing your game/match/meet schedule to collecting and analyzing performance statistics, we have about 4 billion ideas for ways that technology can give you that extra edge over your competition.
+-content_for(:title, "scorbord")
+%div.android-be-together-section.mdl-typography--text-center
+	%div.logo-font.android-slogan change the game.
+	%div.logo-font.android-sub-slogan welcome to scorbord... the 21st century coach's team management tool
+	%div.logo-font.android-create-character
+		= link_to "" do
+			%img{ :src => "https://www.getmdl.io/templates/android-dot-com/images/andy.png" }
+			get your team on 'bord
+	%a{ :href => "#screens" }
+		%button.android-fab.mdl-button.mdl-button--colored.mdl-js-button.mdl-button--fab.mdl-js-ripple-effect
+			%i.material-icons expand_more
+%div.android-screen-section.mdl-typography--text-center
+	%a{ :name => "screens" }
+	%div.mdl-typography--display-1-color-contrast
+		Powering every aspect of your team
+	%div.android-screens
+		%div.android-wear.android-screen
+			= link_to "", class:"android-image-link" do
+				%img.android-screen-image{ :src => "https://www.getmdl.io/templates/android-dot-com/images/wear-silver-on.png"}
+				%img.android-screen-image{ :src => "https://www.getmdl.io/templates/android-dot-com/images/wear-black-on.png"}
+			= link_to "Roster", "", class:"android-link mdl-typography--font-regular mdl-typography--text-uppercase"
+		%div.android-phone.android-screen
+			= link_to "", class:"android-image-link" do
+				%img.android-screen-image{ :src => "https://www.getmdl.io/templates/android-dot-com/images/nexus6-on.jpg" }
+			= link_to "Schedule", "", class:"android-link mdl-typography--font-regular mdl-typography--text-uppercase"
+		%div.android-tablet.android-screen
+			= link_to "", class:"android-image-link" do
+				%img.android-screen-image{ :src => "https://www.getmdl.io/templates/android-dot-com/images/nexus9-on.jpg" }
+			= link_to "Practice", "", class:"android-link mdl-typography--font-regular mdl-typography--text-uppercase"
+		%div.android-tv.android-screen
+			= link_to "", class:"android-image-link" do
+				%img.android-screen-image{ :src => "https://www.getmdl.io/templates/android-dot-com/images/tv-on.jpg" }
+			= link_to "Weightroom", "", class:"android-link mdl-typography--font-regular mdl-typography--text-uppercase"
+		%div.android-auto.android-screen
+			= link_to "", class:"android-image-link" do
+				%img.android-screen-image{ :src => "https://www.getmdl.io/templates/android-dot-com/images/auto-on.jpg" }
+			= link_to "Coming Soon: Statistics", "", class:"android-link mdl-typography--font-regular mdl-typography--text-uppercase mdl-typography--text-left"
+%div.android-wear-section
+	%div.android-wear-band
+		%div.android-wear-band-text
+			%div.mdl-typography--display-2.mdl-typography--font-thin
+				It just works together
+			%p.mdl-typography--headline.mdl-typography--font-thin
+				scorbord puts all of your team information at your fingertips and makes it easy to manage.
+			%p
+				= link_to "", class:"mdl-typography--font-regular mdl-typography--text-uppercase android-alt-link" do
+					Experience how much easier your life can be
+					%i.material-icons chevron_right
+%div.android-customized-section
+	%div.android-customized-section-text
+		%div.mdl-typography--font-light.mdl-typography--display-1-color-contrast
+			Created by you, for you
+		%p.mdl-typography--font-light
+			Guided by the input from coaches across the country, we only deliver the tools that you need to gain that extra advantage over your competition.
+			%br
+			= link_to "Make your contribution", "", class:"android-link mdl-typography--font-light"
+	%div.android-customized-section-image
+%div.android-more-section
+	%div.android-section-title.mdl-typography--display-1-color-contrast
+		More from scorbord
+	%div.android-card-container.mdl-grid
+		%div.mdl-cell.mdl-cell--3-col.mdl-cell--4-col-tablet.mdl-cell--4-col-phone.mdl-card.mdl-shadow--3dp
+			%div.mdl-card__media
+				%img{ :src => "https://www.getmdl.io/templates/android-dot-com/images/more-from-1.png" }
+			%div.mdl-card__title
+				%h4.mdl-card__title-text Manage your team on the go with apps
+			%div.mdl-card__supporting-text
+				%span.mdl-typography--font-light.mdl-typography--subhead
+					Native mobile apps for your smartphone or tablet keep you ahead of the game no matter where you are.
+			%div.mdl-card__actions
+				= link_to "", class:"android-link mdl-button mdl-js-button mdl-typography--text-uppercase" do
+					Explore apps
+					%i.material-icons chevron_right
+		%div.mdl-cell.mdl-cell--3-col.mdl-cell--4-col-tablet.mdl-cell--4-col-phone.mdl-card.mdl-shadow--3dp
+			%div.mdl-card__media
+				%img{ :src => "https://www.getmdl.io/templates/android-dot-com/images/more-from-4.png" }
+			%div.mdl-card__title
+				%h4.mdl-card__title-text Connect with your passionate fans
+			%div.mdl-card__supporting-text
+				%span.mdl-typography--font-light.mdl-typography--subhead
+					Stay in touch with those fanatics who continually support your team through the good times and the bad.
+			%div.mdl-card__actions
+				= link_to "", class:"android-link mdl-button mdl-js-button mdl-typography--text-uppercase" do
+					Get social
+					%i.material-icons chevron_right
+		%div.mdl-cell.mdl-cell--3-col.mdl-cell--4-col-tablet.mdl-cell--4-col-phone.mdl-card.mdl-shadow--3dp
+			%div.mdl-card__media
+				%img{ :src => "https://www.getmdl.io/templates/android-dot-com/images/more-from-2.png" }
+			%div.mdl-card__title
+				%h4.mdl-card__title-text Make an impact on this world
+			%div.mdl-card__supporting-text
+				%span.mdl-typography--font-light.mdl-typography--subhead
+					Make your mark on the scorbord world by contributing your ideas and insights to help make this the ultimate coaches tool.
+			%div.mdl-card__actions
+				= link_to "", class:"android-link mdl-button mdl-js-button mdl-typography--text-uppercase" do
+					Share your idea
+					%i.material-icons chevron_right
+		%div.mdl-cell.mdl-cell--3-col.mdl-cell--4-col-tablet.mdl-cell--4-col-phone.mdl-card.mdl-shadow--3dp
+			%div.mdl-card__media
+				%img{ :src => "https://www.getmdl.io/templates/android-dot-com/images/more-from-3.png" }
+			%div.mdl-card__title
+				%h4.mdl-card__title-text Less managing. More coaching.
+			%div.mdl-card__supporting-text
+				%span.mdl-typography--font-light.mdl-typography--subhead
+					Join the growing list of coaches using scorbord to spend less time managing their teams and more time focusing on coaching.
+			%div.mdl-card__actions
+				= link_to "", class:"android-link mdl-button mdl-js-button mdl-typography--text-uppercase" do
+					Get on 'bord
+					%i.material-icons chevron_right

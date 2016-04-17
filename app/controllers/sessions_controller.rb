@@ -1,6 +1,7 @@
 class SessionsController < ApplicationController
 
   def new
+    render :layout => 'materialhome'
   end
 
   def create
@@ -14,7 +15,7 @@ class SessionsController < ApplicationController
   		# tell them they messed up
   		flash.now[:danger] = 'Invalid email-password combination.'
   		# and send them back to the login page
-  		render 'new'
+  		render 'new', :layout => 'materialhome'
   	end
   end
 

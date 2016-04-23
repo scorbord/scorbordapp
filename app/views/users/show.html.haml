@@ -1,10 +1,16 @@
-- content_for(:title, "My Account")
+// need to look at customizing this page based on whether the viewer (current_user) is the subject of the Profile Page or not (if current_user(@user)...)
+
 :scss
 /	.usercard {
 /		.mdl-card__title {
 /			background: url('https://scontent.xx.fbcdn.net/hphotos-xfp1/t31.0-8/1500880_10204173490673596_169029408953736445_o.jpg') center/cover;
 /		}
 /	}
+
+- if current_user?(@user)
+	- content_for(:title, "My Account")
+- else
+	- content_for(:title, "#{@user.name}'s Account")
 %div.mdl-cell.mdl-cell--6-col.mdl-grid
 	%div.mdl-cell.mdl-cell--12-col
 		%h5 Account Details
@@ -22,5 +28,21 @@
 					= link_to 'Edit Account', edit_user_path(current_user), class:"mdl-button mdl-button--colored mdl-js-button mdl-js-ripple-effect"
 %div.mdl-cell.mdl-cell--6-col.mdl-grid
 	%div.mdl-cell.mdl-cell--12-col
-		%h5 My Teams
-		%div.mdl-cell.mdl-cell--12-col.mdl-card.mdl-shadow--2dp
+		- if @user.teams.any?
+			%h5
+				My Teams
+				=link_to "Create a team", new_user_team_path(@user.id), class:"mdl-button mdl-button--colored mdl-js-button mdl-js-ripple-effect"
+			- @teams.each do |team|
+				%div.mdl-cell.mdl-cell--12-col.mdl-card.mdl-shadow--2dp
+					%div.mdl-card__title
+						= team.name
+					%div.mdl-card__supporting-text
+						= team.sport
+					%div.mdl-card__actions.mdl-card--border
+						= link_to "edit", edit_team_path(team), class:"mdl-button mdl-button--colored mdl-js-button mdl-js-ripple-effect"
+		- elsif
+			Dude... you don't have any teams
+
+
+
+

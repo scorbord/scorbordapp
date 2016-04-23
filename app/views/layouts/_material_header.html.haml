@@ -27,7 +27,7 @@
     %img.demo-avatar{ :src => "https://www.getmdl.io/templates/dashboard/images/user.jpg" }
     %div.demo-avatar-dropdown
       %span
-        = @user.email
+        = current_user.email
       %div.mdl-layout-spacer
       %button.mdl-button.mdl-js-button.mdl-js-ripple-effect.mdl-button--icon{ :id => "accbtn" }
         %i.material-icons{ :role => "presentation"}

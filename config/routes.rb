@@ -15,7 +15,11 @@ Rails.application.routes.draw do
   post 'login'      => 'sessions#create'
   get 'logout'   => 'sessions#destroy'
 
-  resources :users
+  resources :users do
+    resources :teams
+  end
+
+  resources :teams
 
   namespace :app do
     get '/' => '/static_pages#help'

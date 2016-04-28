@@ -28,6 +28,8 @@
     %div.demo-avatar-dropdown
       %span
         = current_user.email
+        %br
+        %strong= current_user.teams.first.name
       %div.mdl-layout-spacer
       %button.mdl-button.mdl-js-button.mdl-js-ripple-effect.mdl-button--icon{ :id => "accbtn" }
         %i.material-icons{ :role => "presentation"}
@@ -43,12 +45,12 @@
   %nav.demo-navigation.mdl-navigation.mdl-color--blue-grey-800
     = link_to "#", class:"mdl-navigation__link" do
       %i.mdl-color-text--blue-grey-400.material-icons{ :role => "presentation" }
-        home
+        dashboard
       Dashboard
     = link_to "#", class:"mdl-navigation__link" do
       %i.mdl-color-text--blue-grey-400.material-icons{ :role => "presentation" }
-        inbox
-      Inbox
+        assignment_ind
+      Roster
     = link_to "#", class:"mdl-navigation__link" do
       %i.mdl-color-text--blue-grey-400.material-icons{ :role => "presentation" }
         delete
@@ -78,6 +80,10 @@
         people
       Social
     %div.mdl-layout-spacer
+    
+
+
+
     = link_to "#", class:"mdl-navigation__link" do
       %i.mdl-color-text--blue-grey-400.material-icons{ :role => "presentation" }
         help_outline

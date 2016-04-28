@@ -5,6 +5,20 @@
   }
 }
 
+.flash {
+  height: 40px;
+  line-height: 16px;
+  font-size: 16px;
+  padding: 25px;
+  padding-bottom: 40px;
+  box-sizing: border-box;
+  margin-bottom: 12px;
+  &.success {
+    color: white;
+    background-color: #AED581;  
+  }
+}
+
 html, body {
   font-family: 'Roboto', 'Helvetica', sans-serif;
 }

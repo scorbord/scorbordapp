@@ -14,4 +14,10 @@
 					= label_tag "sport", class: "mdl-textfield__label" do
 						Sport
 			%div.mdl-card__actions.mdl-card--border
+				= link_to "cancel", :back, class:"mdl-button mdl-button--colored mdl-js-button mdl-js-ripple-effect"
 				= f.submit "Save", class:"mdl-button mdl-button--colored mdl-js-button mdl-js-ripple-effect"
+		%div.team_delete
+			= link_to team_path(@team), class:"mdl-button mdl-button--colored mdl-js-button mdl-js-ripple-effect mdl-color-text--red", :method => 'delete' do
+				Delete this team
+
+/= render 'shared/confirmation_modal', type: 'team', url: team_path(@team)

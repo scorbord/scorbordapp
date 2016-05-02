@@ -1,8 +1,16 @@
+@import "modal.scss";
+
 .usercard {
   .mdl-card__title {
     background: #9E9E9E;
     height: 300px;  
   }
+}
+
+.team_delete {
+  padding-top: 50px;
+  font-size: 14px;
+  text-align: center;
 }
 
 .flash {
@@ -13,9 +21,15 @@
   padding-bottom: 40px;
   box-sizing: border-box;
   margin-bottom: 12px;
+  color: white;
   &.success {
-    color: white;
     background-color: #AED581;  
+  }
+  &.error {
+    background-color: #F44336;
+  }
+  &.message {
+    background-color: #2196F3;
   }
 }
 

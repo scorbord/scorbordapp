@@ -32,12 +32,14 @@
 					%div.mdl-card__title
 						= team.name
 					%div.mdl-card__supporting-text
-						- 5.times do
-							= team.sport
-							%br
+						%strong Sport:
+						= team.sport
 					-#%div.mdl-card__actions.mdl-card--border
 						= link_to "edit", edit_team_path(team), class:"mdl-button mdl-button--colored mdl-js-button mdl-js-ripple-effect"
 						= link_to "delete team", team, class:"mdl-button mdl-button--colored mdl-js-button mdl-js-ripple-effect mdl-color-text--red", :method => "delete", :data => {confirm: "Are you sure, dude?"}
+					%div.mdl-card__actions.mdl-card--border
+						-#= link_to "modal", "#myModal", class:"btn btn-primary btn-lg", :data => { toggle: "modal", target: "#myModal" }
+						
 					%div.mdl-card__menu
 						= link_to edit_team_path(team), class:"mdl-button mdl-button--icon mdl-js-button mdl-js-ripple-effect" do
 							%i.material-icons
@@ -45,6 +47,7 @@
 						= link_to team, class:"mdl-button mdl-button--icon mdl-js-button mdl-js-ripple-effect", :method => "delete", :data => { confirm: "Are you sure, dude?" } do
 							%i.material-icons
 								close
+
 						
 		- elsif
 			Dude... you don't have any teams

@@ -26,7 +26,7 @@
 		- if @user.teams.any?
 			%h5
 				My Teams
-				=link_to "Create a team", new_user_team_path(@user.id), class:"mdl-button mdl-button--colored mdl-js-button mdl-js-ripple-effect"
+				=link_to "Create a team", new_team_path, class:"mdl-button mdl-button--colored mdl-js-button mdl-js-ripple-effect"
 			- @teams.each do |team|
 				%div.mdl-cell.mdl-cell--12-col.mdl-card.mdl-shadow--2dp
 					%div.mdl-card__title

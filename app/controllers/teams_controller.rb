@@ -8,9 +8,14 @@ class TeamsController < ApplicationController
 	end
 
 	def create
-		@team = current_user.teams.build(team_params)
+		@team = Team.new(team_params)
 		if @team.save
-			redirect_to current_user
+			@membership = current_user.memberships.new(team_id: @team.id)
+			if @membership.save
+				redirect_to current_user
+			else
+				render 'new', :layout => 'material'
+			end
 		else
 			render 'new', :layout => 'material'
 		end 

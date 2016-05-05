@@ -4,7 +4,6 @@ class TeamsController < ApplicationController
 
 	def new
 		@team = Team.new
-		render :layout => 'material'
 	end
 
 	def create
@@ -14,16 +13,20 @@ class TeamsController < ApplicationController
 			if @membership.save
 				redirect_to current_user
 			else
-				render 'new', :layout => 'material'
+				render 'new'
 			end
 		else
-			render 'new', :layout => 'material'
+			render 'new'
 		end 
 	end
 
 	def edit
 		@team = Team.find(params[:id])
-		render :layout => 'material'
+	end
+
+	def show
+		@team = Team.find_by(id: params[:id])
+		@members = @team.memberships.all
 	end
 
 	def update

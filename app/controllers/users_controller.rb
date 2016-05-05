@@ -10,7 +10,6 @@ class UsersController < ApplicationController
   def show
     @user = User.find(params[:id])
     @teams = @user.teams
-    render :layout => 'material'
   end
 
   def create
@@ -25,7 +24,6 @@ class UsersController < ApplicationController
 
   def edit
     @user = User.find(params[:id])
-    render :layout => 'material'
   end
 
   def update

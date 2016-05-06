@@ -19,7 +19,9 @@ Rails.application.routes.draw do
     resources :teams
   end
 
-  resources :teams
+  resources :teams do
+    resources :members
+  end
 
   namespace :app do
     get '/' => '/static_pages#help'

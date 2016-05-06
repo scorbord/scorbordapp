@@ -1,0 +1,45 @@
+-content_for(:title, "Features")
+%div.scorbord-features-banner-image
+	%div.banner-heading--green
+		%div.banner-content
+			%h1
+				The world's smartest team roster
+			%h3
+				Don't settle for a boring, old spreadsheet-based roster.  Upgrade today and let your roster work for you.
+%div.scorbord-features-tabs-heading
+	/%h2
+	/	Built for the 21st century coach
+	%div.mdl-tabs.mdl-js-tabs.mdl-js-ripple-effect
+		%div.mdl-tabs__tab-bar
+			=link_to "Players", "#players", class:"mdl-tabs__tab is-active"
+			=link_to "Coaches", "#coaches", class:"mdl-tabs__tab"
+			=link_to "Parents", "#parents", class:"mdl-tabs__tab"
+		%div.mdl-tabs__panel.is-active#players
+			%h2.mdl-typography--text-center
+				All your players, all in one place.
+			%div.mdl-grid
+				%div.mdl-cell.mdl-cell--6-col
+					%p
+						Get the whole picture of who your players are beyond just name, position, and jersey number.  Know their strengths, weaknesses, and skill levels as you complete their full, internal scouting reports.
+				%div.mdl-cell.mdl-cell--6-col
+					%p
+
+		%div.mdl-tabs__panel#coaches
+			%h2.mdl-typography--text-center
+				Coaches and Managers and Trainers, oh my!
+			%div.mdl-grid
+				%div.mdl-cell.mdl-cell--6-col
+					%p
+						You can't leave out your left- and right-hand men.  With full profiles for your assistant coaches and team managers, you'll always know who's in charge of communications and who has the med kit.
+				%div.mdl-cell.mdl-cell--6-col
+					%p
+
+		%div.mdl-tabs__panel#parents
+			%h2.mdl-typography--text-center
+				Keep team parents in line.
+			%div.mdl-grid
+				%div.mdl-cell.mdl-cell--6-col
+					%p
+						Parents play a vital role in the life of a team, especially when you're coaching a youth team!  Keep up with contact information for the most important people who don't even actually get into the game.
+				%div.mdl-cell.mdl-cell--6-col
+					%p

@@ -1,0 +1,16 @@
+- content_for(:title, "#{@team.name} #{@team.sport}")
+%div.mdl-cell.mdl-cell--6-col.mdl-grid
+	%div.mdl-cell.mdl-cell--12-col
+		%h5 Roster
+		%table.mdl-data-table.mdl-js-data-table
+			%thead
+				%tr
+					%th.mdl-data-table__cell--non-numeric Name
+					%th.mdl-data-table__cell--non-numeric Email
+					%th.mdl-data-table__cell--non-numeric Admin?
+			%tbody
+				- @members.each do |member|
+					%tr
+						%td.mdl-data-table__cell--non-numeric= member.user.name
+						%td.mdl-data-table__cell--non-numeric= member.user.email
+						%td.mdl-data-table__cell--non-numeric= member.admin

@@ -1,0 +1,5 @@
+- if @user.errors.any?
+  %div.mdl-color-text--red.mdl-typography--text-left
+    %ul
+      - @user.errors.full_messages.each do |msg|
+        %li= msg

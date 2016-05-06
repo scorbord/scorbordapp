@@ -6,12 +6,26 @@ Rails.application.routes.draw do
 
   get 'help'        => 'static_pages#help'
   get 'about'       => 'static_pages#about'
+  get 'demo'        => 'static_pages#demo'
+  get 'features'    => 'static_pages#features'
+  get 'pricing'     => 'static_pages#pricing'
+
   get 'signup'      => 'users#new'
   get 'login'       => 'sessions#new'
   post 'login'      => 'sessions#create'
-  delete 'logout'   => 'sessions#destroy'
+  get 'logout'   => 'sessions#destroy'
 
-  resources :users
+  resources :users do
+    resources :teams
+  end
+
+  resources :teams do
+    resources :members
+  end
+
+  namespace :app do
+    get '/' => '/static_pages#help'
+  end
 
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".

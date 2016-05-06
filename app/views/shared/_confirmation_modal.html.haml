@@ -1,0 +1,9 @@
+#modal.confirm
+  %article
+    %header
+      %h1 Are you sure?
+      = link_to "Close", "#", class: "close"
+    %p Deleting this #{type} will permanently remove it.
+    .actions
+      = link_to "Yes", url, class: "button", :method => :delete
+      = link_to "No", "#", class: "button close"

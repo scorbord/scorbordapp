@@ -1,0 +1,91 @@
+%header.demo-header.mdl-layout__header.mdl-color--grey-100.mdl-color-text--grey-600
+  %div.mdl-layout__header-row
+    %span.mdl-layout-title
+      = yield(:title)
+    %div.mdl-layout-spacer
+    %div.mdl-textfield.mdl-js-textfield.mdl-textfield--expandable
+      = label_tag 'search', class:"mdl-button mdl-js-button mdl-button--icon" do
+        %i.material-icons
+          search
+      %div.mdl-textfield__expandable-holder
+        %input{ :type => "text", :id => "search", :class => "mdl-textfield__input"}
+        %label{ :for => "search", :class => "mdl-textfield__label"}
+          Enter your query...
+    %button.mdl-button.mdl-js-button.mdl-js-ripple-effect.mdl-button--icon{ :id => "hdrbtn" }
+      %i.material-icons
+        more_vert
+    %ul.mdl-menu.mdl-js-menu.mdl-js-ripple-effect.mdl-menu--bottom-right{ :for => "hdrbtn" }
+      %li.mdl-menu__item
+        = link_to "About", "#"
+      %li.mdl-menu__item
+        = link_to "Contact", "#"
+      %li.mdl-menu__item
+        = link_to "Log Out", logout_path
+
+%div.demo-drawer.mdl-layout__drawer.mdl-color--blue-grey-900.mdl-color-text--blue-grey-50
+  %header.demo-drawer-header
+    %img.demo-avatar{ :src => "https://www.getmdl.io/templates/dashboard/images/user.jpg" }
+    %div.demo-avatar-dropdown
+      %span
+        = current_user.email
+        %br
+        %strong= current_user.teams.first.name
+      %div.mdl-layout-spacer
+      %button.mdl-button.mdl-js-button.mdl-js-ripple-effect.mdl-button--icon{ :id => "accbtn" }
+        %i.material-icons{ :role => "presentation"}
+          arrow_drop_down
+        %span.visuallyhidden
+          Accounts
+      %ul.mdl-menu.mdl-menu--bottom-right.mdl-js-menu.mdl-js-ripple-effect{ :for => "accbtn" }
+        %li.mdl-menu__item
+          = link_to "Account", current_user, class:"mdl-navigation__link"
+        %li.mdl-menu__item
+          = link_to "Log Out", logout_path, class:"mdl-navigation__link"
+
+  %nav.demo-navigation.mdl-navigation.mdl-color--blue-grey-800
+    -#= link_to "#", class:"mdl-navigation__link" do
+      %i.mdl-color-text--blue-grey-400.material-icons{ :role => "presentation" }
+        dashboard
+      Dashboard
+    = link_to current_user.teams.first, class:"mdl-navigation__link" do
+      %i.mdl-color-text--blue-grey-400.material-icons{ :role => "presentation" }
+        assignment_ind
+      Roster
+    -#= link_to "#", class:"mdl-navigation__link" do
+      %i.mdl-color-text--blue-grey-400.material-icons{ :role => "presentation" }
+        delete
+      Trash
+    -#= link_to "#", class:"mdl-navigation__link" do
+      %i.mdl-color-text--blue-grey-400.material-icons{ :role => "presentation" }
+        report
+      Spam
+    -#= link_to "#", class:"mdl-navigation__link" do
+      %i.mdl-color-text--blue-grey-400.material-icons{ :role => "presentation" }
+        forum
+      Forums
+    -#= link_to "#", class:"mdl-navigation__link" do
+      %i.mdl-color-text--blue-grey-400.material-icons{ :role => "presentation" }
+        flag
+      Updates
+    -#= link_to "#", class:"mdl-navigation__link" do
+      %i.mdl-color-text--blue-grey-400.material-icons{ :role => "presentation" }
+        local_offer
+      Promos
+    -#= link_to "#", class:"mdl-navigation__link" do
+      %i.mdl-color-text--blue-grey-400.material-icons{ :role => "presentation" }
+        shopping_cart
+      Purchases
+    -#= link_to "#", class:"mdl-navigation__link" do
+      %i.mdl-color-text--blue-grey-400.material-icons{ :role => "presentation" }
+        people
+      Social
+    %div.mdl-layout-spacer
+    
+
+
+
+    = link_to "#", class:"mdl-navigation__link" do
+      %i.mdl-color-text--blue-grey-400.material-icons{ :role => "presentation" }
+        help_outline
+      %span.visuallyhidden
+        Help

@@ -1,16 +1,53 @@
-- content_for(:title, "Profile")
-%div.row
-	%h1
-		User profile
-	%div.col-sm-8.col-sm-offset-2
-		%div.card
-			%div.title
-				%h1
-					= @user.name
-			%div.content
+// need to look at customizing this page based on whether the viewer (current_user) is the subject of the Profile Page or not (if current_user(@user)...)
+
+- if current_user?(@user)
+	- content_for(:title, "My Account")
+- else
+	- content_for(:title, "#{@user.name}'s Account")
+%div.mdl-cell.mdl-cell--6-col.mdl-grid
+	%div.mdl-cell.mdl-cell--12-col
+		%h5 Account Details
+		%div.mdl-cell.mdl-cell--12-col.mdl-card.mdl-shadow--2dp.usercard
+			%div.mdl-card__title
+			/ consider using this for styling the bg of the card title area
+			/ {style: "background: #{asset_url(@user.picuture)}) center/cover;"}
+			%div.mdl-card__supporting-text
 				%p
-					Email:
+					%strong Name:
+					= @user.name
+				%p
+					%strong Email: 
 					= @user.email
-				- if current_user?(@user)
-					%div.form_actions
-						= link_to 'Edit', edit_user_path(current_user), class: 'btn-flat'
+			- if current_user?(@user)
+				%div.mdl-card__actions.mdl-card--border
+					= link_to 'Edit Account', edit_user_path(current_user), class:"mdl-button mdl-button--colored mdl-js-button mdl-js-ripple-effect"
+%div.mdl-cell.mdl-cell--6-col.mdl-grid
+	%div.mdl-cell.mdl-cell--12-col
+		- if @user.teams.any?
+			%h5
+				My Teams
+				=link_to "Create a team", new_team_path, class:"mdl-button mdl-button--colored mdl-js-button mdl-js-ripple-effect"
+			- @teams.each do |team|
+				%div.mdl-cell.mdl-cell--12-col.mdl-card.mdl-shadow--2dp
+					%div.mdl-card__title
+						= team.name
+					%div.mdl-card__supporting-text
+						%strong Sport:
+						= team.sport
+					-#%div.mdl-card__actions.mdl-card--border
+						= link_to "edit", edit_team_path(team), class:"mdl-button mdl-button--colored mdl-js-button mdl-js-ripple-effect"
+						= link_to "delete team", team, class:"mdl-button mdl-button--colored mdl-js-button mdl-js-ripple-effect mdl-color-text--red", :method => "delete", :data => {confirm: "Are you sure, dude?"}
+					%div.mdl-card__actions.mdl-card--border
+						-#= link_to "modal", "#myModal", class:"btn btn-primary btn-lg", :data => { toggle: "modal", target: "#myModal" }
+						
+					%div.mdl-card__menu
+						= link_to edit_team_path(team), class:"mdl-button mdl-button--icon mdl-js-button mdl-js-ripple-effect" do
+							%i.material-icons
+								edit
+						= link_to team, class:"mdl-button mdl-button--icon mdl-js-button mdl-js-ripple-effect", :method => "delete", :data => { confirm: "Are you sure, dude?" } do
+							%i.material-icons
+								close
+
+						
+		- elsif
+			Dude... you don't have any teams

@@ -11,19 +11,21 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20160513001155) do
+ActiveRecord::Schema.define(version: 20160513021029) do
 
   create_table "members", force: :cascade do |t|
     t.integer  "team_id"
     t.integer  "user_id"
+    t.string   "role"
+    t.boolean  "admin",      default: false
     t.string   "last_name"
     t.string   "first_name"
-    t.string   "middle_name"
-    t.boolean  "admin",       default: false
-    t.string   "role"
+    t.string   "nickname"
+    t.string   "email"
+    t.string   "cell_phone"
+    t.string   "gender"
     t.datetime "created_at"
     t.datetime "updated_at"
-    t.string   "email"
   end
 
   add_index "members", ["team_id"], name: "index_members_on_team_id"

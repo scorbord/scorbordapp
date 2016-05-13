@@ -9,8 +9,8 @@ class TeamsController < ApplicationController
 	def create
 		@team = Team.new(team_params)
 		if @team.save
-			@membership = current_user.memberships.new(team_id: @team.id)
-			if @membership.save
+			@member = current_user.memberships.new(team_id: @team.id)
+			if @member.save
 				redirect_to current_user
 			else
 				render 'new'
@@ -26,7 +26,8 @@ class TeamsController < ApplicationController
 
 	def show
 		@team = Team.find_by(id: params[:id])
-		@members = @team.members.all
+		@coaches = @team.members.where(:role => 'Coach').order(:last_name)
+		@players = @team.members.where(:role => 'Player').order(:last_name)
 	end
 
 	def update

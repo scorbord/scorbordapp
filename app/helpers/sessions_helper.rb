@@ -48,6 +48,11 @@ module SessionsHelper
 		!current_user.nil?
 	end
 
+	# Returns 'true' if a user has an admin membership to the selected team
+#	def is_team_admin?(user, team)
+#		user.memberships.where(:team_id, team.id).
+#	end
+
 	# Redirects to stored location (or to the default).
   def redirect_back_or(default)
   	redirect_to(session[:forwarding_url] || default)

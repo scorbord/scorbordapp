@@ -9,7 +9,7 @@ class User < ActiveRecord::Base
 	has_secure_password
 	validates :password, presence: true, length: { minimum: 4 }, allow_nil: true
 
-	has_many :memberships
+	has_many :memberships, class_name: "Member"
 	has_many :teams, :through => :memberships
 
 	# Returns the hash digest of the given string.
@@ -34,6 +34,10 @@ class User < ActiveRecord::Base
 	def authenticated?(remember_token)
 		return false if remember_digest.nil?
 		BCrypt::Password.new(remember_digest).is_password?(remember_token)
+	end
+
+	def is_team_admin?(team)
+		self.memberships.where(team_id: team.id).first.admin?
 	end
 
 	# Forgets a user

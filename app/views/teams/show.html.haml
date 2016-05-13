@@ -1,16 +1,53 @@
-- content_for(:title, "#{@team.name} #{@team.sport}")
-%div.mdl-cell.mdl-cell--6-col.mdl-grid
+- content_for(:title, "#{@team.name} #{@team.sport} > Roster")
+%div.mdl-cell--12-col
 	%div.mdl-cell.mdl-cell--12-col
-		%h5 Roster
+		%h5 
+			Coaches
+			= link_to "Add a Coach", new_team_member_path(@team, :role => 'Coach'), class:"mdl-button mdl-button--colored mdl-js-button mdl-js-ripple-effect" unless !current_user.is_team_admin?(@team)
 		%table.mdl-data-table.mdl-js-data-table
 			%thead
 				%tr
-					%th.mdl-data-table__cell--non-numeric Name
+					%th.mdl-data-table__cell--non-numeric Last Name
+					%th.mdl-data-table__cell--non-numeric First Name
 					%th.mdl-data-table__cell--non-numeric Email
 					%th.mdl-data-table__cell--non-numeric Admin?
+					- if current_user.is_team_admin?(@team)
+						%th.mdl-data-table__cell--non-numeric
 			%tbody
-				- @members.each do |member|
+				- @coaches.each do |coach|
 					%tr
-						%td.mdl-data-table__cell--non-numeric= member.user.name
-						%td.mdl-data-table__cell--non-numeric= member.user.email
-						%td.mdl-data-table__cell--non-numeric= member.admin
+						%td.mdl-data-table__cell--non-numeric
+							=coach.last_name
+						%td.mdl-data-table__cell--non-numeric
+							=coach.first_name
+						%td.mdl-data-table__cell--non-numeric
+							=coach.email
+						%td.mdl-data-table__cell--non-numeric
+							=coach.admin
+						%td.mdl-data-table__cell--non-numeric
+							= link_to "profile", team_member_path(@team, coach), class:"mdl-button mdl-button--colored mdl-js-button mdl-js-ripple-effect"
+		%h5
+			Players
+			= link_to "Add a Player", new_team_member_path(@team, :role => 'Player'), class:"mdl-button mdl-button--colored mdl-js-button mdl-js-ripple-effect" unless !current_user.is_team_admin?(@team)
+		%table.mdl-data-table.mdl-js-data-table
+			%thead
+				%tr
+					%th.mdl-data-table__cell--non-numeric Last Name
+					%th.mdl-data-table__cell--non-numeric First Name
+					%th.mdl-data-table__cell--non-numeric Email
+					%th.mdl-data-table__cell--non-numeric Admin?
+					- if current_user.is_team_admin?(@team)
+						%th.mdl-data-table__cell--non-numeric
+			%tbody
+				- @players.each do |player|
+					%tr
+						%td.mdl-data-table__cell--non-numeric
+							=player.last_name
+						%td.mdl-data-table__cell--non-numeric
+							=player.first_name
+						%td.mdl-data-table__cell--non-numeric
+							=player.email
+						%td.mdl-data-table__cell--non-numeric
+							=player.admin
+						%td.mdl-data-table__cell--non-numeric
+							= link_to "profile", team_member_path(@team, player), class:"mdl-button mdl-button--colored mdl-js-button mdl-js-ripple-effect"

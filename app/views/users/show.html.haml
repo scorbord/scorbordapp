@@ -23,31 +23,32 @@
 					= link_to 'Edit Account', edit_user_path(current_user), class:"mdl-button mdl-button--colored mdl-js-button mdl-js-ripple-effect"
 %div.mdl-cell.mdl-cell--6-col.mdl-grid
 	%div.mdl-cell.mdl-cell--12-col
-		- if @user.teams.any?
-			%h5
-				My Teams
-				=link_to "Create a team", new_team_path, class:"mdl-button mdl-button--colored mdl-js-button mdl-js-ripple-effect"
-			- @teams.each do |team|
-				%div.mdl-cell.mdl-cell--12-col.mdl-card.mdl-shadow--2dp
-					%div.mdl-card__title
-						= team.name
-					%div.mdl-card__supporting-text
-						%strong Sport:
-						= team.sport
-					-#%div.mdl-card__actions.mdl-card--border
-						= link_to "edit", edit_team_path(team), class:"mdl-button mdl-button--colored mdl-js-button mdl-js-ripple-effect"
-						= link_to "delete team", team, class:"mdl-button mdl-button--colored mdl-js-button mdl-js-ripple-effect mdl-color-text--red", :method => "delete", :data => {confirm: "Are you sure, dude?"}
-					%div.mdl-card__actions.mdl-card--border
-						-#= link_to "modal", "#myModal", class:"btn btn-primary btn-lg", :data => { toggle: "modal", target: "#myModal" }
-						
-					%div.mdl-card__menu
-						= link_to edit_team_path(team), class:"mdl-button mdl-button--icon mdl-js-button mdl-js-ripple-effect" do
-							%i.material-icons
-								edit
-						= link_to team, class:"mdl-button mdl-button--icon mdl-js-button mdl-js-ripple-effect", :method => "delete", :data => { confirm: "Are you sure, dude?" } do
-							%i.material-icons
-								close
+		%h5
+			My Teams
+			=link_to "Create a team", new_team_path, class:"mdl-button mdl-button--colored mdl-js-button mdl-js-ripple-effect"
+			- if @user.teams.any?
+				- @teams.each do |team|
+					%div.mdl-cell.mdl-cell--12-col.mdl-card.mdl-shadow--2dp
+						%div.mdl-card__title
+							= team.name
+						%div.mdl-card__supporting-text
+							%strong Sport:
+							= team.sport
+						-#%div.mdl-card__actions.mdl-card--border
+							= link_to "edit", edit_team_path(team), class:"mdl-button mdl-button--colored mdl-js-button mdl-js-ripple-effect"
+							= link_to "delete team", team, class:"mdl-button mdl-button--colored mdl-js-button mdl-js-ripple-effect mdl-color-text--red", :method => "delete", :data => {confirm: "Are you sure, dude?"}
+						%div.mdl-card__actions.mdl-card--border
+							-#= link_to "modal", "#myModal", class:"btn btn-primary btn-lg", :data => { toggle: "modal", target: "#myModal" }
+							
+						%div.mdl-card__menu
+							= link_to edit_team_path(team), class:"mdl-button mdl-button--icon mdl-js-button mdl-js-ripple-effect" do
+								%i.material-icons
+									edit
+							= link_to team, class:"mdl-button mdl-button--icon mdl-js-button mdl-js-ripple-effect", :method => "delete", :data => { confirm: "Are you sure, dude?" } do
+								%i.material-icons
+									close
 
 						
-		- elsif
-			Dude... you don't have any teams
+			- elsif
+				%h4
+					Dude... you don't have any teams

@@ -27,3 +27,8 @@ group :production do
   gem 'puma'
 	gem 'rails_12factor'
 end
+
+group :test, :development do
+  gem 'cucumber-rails', :require => false
+  gem 'database_cleaner'
+end

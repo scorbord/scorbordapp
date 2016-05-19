@@ -11,6 +11,7 @@ Rails.application.routes.draw do
   get 'pricing'     => 'static_pages#pricing'
 
   get 'signup'      => 'users#new'
+  get 'confirmation'=> 'static_pages#confirmation'
   get 'login'       => 'sessions#new'
   post 'login'      => 'sessions#create'
   get 'logout'   => 'sessions#destroy'

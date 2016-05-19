@@ -6,13 +6,11 @@
 				= @team.name
 			%div.mdl-card__supporting-text
 				%div.mdl-textfield.mdl-js-textfield.mdl-textfield--floating-label
+					= f.label "name", "Team Name", class: "mdl-textfield__label"
 					= f.text_field :name, class: "mdl-textfield__input"
-					= label_tag "name", class: "mdl-textfield__label" do
-						Team Name
 				%div.mdl-textfield.mdl-js-textfield.mdl-textfield--floating-label
+					= f.label "sport", "Sport", class: "mdl-textfield__label"
 					= f.text_field :sport, class: "mdl-textfield__input"
-					= label_tag "sport", class: "mdl-textfield__label" do
-						Sport
 			%div.mdl-card__actions.mdl-card--border
 				= link_to "cancel", :back, class:"mdl-button mdl-button--colored mdl-js-button mdl-js-ripple-effect"
 				= f.submit "Save", class:"mdl-button mdl-button--colored mdl-js-button mdl-js-ripple-effect"

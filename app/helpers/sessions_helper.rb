@@ -64,6 +64,14 @@ module SessionsHelper
     session[:forwarding_url] = request.url if request.get?
   end
 
+  def remember_requester(first_name)
+  	session[:requester_first_name] = first_name
+  end
+
+  def requester
+  	session[:requester_first_name]
+  end
+
 
 
 

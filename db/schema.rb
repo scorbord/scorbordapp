@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20160513114725) do
+ActiveRecord::Schema.define(version: 20160518110450) do
 
   create_table "members", force: :cascade do |t|
     t.integer  "team_id"
@@ -42,12 +42,14 @@ ActiveRecord::Schema.define(version: 20160513114725) do
   end
 
   create_table "users", force: :cascade do |t|
-    t.string   "name"
+    t.string   "first_name"
     t.string   "email"
     t.datetime "created_at",      null: false
     t.datetime "updated_at",      null: false
     t.string   "password_digest"
     t.string   "remember_digest"
+    t.string   "middle_name"
+    t.string   "last_name"
   end
 
   add_index "users", ["email"], name: "index_users_on_email", unique: true

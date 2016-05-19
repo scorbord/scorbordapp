@@ -11,46 +11,36 @@
 		%div.mdl-card__supporting-text.mdl-grid
 			%div.mdl-cell.mdl-cell--6-col
 				%div.mdl-textfield.mdl-js-textfield.mdl-textfield--floating-label.hidden
+					= f.label "role", "Role", class: "mdl-textfield__label"
 					= f.text_field :role, class: "mdl-textfield__input", :value => role
-					= label_tag "role", class: "mdl-textfield__label" do
-						Role	
 				%div.mdl-textfield.mdl-js-textfield.mdl-textfield--floating-label
+					= f.label "first_name", "First Name", class: "mdl-textfield__label"
 					= f.text_field :first_name, class: "mdl-textfield__input"
-					= label_tag "first_name", class: "mdl-textfield__label" do
-						First Name
 				%div.mdl-textfield.mdl-js-textfield.mdl-textfield--floating-label
+					= f.label "last_name", "Last Name", class: "mdl-textfield__label"
 					= f.text_field :last_name, class: "mdl-textfield__input"
-					= label_tag "last_name", class: "mdl-textfield__label" do
-						Last Name
 				%div.mdl-textfield.mdl-js-textfield.mdl-textfield--floating-label
+					= f.label "nickname", "Nickname", class: "mdl-textfield__label"
 					= f.text_field :nickname, class: "mdl-textfield__input"
-					= label_tag "nickname", class: "mdl-textfield__label" do
-						Nickname
 				%div.mdl-textfield.mdl-js-textfield.mdl-textfield--floating-label
+					= f.label "email", "Email Address", class: "mdl-textfield__label"
 					= f.email_field :email, class: "mdl-textfield__input"
-					= label_tag "email", class: "mdl-textfield__label" do
-						Email Address
 				%div.mdl-textfield.mdl-js-textfield.mdl-textfield--floating-label
+					= f.label "cell_phone", "Cell Phone", class: "mdl-textfield__label"
 					= f.phone_field :cell_phone, class: "mdl-textfield__input"
-					= label_tag "cell_phone", class: "mdl-textfield__label" do
-						Cell Phone
 			%div.mdl-cell.mdl-cell--6-col
 				%div.mdl-textfield.mdl-js-textfield.mdl-textfield--floating-label
+					= f.label "height", "Height (in.)", class: "mdl-textfield__label"
 					= f.number_field :height, class: "mdl-textfield__input"
-					= label_tag "height", class: "mdl-textfield__label" do
-						Height (in)
 				%div.mdl-textfield.mdl-js-textfield.mdl-textfield--floating-label
+					= f.label "weight", "Weight (lbs.)", class: "mdl-textfield__label"
 					= f.number_field :weight, class: "mdl-textfield__input"
-					= label_tag "weight", class: "mdl-textfield__label" do
-						Weight (lbs)
 				%div.mdl-textfield.mdl-js-textfield.mdl-textfield--floating-label
+					= f.label "gender", "Gender", class: "mdl-textfield__label"
 					= f.text_field :gender, class: "mdl-textfield__input"
-					= label_tag "gender", class: "mdl-textfield__label" do
-						Gender
 				%div.mdl-textfield.mdl-js-textfield.mdl-textfield--floating-label
+					= f.label "grad_year", "Graduation Year", class: "mdl-textfield__label"
 					= f.number_field :grad_year, class: "mdl-textfield__input"
-					= label_tag "grad_year", class: "mdl-textfield__label" do
-						Graduation Year
 
 
 		%div.mdl-card__actions.mdl-card--border

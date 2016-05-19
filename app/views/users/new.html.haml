@@ -9,47 +9,19 @@
 					%div.mdl-card__supporting-text.mdl-typography--text-center
 						= render 'shared/user_error_messages'
 						%div.mdl-textfield.mdl-js-textfield.mdl-textfield--floating-label
-							= f.text_field :name, class: "mdl-textfield__input"
-							= label_tag "name", class: "mdl-textfield__label" do
-								Name
+							= f.label :first_name, "First Name", class: "mdl-textfield__label"
+							= f.text_field :first_name, class: "mdl-textfield__input"
 						%div.mdl-textfield.mdl-js-textfield.mdl-textfield--floating-label
+							= f.label :last_name, "Last Name", class: "mdl-textfield__label"
+							= f.text_field :last_name, class: "mdl-textfield__input"
+						%div.mdl-textfield.mdl-js-textfield.mdl-textfield--floating-label
+							= f.label :email, "Email", class: "mdl-textfield__label"
 							= f.text_field :email, :class => "mdl-textfield__input"
-							= label_tag "email", class:"mdl-textfield__label" do
-								Email address
 						%div.mdl-textfield.mdl-js-textfield.mdl-textfield--floating-label
+							= f.label :password, "Password", class: "mdl-textfield__label"
 							= f.password_field :password, class:"mdl-textfield__input"
-							= label_tag "password", class:"mdl-textfield__label" do
-								Password
 						%div.mdl-textfield.mdl-js-textfield.mdl-textfield--floating-label
+							= f.label :password_confirmation, "Password Confirm", class: "mdl-textfield__label"
 							= f.password_field :password_confirmation, class:"mdl-textfield__input"
-							= label_tag "password_confirmation", class:"mdl-textfield__label" do
-								Password Confirm
 					%div.mdl-card__actions.mdl-card--border
-						= f.submit "Sign up", class:"mdl-button mdl-button--colored mdl-js-button mdl-js-ripple-effect"
-
-
-
-
--#
-	%div.row
-		%div.col-sm-6.col-sm-offset-3
-			%div.card
-				%div.title
-					%h1
-						Create your account
-				%div.content
-					= form_for @user do |f|
-						= render 'shared/error_messages'
-						%div.fieldset
-							= f.text_field :name, placeholder: 'Name', class: "input-field"
-							= f.email_field :email, placeholder: 'Email address'
-							= f.password_field :password, placeholder: 'Password'
-							= f.password_field :password_confirmation, placeholder: 'Password confirm'
-						%div.form_actions
-							= f.submit 'Sign up', class: "btn-flat"
-							= link_to 'cancel', '#', class: "btn-flat"
-			%div
-				%p.cardcomment.center
-					Already have an account?
-					%br
-					= link_to 'Click here to login', login_path
+						= f.submit "Register", class:"mdl-button mdl-button--colored mdl-js-button mdl-js-ripple-effect"

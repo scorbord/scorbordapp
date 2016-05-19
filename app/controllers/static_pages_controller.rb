@@ -3,7 +3,6 @@ class StaticPagesController < ApplicationController
   layout 'materialhome'
 
   def home
-  	#render :layout => 'materialhome'
   end
 
   def help
@@ -18,10 +17,12 @@ class StaticPagesController < ApplicationController
   end
 
   def features
-    #render :layout => 'materialhome'
   end
 
   def pricing
-    #render :layout => 'materialhome'
+  end
+
+  def confirmation
+
   end
 end

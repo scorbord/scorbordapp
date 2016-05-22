@@ -23,7 +23,7 @@
         = link_to "Log Out", logout_path
 
 %div.demo-drawer.mdl-layout__drawer.mdl-color--blue-grey-900.mdl-color-text--blue-grey-50
-  %header.demo-drawer-header
+  %header.demo-drawer-header#sidenav
     %img.demo-avatar{ :src => "https://www.getmdl.io/templates/dashboard/images/user.jpg" }
     %div.demo-avatar-dropdown
       %span
@@ -40,7 +40,7 @@
         %li.mdl-menu__item
           = link_to "Account", current_user, class:"mdl-navigation__link"
         %li.mdl-menu__item
-          = link_to "Log Out", logout_path, class:"mdl-navigation__link"
+          = link_to "Logout", logout_path, class:"mdl-navigation__link"
 
   %nav.demo-navigation.mdl-navigation.mdl-color--blue-grey-800
     -#= link_to "#", class:"mdl-navigation__link" do

@@ -22,19 +22,20 @@
 	</head>
 	<body>
 		<div class="demo-layout mdl-layout mdl-js-layout mdl-layout--fixed-drawer mdl-layout--fixed-header">
-      <%= render 'layouts/material_header' %>
+            <%= render 'layouts/material_header' %>
 
-    <main class="mdl-layout__content mdl-color--grey-100">
-    	<div class="mdl-grid">
-    		<% flash.each do |name, msg| -%>
-    			<div class="mdl-cell mdl-cell--12-col">
-			    	<%= content_tag :div, msg, class: ["flash", name] %>
-			  	</div>
-			  <% end -%>
+            <main class="mdl-layout__content mdl-color--grey-100">
+            	<div class="mdl-grid">
+            		<% flash.each do |name, msg| -%>
+            			<div class="mdl-cell mdl-cell--12-col">
+        			    	<%= content_tag :div, msg, class: ["flash", name] %>
+        			  	</div>
+        			<% end -%>
 
-					<%= yield %>
+        			<%= yield %>
 
-			</div>
-		</main>
+    			</div>
+    		</main>
+        </div>
 	</body>
 </html>

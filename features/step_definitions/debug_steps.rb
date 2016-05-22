@@ -1,8 +1,8 @@
 module DebugStepHelpers
   def screenshot
-    sleep 5
+    sleep 2
     file = "/tmp/capybara_screenshot_#{Time.now.strftime("%m_%d_%Y_%H_%M_%S")}.png"
-    page.driver.render(file, full: true)
+    page.driver.render(file, :full => true)
     `open #{file}`
   end
 end

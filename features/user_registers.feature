@@ -1,6 +1,5 @@
 Feature: User Registers
 	
-	@javascript
 	Scenario: Visitor registers
 		Given I go to the signup page
 		And I fill in "First Name" with "Jeffrey"

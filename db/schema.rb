@@ -13,26 +13,29 @@
 
 ActiveRecord::Schema.define(version: 20160518110450) do
 
+  # These are extensions that must be enabled in order to support this database
+  enable_extension "plpgsql"
+
   create_table "members", force: :cascade do |t|
     t.integer  "team_id"
     t.integer  "user_id"
-    t.string   "role"
     t.boolean  "admin",      default: false
-    t.string   "last_name"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+    t.string   "role"
     t.string   "first_name"
     t.string   "nickname"
+    t.string   "last_name"
     t.string   "email"
     t.string   "cell_phone"
     t.string   "gender"
-    t.datetime "created_at"
-    t.datetime "updated_at"
     t.integer  "height"
     t.integer  "weight"
     t.string   "grad_year"
   end
 
-  add_index "members", ["team_id"], name: "index_members_on_team_id"
-  add_index "members", ["user_id"], name: "index_members_on_user_id"
+  add_index "members", ["team_id"], name: "index_members_on_team_id", using: :btree
+  add_index "members", ["user_id"], name: "index_members_on_user_id", using: :btree
 
   create_table "teams", force: :cascade do |t|
     t.string   "name"
@@ -52,6 +55,8 @@ ActiveRecord::Schema.define(version: 20160518110450) do
     t.string   "last_name"
   end
 
-  add_index "users", ["email"], name: "index_users_on_email", unique: true
+  add_index "users", ["email"], name: "index_users_on_email", unique: true, using: :btree
 
+  add_foreign_key "members", "teams"
+  add_foreign_key "members", "users"
 end

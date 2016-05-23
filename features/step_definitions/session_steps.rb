@@ -35,7 +35,7 @@ end
 
 Given(/^I have a (.*?) team named "(.*?)"$/) do |sport, name|
   #@user = find_or_create_user(first_name: 'Jeffrey', last_name: 'Lebowski', email: 'dude@gmail.com')
-  @user.teams.create(name: name, sport: sport)
+  @team = @user.teams.create(name: name, sport: sport)
 end
 
 When(/^I logout$/) do

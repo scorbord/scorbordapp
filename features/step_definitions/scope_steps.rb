@@ -13,9 +13,19 @@ Then(/^(.*?) in the "(.*?)" card menu$/) do |action, identifier|
   end
 end
 
-Then(/^(.*?) in the "(.*?)" card$/) do |action, identifier|
+Then(/^(.*?) in the "(.*?)" card actions$/) do |action, identifier|
+  thecard = "//div[div[contains(@class,'mdl-card__title')][contains(.,'#{identifier}')]]"
+  within ("#{thecard}[div[contains(@class,'mdl-card__actions')]]") do
+    step(action)
+  end
+end
+
+
+
+
+Then(/^(.*?) in the "(.*?)" card title$/) do |action, identifier|
   thecard = "(//div[contains(@class,'mdl-card')][//div[contains(@class,'mdl-card__title')][contains(.,'#{identifier}')]])"
-  within ("#{thecard}//div[contains(@class,'mdl-card__supporting-text')]") do
+  within ("#{thecard}//div[contains(@class,'mdl-card__title')]") do
     step(action)
   end
 end

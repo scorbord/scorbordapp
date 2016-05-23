@@ -35,6 +35,7 @@
 							%strong Sport:
 							= team.sport
 						%div.mdl-card__actions.mdl-card--border
+							= link_to "View Team", team, class:"mdl-button mdl-button--colored mdl-js-button mdl-js-ripple-effect"
 						%div.mdl-card__menu
 							= link_to edit_team_path(team), class:"mdl-button mdl-button--icon mdl-js-button mdl-js-ripple-effect" do
 								%i.material-icons

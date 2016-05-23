@@ -1,5 +1,9 @@
-Given(/^I view my account$/) do
+Given(/^I (?:view|am viewing) my account$/) do
   visit(user_path(@user))
+end
+
+Then(/^I am taken to my account page$/) do
+  expect(current_path).to eq(user_path(@user))
 end
 
 Given(/^I (?:go to|visit) the (.*?) page$/) do |page_name|

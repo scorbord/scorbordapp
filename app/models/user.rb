@@ -37,7 +37,7 @@ class User < ActiveRecord::Base
 	end
 
 	def is_team_admin?(team)
-		self.memberships.where(team_id: team.id).first.admin?
+		self.memberships.where(team_id: team.id, admin: true).any?
 	end
 
 	# Forgets a user

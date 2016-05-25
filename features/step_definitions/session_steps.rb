@@ -21,21 +21,16 @@ Given(/^I am logged in as a user$/) do
   log_in_user(@user)
 end
 
-
-#Given(/^I am logged in as a user and I have the following team:$/) do |table|
-#  usrattrs = { first_name: 'Jeffrey', last_name: 'Lebowski', email: 'dude@gmail.com' }
-#  @user = find_or_create_user(usrattrs)
-#  @team = @user.teams.create!(table.rows_hash)
-#  log_in_user(@user)
-#end
-
-Given(/^I have the following team:$/) do |table|
-  @user.teams.create()
-end
-
 Given(/^I have a (.*?) team named "(.*?)"$/) do |sport, name|
-  #@user = find_or_create_user(first_name: 'Jeffrey', last_name: 'Lebowski', email: 'dude@gmail.com')
-  @team = @user.teams.create(name: name, sport: sport)
+  @team = Team.create(name: name, sport: sport)
+  @member = @team.members.create(
+                                  user_id: @user.id,
+                                  admin: true,
+                                  role: "Coach",
+                                  first_name: @user.first_name,
+                                  last_name: @user.last_name,
+                                  email: @user.email
+                                )
 end
 
 When(/^I logout$/) do

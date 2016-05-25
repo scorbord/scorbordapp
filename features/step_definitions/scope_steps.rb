@@ -1,6 +1,6 @@
 Then(/^(.*?) in the "(.*?)" section$/) do |action, identifier|
   containers = %w(section article fieldset).map{|e| "//#{e}"}.join('|')
-  elements   = %w(h1 h2 h3).map{|e| "descendant-or-self::#{e}"}.join('|')
+  elements   = %w(h1 h2 h3 h4 h5).map{|e| "descendant-or-self::#{e}"}.join('|')
   within("((#{containers})[(#{elements})[contains(.,'#{identifier}')]])[last()]") do
     step(action)
   end

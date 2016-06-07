@@ -20,9 +20,6 @@ Then(/^(.*?) in the "(.*?)" card actions$/) do |action, identifier|
   end
 end
 
-
-
-
 Then(/^(.*?) in the "(.*?)" card title$/) do |action, identifier|
   thecard = "(//div[contains(@class,'mdl-card')][//div[contains(@class,'mdl-card__title')][contains(.,'#{identifier}')]])"
   within ("#{thecard}//div[contains(@class,'mdl-card__title')]") do

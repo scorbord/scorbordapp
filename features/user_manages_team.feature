@@ -88,7 +88,6 @@ Feature: User manages team
 		Then I am taken to the roster page for "The Rollers"
 		And I see "Kerabatsos Theodore" in the "Players" section
 
-	#@javascript
 	Scenario: Team owner removes a Coach from the Team
 		Given I am logged in as a user
 		And I have a Bowling team named "The Rollers"
@@ -98,3 +97,31 @@ Feature: User manages team
 		And I click "edit"
 		When I click "Delete this team member"
 		Then I do not see "Sobchak" in the "Coaches" section
+
+	Scenario: Team owner removes a Player from the Team
+		Given I am logged in as a user
+		And I have a Bowling team named "The Rollers"
+		And there is a Player
+		And I visit the roster page for "The Rollers"
+		And I click "Profile" in the "Theodore" row
+		And I click "edit"
+		When I click "Delete this team member"
+		Then I do not see "Theodore" in the "Players" section
+
+	Scenario: Team owner views a Player Profile
+		Given I am logged in as a user
+		And I have a Bowling team named "The Rollers"
+		And there is a Player
+		And I visit the roster page for "The Rollers"
+		When I click "Profile" in the "Theodore" row
+		Then I see "Theodore Kerabatsos"
+		And I see "edit"
+
+	Scenario: Team owner views a Coach Profile
+		Given I am logged in as a user
+		And I have a Bowling team named "The Rollers"
+		And there is a Coach
+		And I visit the roster page for "The Rollers"
+		When I click "Profile" in the "Sobchak" row
+		Then I see "Walter Sobchak"
+		And I see "edit"

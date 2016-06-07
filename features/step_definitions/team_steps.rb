@@ -13,3 +13,7 @@ Given(/^there are (\d+) "(.*?)" members on the roster$/) do |num, position|
 		@team.members.create(role: position, first_name:"#{position}", email:"#{position}#{num}@gmail.com")
 	end
 end
+
+Given(/^there is a Player$/) do
+	@team.members.create(role: "Player", first_name:"Theodore", last_name:"Kerabatsos", email:"donny@gmail.com")
+end

@@ -24,6 +24,9 @@ Rails.application.routes.draw do
     resources :members
   end
 
+  resources :invitations do
+  end
+
   namespace :app do
     get '/' => '/static_pages#help'
   end

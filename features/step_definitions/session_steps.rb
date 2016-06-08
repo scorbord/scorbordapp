@@ -1,6 +1,6 @@
 module SessionHelpers
 
-	def log_in_user(user)
+def log_in_user(user)
     log_out
     visit(login_path)
     fill_in('Email address', with: user.email)
@@ -34,6 +34,10 @@ Given(/^I have a (.*?) team named "(.*?)"$/) do |sport, name|
 end
 
 When(/^I logout$/) do
+  log_out
+end
+
+Given(/^I am not logged in$/) do
   log_out
 end
 

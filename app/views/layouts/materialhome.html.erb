@@ -18,9 +18,16 @@
   <body>
   	<div class='mdl-layout mdl-js-layout mdl-layout--fixed-header'>
   		<%= render 'layouts/material_home_header' %>
-
+			
   		<div class="android-content mdl-layout__content">
         <a name="top"></a>
+
+				<% flash.each do |name, msg| -%>
+					<div class="mdl-cell mdl-cell--12-col mdl-typography--text-center mdl-color-text--green">
+						<%= content_tag :div, msg, class: ["flash", name] %>
+					</div>
+				<% end -%>
+
 				<%= yield %>
 
 				<%= render 'layouts/material_home_footer' %>

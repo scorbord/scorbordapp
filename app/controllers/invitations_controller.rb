@@ -7,6 +7,7 @@ class InvitationsController < ApplicationController
 
   def create
     @invitation = Invitation.new(invitation_params)
+		@invitation.token = SecureRandom.uuid
     if User.find_by(email: @invitation.email) == nil
       if @invitation.save
         redirect_to root_path
@@ -41,10 +42,16 @@ class InvitationsController < ApplicationController
 		redirect_to invitations_path
 	end
 
+	def redeem
+		@invitation = Invitation.find_by(token: params[:invitation_id])
+		@user = User.new(email: @invitation.email, first_name: @invitation.first_name, last_name: @invitation.last_name)
+		render :layout => 'materialhome'
+	end
+
   private
 
     def invitation_params
-      params.require(:invitation).permit(:first_name, :last_name, :email)
+      params.require(:invitation).permit(:first_name, :last_name, :email, :token)
     end
 
 end

@@ -1,0 +1,19 @@
+%thead
+  %tr
+    %th(style="padding: 0; height: 115px; background: #f8f8f8;")
+      = link_to image_tag(image_url("scorbord-text-logo.png"), alt: "Scorbord", style: "display: block; margin: 0 auto; border: none;"), root_url
+%tbody
+  %tr
+    %td(style="padding: 20px; text-align: center; background: #2b578e;")
+      %h1(style="pading: 0; margin: 0; font-size: 24px; font-weight: normal; color: #f8f8f8;") You've been invited to join Scorbord!
+  %tr
+    %td(style="padding: 20px 20px 30px; background: #ededed;")
+      %p
+        Hello
+      %strong #{@invitation.first_name},
+      %p
+        You have been invited to join Scorbord!
+
+      %p Follow the link below, create a password and let Scorbord help you coach smarter.
+
+%p= link_to "Accept Invitation", invitation_redeem_path(@invitation.email), style: "float: left; padding: 10px 25px; color: #f8f8f8; background: #ddbe21; text-decoration: none;"

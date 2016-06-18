@@ -53,13 +53,3 @@ Feature: User logs in
 		Then I am on the home page
 		And I see "Login"
 
-	Scenario: User sets password
-		Given the following user:
-			| first_name | last_name | email          |
-			| Jeffrey    | Lebowski  | dude@gmail.com |
-		And I visit the set password page
-		And I fill in "Password" with "thedudeabides"
-		And I fill in "Password Confirm" with "thedudeabides"
-		When I press "Set Password"
-		Then I see "Jeffrey"
-		And I see "Account"

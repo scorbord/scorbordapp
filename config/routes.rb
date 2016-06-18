@@ -25,6 +25,8 @@ Rails.application.routes.draw do
   end
 
   resources :invitations do
+    get 'accept' => 'invitations#accept'
+    get 'redeem' => 'invitations#redeem'
   end
 
   namespace :app do

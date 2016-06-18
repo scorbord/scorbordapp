@@ -1,0 +1,27 @@
+- content_for(:title, "Redeem Invitation")
+%div.mdl-grid.mdl-color--green
+  %div.pricing-section-header
+    %h2 #{@user.first_name}, redeem your invitation!
+  %div.login-section.mdl-grid
+    %div.mdl-cell--6-col.card-centered
+      = form_for(@user) do |f|
+        %div.mdl-card.mdl-shadow--4dp
+          %div.mdl-card__supporting-text.mdl-typography--text-center
+            = render 'shared/user_error_messages'
+            %div.mdl-textfield.mdl-js-textfield.mdl-textfield--floating-label.hidden
+              = f.label :first_name, "First Name", class: "mdl-textfield__label"
+              = f.text_field :first_name, class: "mdl-textfield__input"
+            %div.mdl-textfield.mdl-js-textfield.mdl-textfield--floating-label.hidden
+              = f.label :last_name, "Last Name", class: "mdl-textfield__label"
+              = f.text_field :last_name, class: "mdl-textfield__input"
+            %div.mdl-textfield.mdl-js-textfield.mdl-textfield--floating-label.hidden
+              = f.label :email, "Email", class: "mdl-textfield__label"
+              = f.text_field :email, class: "mdl-textfield__input"
+            %div.mdl-textfield.mdl-js-textfield.mdl-textfield--floating-label
+              = f.label :password, "Password", class: "mdl-textfield__label"
+              = f.password_field :password, class: "mdl-textfield__input"
+            %div.mdl-textfield.mdl-js-textfield.mdl-textfield--floating-label
+              = f.label :password_confirm, "Password Confirm", class: "mdl-textfield__label"
+              = f.password_field :password_confirm, class: "mdl-textfield__input"
+          %div.mdl-card__actions.mdl-card-border
+            = f.submit "Redeem Invitation", class:"mdl-button mdl-button--colored mdl-js-button mdl-js-ripple-effect"

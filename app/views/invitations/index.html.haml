@@ -31,3 +31,4 @@
                 - else
                   = link_to 'Approve', invitation_accept_path(inv), class:"mdl-button mdl-button--colored mdl-js-button mdl-js-ripple-effect mdl-color-text--green"
                   = link_to 'Delete', inv, :method => "delete", class:"mdl-button mdl-button--colored mdl-js-button mdl-js-ripple-effect mdl-color-text--red"
+                  = link_to 'SudoRedeem', invitation_redeem_path(inv.token), class:"mdl-button mdl-button--colored mdl-js-button mdl-js-ripple-effect mdl-color-text--purple"

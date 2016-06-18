@@ -40,6 +40,10 @@ class User < ActiveRecord::Base
 		self.memberships.where(team_id: team.id, admin: true).any?
 	end
 
+	def super_admin?
+		Rails.configuration.admins.include?(email)
+	end
+
 	# Forgets a user
 	def forget
 		update_attribute(:remember_digest, nil)

@@ -1,4 +1,5 @@
-class StaticPagesController < ApplicationController
+#class StaticPagesController < ApplicationController
+class StaticPagesController < ActionController::Base
 
   layout 'materialhome'
 
@@ -11,7 +12,7 @@ class StaticPagesController < ApplicationController
 
   def about
   end
-  
+
   def demo
   	#render :layout => false
   end

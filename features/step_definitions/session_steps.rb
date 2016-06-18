@@ -21,6 +21,13 @@ Given(/^I am logged in as a user$/) do
   log_in_user(@user)
 end
 
+Given(/^I am logged in as a SuperAdmin$/) do
+  attrs = { first_name: 'Jackie', last_name: 'Treehorn', email: 'jackie@treehornprod.com' }
+  allow(Rails.configuration).to receive(:admins).and_return([attrs[:email]])
+  @user = find_or_create_user(attrs)
+  log_in_user(@user)
+end
+
 Given(/^I have a (.*?) team named "(.*?)"$/) do |sport, name|
   @team = Team.create(name: name, sport: sport)
   @member = @team.members.create(

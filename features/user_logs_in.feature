@@ -29,7 +29,7 @@ Feature: User logs in
 		And I see "Invalid email-password combination"
 
 	Scenario: Invalid login with unclaimed email address
-		And I go to the login page
+		Given I visit the login page
 		And I fill in "Email address" with "youwillnevergetthis@gmail.com"
 		And I fill in "Password" with "password"
 		When I press "Login"
@@ -52,3 +52,14 @@ Feature: User logs in
 		And I click "Logout"
 		Then I am on the home page
 		And I see "Login"
+
+	Scenario: User sets password
+		Given the following user:
+			| first_name | last_name | email          |
+			| Jeffrey    | Lebowski  | dude@gmail.com |
+		And I visit the set password page
+		And I fill in "Password" with "thedudeabides"
+		And I fill in "Password Confirm" with "thedudeabides"
+		When I press "Set Password"
+		Then I see "Jeffrey"
+		And I see "Account"

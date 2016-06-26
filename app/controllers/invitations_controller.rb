@@ -1,4 +1,5 @@
 class InvitationsController < ApplicationController
+	before_action :require_user, only: [:index]
 
   def new
     @invitation = Invitation.new
@@ -22,13 +23,14 @@ class InvitationsController < ApplicationController
   end
 
   def index
-    @invitations = Invitation.all
+		@invitations = Invitation.all.order(:created_at)
   end
 
   def accept
     @inv = Invitation.find_by(id: params[:invitation_id])
     @inv.status = 'Approved'
     if @inv.save
+			UserMailer.invitation_email(@inv).deliver_now
       redirect_to invitations_path
     else
       flash[:error] = "Invitation was not saved"

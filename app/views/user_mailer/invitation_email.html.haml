@@ -4,16 +4,15 @@
       = link_to image_tag(image_url("scorbord-text-logo.png"), alt: "Scorbord", style: "display: block; margin: 0 auto; border: none;"), root_url
 %tbody
   %tr
-    %td(style="padding: 20px; text-align: center; background: #2b578e;")
+    %td(style="padding: 20px; text-align: center; background: #616161;")
       %h1(style="pading: 0; margin: 0; font-size: 24px; font-weight: normal; color: #f8f8f8;") You've been invited to join Scorbord!
   %tr
-    %td(style="padding: 20px 20px 30px; background: #ededed;")
+    %td(style="padding: 20px 20px 30px; background: #ededed; color: #616161;")
       %p
-        Hello
-      %strong #{@invitation.first_name},
-      %p
-        You have been invited to join Scorbord!
+        Hey
+        %strong #{@invitation.first_name},
+      %p(style="color: #616161;") You have been invited to join Scorbord!
+      %p(style="color: #616161;") Follow the link below, create a password and let Scorbord help you coach smarter.
 
-      %p Follow the link below, create a password and let Scorbord help you coach smarter.
-
-%p= link_to "Accept Invitation", invitation_redeem_path(@invitation.email), style: "float: left; padding: 10px 25px; color: #f8f8f8; background: #ddbe21; text-decoration: none;"
+%p(style="text-align: center;")
+  = link_to "Accept Invitation", invitation_redeem_url(@invitation.token), style: "padding: 10px 25px; color: #000000; background: #76ff03; text-decoration: none;"

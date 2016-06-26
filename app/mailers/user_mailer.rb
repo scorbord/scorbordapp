@@ -1,6 +1,7 @@
 class UserMailer < ActionMailer::Base
 
-  default from: 'theteam@scorbord.com'
+  default from: "Scorbord <theteam@scorbord.com>"
+  layout 'mailer'
 
   def invitation_email(invitation)
     @invitation = invitation

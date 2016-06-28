@@ -10,6 +10,7 @@ Feature: User requests invitation
 		Then I am on the home page
 		Then I see "Thank you, Jeffrey"
 		And I see "Your request has been submitted"
+		And "steven@scorbord.com" receives an email with the subject: "[SB] New Invitation Request (Jeffrey Lebowski)"
 
 	Scenario: User submits invalid invitation request
 		Given I am not logged in

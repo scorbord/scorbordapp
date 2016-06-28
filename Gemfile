@@ -27,12 +27,14 @@ end
 group :test, :development do
 	gem 'byebug'
 	gem 'dotenv-rails'
+	gem 'letter_opener'
 	gem 'pry-byebug'
   gem 'pry-rails'
   gem 'pry-rescue'
 end
 
 group :test do
+	gem 'capybara-email'
 	gem 'cucumber-rails', :require => false
 	gem 'database_cleaner'
 	gem 'poltergeist'

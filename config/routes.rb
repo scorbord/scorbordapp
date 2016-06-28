@@ -25,9 +25,17 @@ Rails.application.routes.draw do
   end
 
   resources :invitations do
-    get 'accept' => 'invitations#accept'
     get 'redeem' => 'invitations#redeem'
   end
+
+  namespace :admin do
+    resources :users
+    resources :invitations do
+      get 'accept' => 'invitations#accept'
+      get 'delete' => 'invitations#destroy'
+    end
+  end
+
 
   namespace :app do
     get '/' => '/static_pages#help'

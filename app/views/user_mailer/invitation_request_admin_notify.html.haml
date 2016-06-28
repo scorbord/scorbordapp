@@ -1,0 +1,20 @@
+%thead
+  %tr
+    %th(style="padding: 0; height: 115px; background: #f8f8f8;")
+      = link_to image_tag(image_url("scorbord-text-logo.png"), alt: "Scorbord", style: "display: block; margin: 0 auto; border: none;"), root_url
+%tbody
+  %tr
+    %td(style="padding: 20px; text-align: center; background: #616161;")
+      %h1(style="pading: 0; margin: 0; font-size: 24px; font-weight: normal; color: #f8f8f8;") New Beta Invitation Request Submitted
+  %tr
+    %td(style="padding: 20px 20px 30px; background: #ededed; color: #616161;")
+      %p
+        Hey
+        %strong #{@invitation.first_name},
+      %p(style="color: #616161;")
+        %strong #{@invitation.first_name} #{@invitation.last_name} (#{@invitation.email})
+        has requested an invitation to join the Scorbord Beta
+
+%p(style="text-align: center;")
+  = link_to "Accept", admin_invitation_accept_url(@invitation), style: "padding: 10px 25px; color: #000000; background: #76ff03; text-decoration: none;"
+  = link_to "View", admin_invitations_url, style: "padding: 10px 25px; color: #fff; background: #616161; text-decoration: none;"

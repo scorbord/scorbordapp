@@ -52,7 +52,7 @@
         assignment_ind
       Roster
     - if current_user.super_admin?
-      = link_to invitations_path, class:"mdl-navigation__link" do
+      = link_to admin_invitations_path, class:"mdl-navigation__link" do
         %i.mdl-color-text--blue-grey-400.material-icons{ :role => "presentation" }
           inbox
         Invitations

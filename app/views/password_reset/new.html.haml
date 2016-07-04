@@ -1,0 +1,19 @@
+- content_for(:title, 'Forgot password')
+%div.mdl-grid.mdl-color--grey-800
+  %div.pricing-section-header
+    %h2 Forgot your password?
+  %div.login-section.mdl-grid
+    %div.mdl-cell--6-col.card-centered
+      = form_for :password_reset, url: password_reset_index_path do |f|
+        %div.mdl-card.mdl-shadow--4dp
+          %div.mdl-card__title
+            %h2.mdl-card__title-text
+              Reset password
+          %div.mdl-card__supporting-text.mdl-typography--text-center
+            %div.mdl-textfield.mdl-js-textfield.mdl-textfield--floating-label
+              = f.label "email", "Email address", class:"mdl-textfield__label"
+              = f.email_field :email, :class => "mdl-textfield__input"
+          %div.mdl-card__actions.mdl-card--border
+            = f.submit "Send Reset Instructions", :method => :submit, class:"mdl-button mdl-button--colored mdl-js-button mdl-js-ripple-effect"
+        %div.mdl-typography--text-center.forgot_password
+          = link_to "Back to Login", login_path, class:"mdl-button mdl-button--colored mdl-js-button mdl-js-ripple-effect mdl-color-text--white"

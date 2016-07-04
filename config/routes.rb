@@ -16,6 +16,8 @@ Rails.application.routes.draw do
   post 'login'      => 'sessions#create'
   get 'logout'   => 'sessions#destroy'
 
+  resources :password_reset
+
   resources :users do
     resources :teams
   end

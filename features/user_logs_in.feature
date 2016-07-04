@@ -53,3 +53,26 @@ Feature: User logs in
 		Then I am on the home page
 		And I see "Login"
 
+	Scenario: User requests new password
+		Given the following user:
+			| first_name | last_name | email          | password_reset_token |
+			| Jeffrey    | Lebowski  | dude@gmail.com | abc123               |
+		And I am not logged in
+		And I visit the login page
+		And I click "Forgot password?"
+		And I fill in "Email address" with "dude@gmail.com"
+		When I press "Send Reset Instructions"
+		Then I am taken to the login page
+		And I see "An email has been sent to dude@gmail.com with instructions for setting a new password" 
+		And "dude@gmail.com" receives an email with the subject: "Password Reset Instructions"
+	
+	Scenario: User resets password from email
+		Given the following user:
+			| first_name | last_name | email          | password_reset_token |
+			| Jeffrey    | Lebowski  | dude@gmail.com | abc123               |
+		And the user "dude@gmail.com" has requested a password reset
+		When I click "Reset Password" in the email for 'dude@gmail.com'
+		And I fill in "Password" with "abide12345"
+		And I fill in "Password confirm" with "abide12345"
+		And I press "Set Password"
+		Then I see "My Account"

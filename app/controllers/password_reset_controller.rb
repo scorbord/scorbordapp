@@ -17,6 +17,7 @@ class PasswordResetController < ApplicationController
       @user = User.find_by(password_reset_token: params[:id])
     else
       redirect_to root_path
+      flash[:error] = "The reset password link you used is no longer valid."
     end
   end
 

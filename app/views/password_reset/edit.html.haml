@@ -14,7 +14,7 @@
 							%div.mdl-color-text--red= msg
 						%div.mdl-textfield.mdl-js-textfield.mdl-textfield--floating-label
 							= f.label "password", "Password", class:"mdl-textfield__label"
-							= f.password_field :password, :class => "mdl-textfield__input"
+							= f.password_field :password, :class => "mdl-textfield__input", :autofocus => true
 						%div.mdl-textfield.mdl-js-textfield.mdl-textfield--floating-label
 							= f.label "password_confirmation", "Password confirm", class:"mdl-textfield__label"
 							= f.password_field :password_confirmation, :class => "mdl-textfield__input"

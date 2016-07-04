@@ -12,7 +12,7 @@
           %div.mdl-card__supporting-text.mdl-typography--text-center
             %div.mdl-textfield.mdl-js-textfield.mdl-textfield--floating-label
               = f.label "email", "Email address", class:"mdl-textfield__label"
-              = f.email_field :email, :class => "mdl-textfield__input"
+              = f.email_field :email, :class => "mdl-textfield__input", :autofocus => true
           %div.mdl-card__actions.mdl-card--border
             = f.submit "Send Reset Instructions", :method => :submit, class:"mdl-button mdl-button--colored mdl-js-button mdl-js-ripple-effect"
         %div.mdl-typography--text-center.forgot_password

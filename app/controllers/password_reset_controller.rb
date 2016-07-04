@@ -19,8 +19,11 @@ class PasswordResetController < ApplicationController
   def update
     @user = User.find_by(password_reset_token: params[:id])
     if @user.update_attributes(user_params)
-      log_in @user
-      redirect_to @user
+      @user.password_reset_token = SecureRandom.uuid
+      if @user.save
+        log_in @user
+        redirect_to @user
+      end
     else
       render 'edit'
     end

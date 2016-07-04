@@ -28,6 +28,7 @@ class PasswordResetController < ApplicationController
       if @user.save
         log_in @user
         redirect_to @user
+        flash[:success] = "Your password has been successfully changed!"
       end
     else
       render 'edit'

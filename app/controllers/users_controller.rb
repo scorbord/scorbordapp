@@ -25,13 +25,26 @@ class UsersController < ApplicationController
 
   def update
     @user = User.find(params[:id])
-    if @user.update_attributes(user_params)
-      # Handle a successful update
-      # flash[:success] = "Profile updated"
-      redirect_to @user
-    else
-      render 'edit'
-    end
+		if params[:user][:password].blank? && params[:user][:password_confirmation].blank?
+			if @user.update_attributes(user_params)
+				# Handle a successful update
+				# flash[:success] = "Profile updated"
+				redirect_to @user
+			else
+				render 'edit'
+			end
+		else
+			if is_password?(params[:user][:current_password])
+				if @user.update_attributes(user_params)
+					redirect_to @user
+				else
+					render 'edit'
+				end
+			else
+				flash.now[:error] = 'Current password was incorrect'
+				render 'edit'
+			end
+		end
   end
 
 	private
@@ -45,5 +58,9 @@ class UsersController < ApplicationController
       @user = User.find(params[:id])
       redirect_to(root_url) unless current_user?(@user)
     end
+
+		def is_password?(string)
+				BCrypt::Password.new(@user.password_digest).is_password?(string)
+		end
 
 end

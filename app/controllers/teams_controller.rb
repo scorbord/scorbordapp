@@ -17,7 +17,7 @@ class TeamsController < ApplicationController
 			end
 		else
 			render 'new'
-		end 
+		end
 	end
 
 	def edit
@@ -28,6 +28,7 @@ class TeamsController < ApplicationController
 		@team = Team.find_by(id: params[:id])
 		@coaches = @team.members.where(:role => 'Coach').order(:last_name)
 		@players = @team.members.where(:role => 'Player').order(:last_name)
+		@members = @team.members.order(:last_name)
 	end
 
 	def update

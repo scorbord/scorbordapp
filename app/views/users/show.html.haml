@@ -4,10 +4,10 @@
 	- content_for(:title, "My Account")
 - else
 	- content_for(:title, "#{@user.first_name}'s Account")
-%div.mdl-cell.mdl-cell--6-col.mdl-grid
-	%div.mdl-cell.mdl-cell--12-col
+#user_show.mdl-cell--12-col.mdl-grid
+	%div.mdl-cell--6-col
 		%h5 Account Details
-		%div.mdl-cell.mdl-cell--12-col.mdl-card.mdl-shadow--2dp.usercard
+		%div.mdl-cell--12-col.mdl-card.mdl-shadow--2dp
 			%div.mdl-card__title
 			/ consider using this for styling the bg of the card title area
 			/ {style: "background: #{asset_url(@user.picuture)}) center/cover;"}
@@ -16,19 +16,18 @@
 					%strong Name:
 					= "#{@user.first_name} #{@user.last_name}"
 				%p
-					%strong Email: 
+					%strong Email:
 					= @user.email
 			- if current_user?(@user)
 				%div.mdl-card__actions.mdl-card--border
 					= link_to 'Edit Account', edit_user_path(current_user), class:"mdl-button mdl-button--colored mdl-js-button mdl-js-ripple-effect"
-%div.mdl-cell.mdl-cell--6-col.mdl-grid
-	%div.mdl-cell.mdl-cell--12-col
+	%div.mdl-cell--6-col
 		%h5
 			My Teams
 			=link_to "Create a team", new_team_path, class:"mdl-button mdl-button--colored mdl-js-button mdl-js-ripple-effect"
 			- if @user.teams.any?
 				- @teams.each do |team|
-					%div.mdl-cell.mdl-cell--12-col.mdl-card.mdl-shadow--2dp{:id => "#{team.name}"}
+					%div.mdl-cell--12-col.mdl-card.mdl-shadow--2dp{:id => "#{team.name}"}
 						%div.mdl-card__title
 							= team.name
 						%div.mdl-card__supporting-text
@@ -44,7 +43,7 @@
 								%i.material-icons
 									close
 
-						
+
 			- elsif
 				%h4
 					Dude... you don't have any teams

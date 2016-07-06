@@ -1,7 +1,74 @@
+@import "card-mixin.scss";
+
+.mdl-layout {
+	height: 100vh;
+}
+
+main {
+	height: 100vh;
+	position: absolute;
+	top: -64px;
+	right: 0;
+	left: 0;
+	bottom: 0;
+	margin-bottom: -64px;
+	padding-top: 64px;
+	overflow: hidden;
+}
+
+#team_show {
+	margin: -8px;
+	height: calc(100vh - 80px);
+}
+
+.list-panel {
+  margin: -8px 0 -8px -8px;
+	padding: 0 8px;
+  background-color: #fafafa;
+  a {
+    text-decoration: none;
+    li {
+      cursor: pointer;
+      text-transform: none;
+    }
+  }
+}
+
+.member-detail {
+	overflow: scroll;
+	//margin-top: 72px;
+	padding-top: 0;
+	padding-right: 8px;
+	padding-bottom: -8px;
+	margin-bottom: -8px;
+	height: 100%;
+}
+
+.fab-col {
+  position: absolute;
+  bottom: 8%;
+  text-align: center;
+}
+
+.list-item-detail {
+  background-color: white;
+  margin-left: 8px;
+  padding-left: 8px;
+  @include card(1);
+}
+
 .usercard {
   .mdl-card__title {
     background: #9E9E9E;
-    height: 300px;  
+    height: 300px;
+  }
+}
+
+.member-card {
+  .mdl-card__title {
+    height: 225px;
+    padding: 16px;
+    color: white;
   }
 }
 
@@ -21,7 +88,7 @@
   margin-bottom: 12px;
   color: white;
   &.success {
-    background-color: #AED581;  
+    background-color: #AED581;
   }
   &.error {
     background-color: #F44336;
@@ -74,6 +141,9 @@ html, body {
   justify-content: flex-end;
   padding: 16px;
   height: 151px;
+	img {
+		margin-bottom: 28px;
+	}
 }
 .demo-avatar-dropdown {
   display: flex;
@@ -96,7 +166,7 @@ html, body {
   flex-direction: row;
   align-items: center;
   color: rgba(255, 255, 255, 0.56);
-  font-weight: 500;
+  font-weight: 400;
 }
 .demo-layout .demo-navigation .mdl-navigation__link:hover {
   background-color: #00BCD4;
@@ -211,4 +281,10 @@ _:-ms-input-placeholder, :root .demo-graph {
   margin-right: 40px;
   margin-bottom: 40px;
   z-index: 900;
+}
+
+.super_admin_nav {
+	i, a {
+		color: #263238 !important;
+	}
 }

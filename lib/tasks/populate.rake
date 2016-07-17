@@ -1,4 +1,3 @@
-require_relative '../features/support/fixtures'
 namespace :populate do
 
 	desc 'populate database with required resources'

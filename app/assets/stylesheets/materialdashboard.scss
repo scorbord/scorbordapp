@@ -162,12 +162,9 @@ html, body {
   justify-content: flex-end;
   padding: 16px;
   height: 151px;
-    a {
-	text-align: center;
-	img {
-		margin-bottom: 28px;
-	}
-      }
+		img {
+			margin-bottom: 28px;
+		}
 }
 .demo-avatar-dropdown {
   display: flex;

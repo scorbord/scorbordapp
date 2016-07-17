@@ -1,0 +1,1 @@
+Scorbordapp::Application.config.secret_key_base = 'd03baabd6c021d6b24f6d1306cf1caccbde89a5e11dc2cda9ea527e424552b6580f77343b144014d5988dd1de318e067cffe2f430cc1a9d86cce8ed4ea65a9c6'

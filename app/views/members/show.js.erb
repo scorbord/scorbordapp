@@ -1,0 +1,2 @@
+//$("h2.mdl-card__title-text").text("<%= @member.first_name %>");
+$("#member-detail").html("<%= escape_javascript(render partial: 'member', locals: { member: @member } ) %>");

@@ -49,7 +49,7 @@ Feature: User logs in
 
 	Scenario: User logs out
 		Given I am logged in as a user
-		And I click "Logout"
+		And I click "exit_to_app"
 		Then I am on the home page
 		And I see "Login"
 

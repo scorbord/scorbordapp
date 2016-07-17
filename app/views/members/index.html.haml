@@ -1,0 +1,52 @@
+- content_for(:title, "#{@team.name} #{@team.sport} > Roster")
+#team_show.mdl-cell--12-col.mdl-grid
+	//%div.mdl-cell.mdl-cell--12-col.mdl-grid
+	%div.mdl-cell--5-col.mdl-shadow--2dp.list-panel
+		%div.mdl-cell.mdl-cell--12-col
+			%div.mdl-tabs.mdl-js-tabs.mdl-js-ripple-effect
+				%div.mdl-tabs__tab-bar
+					=link_to "All", "#all-panel", class:"mdl-tabs__tab is-active"
+					=link_to "Coaches", "#coaches-panel", class:"mdl-tabs__tab"
+					=link_to "Players", "#players-panel", class:"mdl-tabs__tab"
+				%div.mdl-tabs__panel.is-active#all-panel
+					%h5 All
+					%ul.mdl-list
+						-@members.each do |mbr|
+							= link_to team_member_path(@team, mbr), :remote => true do
+								%li.mdl-list__item.mdl-button.mdl-js-button
+									%span.mdl-list__item-primary-content
+										#{mbr.last_name}, #{mbr.first_name}
+				%div.mdl-tabs__panel#coaches-panel
+					%h5 Coaches
+					%ul.mdl-list
+						-@coaches.each do |mbr|
+							= link_to team_member_path(@team, mbr), :remote => true do
+								%li.mdl-list__item.mdl-button.mdl-js-button
+									%span.mdl-list__item-primary-content
+										#{mbr.last_name}, #{mbr.first_name}
+				%div.mdl-tabs__panel#players-panel
+					%h5 Players
+					%ul.mdl-list
+						-@players.each do |mbr|
+							= link_to team_member_path(@team, mbr), :remote => true do
+								%li.mdl-list__item.mdl-button.mdl-js-button
+									%span.mdl-list__item-primary-content
+										#{mbr.last_name}, #{mbr.first_name}
+	%div.mdl-cell--6-col#member-detail
+		=render 'member'
+
+	%div.mdl-cell--1-col.fab-col
+		%div.speed-dial
+			=link_to new_team_member_path(@team, :role => "Coach"), class:"mdl-button mdl-js-button mdl-button--colored mdl-js-ripple-effect mdl-button--fab" do
+				%i.material-icons
+					supervisor_account
+			%span Coach
+		%div.speed-dial
+			=link_to new_team_member_path(@team, :role => "Player"), class:"mdl-button mdl-js-button mdl-button--colored mdl-js-ripple-effect mdl-button--fab" do
+				%i.material-icons
+					person
+			%span Player
+
+		%a.mdl-button.mdl-js-button.mdl-button--colored.mdl-js-ripple-effect.mdl-button--fab#expand-speed-dial
+			%i.material-icons
+				add

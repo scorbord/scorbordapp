@@ -3,10 +3,14 @@ Given(/^I (?:view|am viewing) my account$/) do
 end
 
 Given(/^I (?:visit|go to) the roster page for "(.*?)"$/) do |team_name|
-  visit(team_path(Team.find_by!(name: team_name)))
+  visit(team_roster_path(Team.find_by!(name: team_name)))
 end
 
 Given(/^I am (?:on|taken to) the roster page for "(.*?)"$/) do |team_name|
+	expect(current_path).to eq(team_roster_path(Team.find_by!(name: team_name)))
+end
+
+Given(/^I am (?:on|taken to) the team show page for "(.*?)"$/) do |team_name|
 	expect(current_path).to eq(team_path(Team.find_by!(name: team_name)))
 end
 

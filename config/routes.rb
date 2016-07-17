@@ -23,6 +23,7 @@ Rails.application.routes.draw do
   end
 
   resources :teams do
+    get 'roster' => 'members#index'
     resources :members
   end
 

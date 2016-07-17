@@ -21,6 +21,10 @@ main {
 	height: calc(100vh - 80px);
 }
 
+#admin_invitations_index {
+  overflow: scroll;
+}
+
 .list-panel {
   margin: -8px 0 -8px -8px;
 	padding: 0 8px;
@@ -34,7 +38,7 @@ main {
   }
 }
 
-.member-detail {
+#member-detail {
 	overflow: scroll;
 	//margin-top: 72px;
 	padding-top: 0;
@@ -47,7 +51,18 @@ main {
 .fab-col {
   position: absolute;
   bottom: 8%;
+	right: 3%;
   text-align: center;
+	z-index: 99;
+	.speed-dial{
+		padding-bottom: 16px;
+		display: none;
+		a{
+			height: 48px;
+			width: 48px;
+			min-width: 48px;
+		}
+	}
 }
 
 .list-item-detail {
@@ -96,6 +111,12 @@ main {
   &.message {
     background-color: #2196F3;
   }
+}
+
+.mdl-menu {
+	a:-webkit-any-link {
+		text-decoration: none;
+	}
 }
 
 html, body {

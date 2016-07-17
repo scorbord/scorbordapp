@@ -27,6 +27,12 @@ Then(/^(.*?) in the "(.*?)" card title$/) do |action, identifier|
   end
 end
 
+Then(/^(.*?) in the "(.*?)" div$/) do |action, identifier|
+  within("//div[@id='#{identifier}']") do
+    step(action)
+  end
+end
+
 Then(/^(.*?) in the "(.*?)" modal definition list$/) do |action, fieldset|
   within("//div[@id='modal']//dl[dt[contains(.,'#{fieldset}')]]") do
     step(action)

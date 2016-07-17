@@ -25,7 +25,8 @@
 %div.demo-drawer.mdl-layout__drawer.mdl-color--blue-grey-900.mdl-color-text--blue-grey-50
   %header.demo-drawer-header#sidenav
     -#%img.demo-avatar{ :src => "https://www.getmdl.io/templates/dashboard/images/user.jpg" }
-    = image_tag('scorbord-text-logo-neon')
+    = link_to root_path do
+      %img{ :src => asset_url('scorbord-text-logo-neon') }
     %div.demo-avatar-dropdown
       %span
         = current_user.email

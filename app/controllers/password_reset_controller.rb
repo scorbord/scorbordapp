@@ -1,6 +1,10 @@
 class PasswordResetController < ApplicationController
 
-  layout 'materialhome'
+  if ENV['BETA_STATUS'] == "ON"
+    layout 'beta'
+  else
+    layout 'materialhome'
+  end
 
   def new
   end

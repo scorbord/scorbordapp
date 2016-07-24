@@ -6,6 +6,10 @@ class StaticPagesController < ActionController::Base
   def home
   end
 
+  def beta_welcome
+    render :layout => 'beta'
+  end
+
   def help
   	render :layout => 'material'
   end

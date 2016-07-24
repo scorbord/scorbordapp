@@ -2,13 +2,18 @@ Rails.application.routes.draw do
 
   get 'sessions/new'
 
-  root 'static_pages#home'
+  if ENV['BETA_STATUS'] == "ON"
+    root 'static_pages#beta_welcome'
+  else
+    root 'static_pages#home'
+  end
 
   get 'help'        => 'static_pages#help'
   get 'about'       => 'static_pages#about'
   get 'demo'        => 'static_pages#demo'
   get 'features'    => 'static_pages#features'
   get 'pricing'     => 'static_pages#pricing'
+  get 'welcome'     => 'static_pages#beta_welcome'
 
   get 'signup'      => 'users#new'
   get 'confirmation'=> 'static_pages#confirmation'

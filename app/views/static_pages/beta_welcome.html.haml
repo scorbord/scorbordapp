@@ -1,0 +1,11 @@
+-content_for(:title, "Scorbord Beta")
+%div#beta_welcome.mdl-grid
+	%div.mdl-cell--12-col.mdl-cell
+		%h2 Welcome to the scorbord beta
+		%h6 Let's build the future of coaching together
+
+	%div.mdl-cell--12-col.mdl-cell
+		=link_to new_invitation_path, class:"mdl-button mdl-js-button mdl-button--raised mdl-button--colored" do
+			Request an Invitation
+		=link_to login_path, class:"mdl-button mdl-js-button mdl-button--colored" do
+			Login

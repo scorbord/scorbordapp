@@ -4,7 +4,7 @@
   	<title><%= yield(:title) %></title>
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="description" content="Introducing Lollipop, a sweet new take on Android.">
+    <meta name="description" content="Introducing Scorbord, the 21st century coach's team management solution.">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, minimum-scale=1.0">
 
     <!-- Page styles -->
@@ -13,30 +13,17 @@
     <link rel="stylesheet" href="https://code.getmdl.io/1.1.3/material.green-light_blue.min.css">
 
     <%= stylesheet_link_tag 'materialhome', media: 'all', 'data-turbolinks-track' => true %>
+    <%= stylesheet_link_tag 'beta', media: 'all', 'data-turbolinks-track' => true %>
 
   </head>
-  <body>
-  	<div class='mdl-layout mdl-js-layout mdl-layout--fixed-header'>
-		<% if ENV['BETA_STATUS'] == "ON" %>
-			<%= yield %>
-		<% else %>
-  		<%= render 'layouts/material_home_header' %>
-			
-  		<div class="android-content mdl-layout__content">
+  <body class="mdl-color--blue-grey-900">
+    <div class='mdl-layout mdl-js-layout mdl-layout--fixed-header'>
+  		<div class="mdl-layout__content">
         <a name="top"></a>
-
-				<% flash.each do |name, msg| -%>
-					<div class="mdl-cell mdl-cell--12-col mdl-typography--text-center mdl-color-text--green">
-						<%= content_tag :div, msg, class: ["flash", name] %>
-					</div>
-				<% end %>
-
 
 				<%= yield %>
 
-				<%= render 'layouts/material_home_footer' %>
 			</div>
-			<% end %>
 		</div>
 	<script defer src="https://code.getmdl.io/1.1.3/material.min.js"></script>
 	</body>

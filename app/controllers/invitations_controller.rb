@@ -2,7 +2,11 @@ class InvitationsController < ApplicationController
 
   def new
     @invitation = Invitation.new
-    render :layout => 'materialhome'
+    if ENV['BETA_STATUS'] == "ON"
+      render :layout => 'beta'
+    else
+      render :layout => 'materialhome'
+    end
   end
 
   def create

@@ -1,7 +1,11 @@
 class SessionsController < ApplicationController
 
   def new
-    render :layout => 'materialhome'
+    if ENV['BETA_STATUS'] == "ON"
+      render :layout => 'beta'
+    else
+      render :layout => 'materialhome'
+    end
   end
 
   def create
@@ -15,7 +19,11 @@ class SessionsController < ApplicationController
   		# tell them they messed up
   		flash.now[:danger] = 'Invalid email-password combination.'
   		# and send them back to the login page
-  		render 'new', :layout => 'materialhome'
+      if ENV['BETA_STATUS'] == "ON"
+        render 'new', :layout => 'beta'
+      else
+        render 'new', :layout => 'materialhome'
+      end
   	end
   end
 

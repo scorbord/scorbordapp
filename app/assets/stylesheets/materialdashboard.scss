@@ -1,5 +1,6 @@
 @import "card-mixin.scss";
 
+
 .mdl-layout {
 	height: 100vh;
 }
@@ -26,6 +27,7 @@ main {
 }
 
 .list-panel {
+  overflow: scroll;
   margin: -8px 0 -8px -8px;
 	padding: 0 8px;
   background-color: #fafafa;
@@ -308,4 +310,11 @@ _:-ms-input-placeholder, :root .demo-graph {
 	i, a {
 		color: #263238 !important;
 	}
+}
+
+@media (max-width: 364px) {
+  .list-panel {
+    margin: -8px;
+  }
+
 }

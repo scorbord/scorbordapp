@@ -31,8 +31,10 @@
 	%span.mdl-layout-title
 		%img.android-logo-image{ :src => asset_url("scorbord-text-logo-white.png") }
 	%nav.mdl-navigation
+		= link_to "Home", root_path, class:"mdl-navigation__link"
 		= link_to "Features", features_path, class:"mdl-navigation__link"
 		= link_to "Pricing", pricing_path, class:"mdl-navigation__link"
+		= link_to "Login", login_path, class:"mdl-navigation__link"
 		/= link_to "Register", "", class:"mdl-navigation__link"
 		%div.android-drawer-separator
 		%span.mdl-navigation__link{ :href => "" } Coming Soon

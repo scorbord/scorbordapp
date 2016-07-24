@@ -1,5 +1,5 @@
 - content_for(:title, "Request an Invitation")
-%div.mdl-grid.mdl-color--indigo
+%div#new_invitation.mdl-grid
   %div.pricing-section-header
     %h2 Request an invitation
   %div.login-section.mdl-grid
@@ -19,3 +19,4 @@
               = f.email_field :email, class: "mdl-textfield__input"
           %div.mdl-card__actions.mdl-card--border
             = f.submit "Request Invitation", :method => :submit, class: "mdl-button mdl-button--colored mdl-js-button mdl-js-ripple-effect"
+            =link_to "Cancel", :back, class: "mdl-button mdl-js-button mdl-color-text--grey"

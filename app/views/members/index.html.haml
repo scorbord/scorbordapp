@@ -15,7 +15,7 @@
 							= link_to team_member_path(@team, mbr), :remote => true do
 								%li.mdl-list__item.mdl-button.mdl-js-button
 									%span.mdl-list__item-primary-content
-										#{mbr.last_name}, #{mbr.first_name}
+										#{mbr.last_name.upcase}, #{mbr.first_name}
 				%div.mdl-tabs__panel#coaches-panel
 					%h5 Coaches
 					%ul.mdl-list
@@ -23,7 +23,7 @@
 							= link_to team_member_path(@team, mbr), :remote => true do
 								%li.mdl-list__item.mdl-button.mdl-js-button
 									%span.mdl-list__item-primary-content
-										#{mbr.last_name}, #{mbr.first_name}
+										#{mbr.last_name.upcase}, #{mbr.first_name}
 				%div.mdl-tabs__panel#players-panel
 					%h5 Players
 					%ul.mdl-list
@@ -31,7 +31,7 @@
 							= link_to team_member_path(@team, mbr), :remote => true do
 								%li.mdl-list__item.mdl-button.mdl-js-button
 									%span.mdl-list__item-primary-content
-										#{mbr.last_name}, #{mbr.first_name}
+										#{mbr.last_name.upcase}, #{mbr.first_name}
 	%div.mdl-cell--6-col#member-detail
 		=render 'member'
 

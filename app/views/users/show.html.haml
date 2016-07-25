@@ -33,10 +33,11 @@
 							= link_to team  do
 								%i.material-icons
 									launch
-						%span.mdl-list__item-secondary-content
-							= link_to edit_team_path(team)  do
-								%i.material-icons
-									settings
+						- if current_user.super_admin?
+							%span.mdl-list__item-secondary-content
+								= link_to edit_team_path(team)  do
+									%i.material-icons
+										settings
 		- elsif
 			%h4 Dude... you don't have any teams
 			=link_to "Add a team", new_team_path, class:"mdl-button mdl-button--colored mdl-js-button mdl-js-ripple-effect"

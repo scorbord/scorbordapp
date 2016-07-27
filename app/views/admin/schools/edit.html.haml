@@ -1,0 +1,17 @@
+- content_for(:title, "Edit Profile")
+%div.mdl-cell.mdl-cell--6-col.mdl-cell--middle
+	= form_for(@school, url: admin_school_path) do |f|
+		%div.mdl-card.mdl-shadow--4dp
+			%div.mdl-card__supporting-text
+				%div.mdl-textfield.mdl-js-textfield.mdl-textfield--floating-label
+					= f.label "name", "Name", class:"mdl-textfield__label"
+					= f.text_field :name, class:"mdl-textfield__input"
+				%div.mdl-textfield.mdl-js-textfield.mdl-textfield--floating-label
+					= f.label "initials", "Initials", class:"mdl-textfield__label"
+					= f.text_field :initials, class:"mdl-textfield__input"
+				%div.mdl-textfield.mdl-js-textfield.mdl-textfield--floating-label
+					= f.label "mascot", "Mascot (singular)", class:"mdl-textfield__label"
+					= f.text_field :mascot, class:"mdl-textfield__input"
+			%div.mdl-card__actions.mdl-card--border
+				=f.submit "Save", :method => :submit, class:"mdl-button mdl-button--colored mdl-js-button mdl-js-ripple-effect"
+				=link_to "cancel", :back, class:"mdl-button mdl-button--colored mdl-js-button mdl-js-ripple-effect"

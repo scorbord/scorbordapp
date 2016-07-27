@@ -42,6 +42,7 @@ Rails.application.routes.draw do
       get 'accept' => 'invitations#accept'
       get 'delete' => 'invitations#destroy'
     end
+    resources :schools
   end
 
 

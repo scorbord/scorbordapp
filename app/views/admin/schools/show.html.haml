@@ -1,0 +1,11 @@
+-content_for(:title, "#{@school.name}")
+%div#school_index.mdl-cell--12-col.mdl-grid
+  %div.mdl-cell--12-col
+    %ul.mdl-list
+      %li.mdl-list__item.mdl-list__item--two-line
+        %span.mdl-list__item-primary-content
+          %span
+            #{@school.name} (#{@school.initials})
+          %span.mdl-list__item-sub-title
+            = @school.mascot.pluralize
+    =link_to "Edit #{@school.name}", edit_admin_school_path(@school), class: "mdl-button mdl-js-button mdl-button--colored"

@@ -13,9 +13,13 @@
     <link rel="stylesheet" href="https://code.getmdl.io/1.1.3/material.green-light_blue.min.css">
 
     <%= stylesheet_link_tag 'materialhome', media: 'all', 'data-turbolinks-track' => true %>
+    <%= stylesheet_link_tag 'beta', media: 'all', 'data-turbolinks-track' => true %>
 
   </head>
   <body>
+		<% if Rails.env.development? %>
+			<%= branch_info %>
+		<% end %>
   	<div class='mdl-layout mdl-js-layout mdl-layout--fixed-header'>
 		<% if ENV['BETA_STATUS'] == "ON" %>
 			<%= yield %>

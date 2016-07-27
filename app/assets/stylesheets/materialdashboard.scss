@@ -1,5 +1,13 @@
 @import "card-mixin.scss";
 
+.gitbranch {
+  color: white;
+  padding: 8px;
+  background-color: orange;
+  &.master {
+    background-color: red;
+  }
+}
 
 .mdl-layout {
 	height: 100vh;

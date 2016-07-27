@@ -29,7 +29,9 @@ Given(/^I am logged in as a SuperAdmin$/) do
 end
 
 Given(/^I have a (.*?) team named "(.*?)"$/) do |sport, name|
-  @team = Team.create(name: name, sport: sport)
+  @school = School.create(name: "Abide High School", initials: "AHS", mascot: "Marmots")
+  @program = @school.programs.create(sport: 1)
+  @team = @program.teams.create(name: name, sport: sport)
   @member = @team.members.create(
                                   user_id: @user.id,
                                   admin: true,

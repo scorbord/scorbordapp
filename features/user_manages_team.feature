@@ -10,16 +10,16 @@ Feature: User manages team
 		Then I see "The Rollers"
 		And I see "Bowling"
 
-	Scenario: User edits a team
-		Given I am logged in as a user
-		And I have a Bowling team named "The Rollers"
-		And I view my account
-		And I click "settings" inside the "The Rollers" list item
-		And I fill in "Team Name" with "Teh LOLers"
-		And I fill in "Sport" with "Bawling"
-		When I press "Save"
-		Then I see "settings" inside the "Teh LOLers" list item
-		And I see "Bawling"
+		###	Scenario: User edits a team
+		###Given I am logged in as a user
+		###And I have a Bowling team named "The Rollers"
+		###And I view my account
+		###And I click "settings" inside the "The Rollers" list item
+		###And I fill in "Team Name" with "Teh LOLers"
+		###And I fill in "Sport" with "Bawling"
+		###When I press "Save"
+		###Then I see "settings" inside the "Teh LOLers" list item
+		###And I see "Bawling"
 		
 	Scenario: User sees blank slate when he has no teams
 		Given I am logged in as a user
@@ -42,16 +42,16 @@ Feature: User manages team
 		Then I am on the team show page for "The Rollers"
 		Then I see "Dashboard"
 
-	Scenario: User deletes a team
-		Given I am logged in as a user
-		And I have a Bowling team named "The Rollers"
-		And I am viewing my account
-		And I see "The Rollers"
-		And I click "settings" inside the "The Rollers" list item
-		When I click "Delete this team"
-		Then I am taken to my account page
-		And I see "Team successfully deleted"
-		And I do not see "The Rollers"
+		###Scenario: User deletes a team
+		###Given I am logged in as a user
+		###And I have a Bowling team named "The Rollers"
+		###And I am viewing my account
+		###And I see "The Rollers"
+		###And I click "settings" inside the "The Rollers" list item
+		###When I click "Delete this team"
+		###Then I am taken to my account page
+		###And I see "Team successfully deleted"
+		###And I do not see "The Rollers"
 
 	Scenario: Team owner adds a Coach
 		Given I am logged in as a user
@@ -70,7 +70,7 @@ Feature: User manages team
 		And I fill in "Graduation Year" with "1969"
 		When I press "Save"
 		Then I am taken to the roster page for "The Rollers"
-		And I see "Sobchak, Walter"
+		And I see "SOBCHAK, Walter"
 
 	Scenario: Team owner adds a Player
 		Given I am logged in as a user
@@ -89,7 +89,7 @@ Feature: User manages team
 		And I fill in "Graduation Year" with "1969"
 		And I press "Save"
 		Then I am taken to the roster page for "The Rollers"
-		And I see "Kerabatsos, Theodore"
+		And I see "KERABATSOS, Theodore"
 
 	@javascript
 	Scenario: Team owner removes a Coach from the Team
@@ -97,11 +97,11 @@ Feature: User manages team
 		And I have a Bowling team named "The Rollers"
 		And there is a Coach
 		And I visit the roster page for "The Rollers"
-		And I click "Sobchak, Walter" within "#all-panel"
+		And I click "SOBCHAK, Walter" within "#all-panel"
 		And I wait for ajax
 		And I click "edit"
 		When I click "Delete this team member"
-		Then I do not see "Sobchak, Walter"
+		Then I do not see "SOBCHAK, Walter"
 
 	@javascript
 	Scenario: Team owner removes a Player from the Team
@@ -109,11 +109,11 @@ Feature: User manages team
 		And I have a Bowling team named "The Rollers"
 		And there is a Player
 		And I visit the roster page for "The Rollers"
-		And I click "Kerabatsos, Theodore" within "#all-panel"
+		And I click "KERABATSOS, Theodore" within "#all-panel"
 		And I wait for ajax
 		And I click "edit"
 		When I click "Delete this team member"
-		Then I do not see "Kerabatsos, Theodore"
+		Then I do not see "KERABATSOS, Theodore"
 
 	@javascript
 	Scenario: Team owner views a Player Profile
@@ -121,7 +121,7 @@ Feature: User manages team
 		And I have a Bowling team named "The Rollers"
 		And there is a Player
 		And I visit the roster page for "The Rollers"
-		When I click "Kerabatsos, Theodore" within "#all-panel"
+		When I click "KERABATSOS, Theodore" within "#all-panel"
 		And I wait for ajax
 		Then I see "Theodore Kerabatsos" in the "member-detail" div
 		And I see "edit"
@@ -132,7 +132,7 @@ Feature: User manages team
 		And I have a Bowling team named "The Rollers"
 		And there is a Coach
 		And I visit the roster page for "The Rollers"
-		When I click "Sobchak, Walter" within "#coaches-panel"
+		When I click "SOBCHAK, Walter" within "#coaches-panel"
 		And I wait for ajax
 		Then I see "Walter Sobchak" in the "member-detail" div
 		And I see "edit"

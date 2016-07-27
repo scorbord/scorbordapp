@@ -10,35 +10,34 @@
 			= @member.last_name
 	%div.mdl-card__supporting-text
 		%ul.mdl-list
-			- 5.times do
+			%li.mdl-list__item.mdl-list__item--two-line
+				%span.mdl-list__item-primary-content
+					%i.material-icons.mdl-list__item-icon
+						call
+					= @member.cell_phone? ? number_to_phone(@member.cell_phone, area_code: true) : "empty"
+					%span.mdl-list__item-sub-title
+						Cell
+			-if @member.email?
 				%li.mdl-list__item.mdl-list__item--two-line
 					%span.mdl-list__item-primary-content
 						%i.material-icons.mdl-list__item-icon
-							call
-						= @member.cell_phone? ? number_to_phone(@member.cell_phone, area_code: true) : "empty"
+							mail
+						=@member.email
 						%span.mdl-list__item-sub-title
-							Cell
-				-if @member.email?
-					%li.mdl-list__item.mdl-list__item--two-line
-						%span.mdl-list__item-primary-content
-							%i.material-icons.mdl-list__item-icon
-								mail
-							=@member.email
-							%span.mdl-list__item-sub-title
-								Email
-				-if @member.height?
-					%li.mdl-list__item.mdl-list__item--two-line
-						%span.mdl-list__item-primary-content
-							%i.material-icons.mdl-list__item-icon
-								directions_walk
-							= "#{@member.height / 12}ft #{@member.height % 12}in"
-							%span.mdl-list__item-sub-title
-								Height
-				-if @member.weight?
-					%li.mdl-list__item.mdl-list__item--two-line
-						%span.mdl-list__item-primary-content
-							%i.material-icons.mdl-list__item-icon
-								local_dining
-							= "#{@member.weight} lbs"
-							%span.mdl-list__item-sub-title
-								Weight
+							Email
+			-if @member.height?
+				%li.mdl-list__item.mdl-list__item--two-line
+					%span.mdl-list__item-primary-content
+						%i.material-icons.mdl-list__item-icon
+							directions_walk
+						= "#{@member.height / 12}ft #{@member.height % 12}in"
+						%span.mdl-list__item-sub-title
+							Height
+			-if @member.weight?
+				%li.mdl-list__item.mdl-list__item--two-line
+					%span.mdl-list__item-primary-content
+						%i.material-icons.mdl-list__item-icon
+							local_dining
+						= "#{@member.weight} lbs"
+						%span.mdl-list__item-sub-title
+							Weight

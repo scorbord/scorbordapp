@@ -20,6 +20,11 @@
 		<% if Rails.env.development? %>
 			<%= branch_info %>
 		<% end %>
+		<% flash.each do |name, msg| -%>
+			<div class="mdl-cell mdl-cell--12-col mdl-typography--text-center mdl-color-text--green">
+				<%= content_tag :div, msg, class: ["flash", name] %>
+			</div>
+		<% end %>
     <div class='mdl-layout mdl-js-layout mdl-layout--fixed-header'>
   		<div class="mdl-layout__content">
         <a name="top"></a>

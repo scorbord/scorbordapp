@@ -1,6 +1,6 @@
 -content_for(:title, "#{@school.name}")
 %div#school_index.mdl-cell--12-col.mdl-grid
-  %div.mdl-cell--12-col
+  %div.mdl-cell--6-col
     %ul.mdl-list
       %li.mdl-list__item.mdl-list__item--two-line
         %span.mdl-list__item-primary-content
@@ -9,3 +9,15 @@
           %span.mdl-list__item-sub-title
             = @school.mascot.pluralize
     =link_to "Edit #{@school.name}", edit_admin_school_path(@school), class: "mdl-button mdl-js-button mdl-button--colored"
+  %div.mdl-cell--6-col
+    %ul.mdl-list
+      - @school.programs.each do |program|
+        %li.mdl-list__item
+          %span.mdl-list__item-primary-content
+            %span
+              =program.sport
+          %span.mdl-list__item-secondary-content
+            =link_to admin_school_program_path(@school, program), :method => :delete do
+              %i.material-icons
+                delete
+    =link_to "Add a Program", new_admin_school_program_path(@school), class: "mdl-button mdl-js-button mdl-button--colored"

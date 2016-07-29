@@ -65,6 +65,10 @@ When(/^I press the javascript button "(.*?)"$/) do |id|
   @node.trigger('click')
 end
 
+Given(/^I select the "(.*?)" radio button$/) do |button|
+  choose(button)
+end
+
 And("I wait for ajax") do
   wait_for_ajax
 end

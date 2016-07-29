@@ -29,3 +29,14 @@ Feature: Super Admin manages Schools
 		Then I am on the school show page for "Abideth High"
 		And I see "Abideth High"
 	
+	Scenario: Super Admin creates a new School
+		Given I am logged in as a SuperAdmin
+		And I visit the admin schools page
+		And I click "Create New School"
+		And I fill in "Name" with "Lebowski Inner City Kids School"
+		And I fill in "Initials" with "LICKS"
+		And I fill in "Mascot" with "Achievers"
+		When I press "Save"
+		Then I am on the school show page for "Lebowski Inner City Kids School"
+		And I see "Lebowski Inner City Kids School"
+		And I see "Achievers" inside the "Lebowski Inner City Kids School" list item

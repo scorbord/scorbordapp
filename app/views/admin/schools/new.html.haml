@@ -1,0 +1,18 @@
+- content_for(:title, "New School")
+%div.mdl-grid
+	= form_for(@school, url: admin_schools_path) do |f|
+		%div.mdl-card.mdl-shadow--4dp
+			%div.mdl-card__title.mdl-card--border
+				New School
+			%div.mdl-card__supporting-text
+				%div.mdl-textfield.mdl-js-textfield.mdl-textfield--floating-label
+					= f.label "name", "Name", class: "mdl-textfield__label"
+					= f.text_field :name, class: "mdl-textfield__input"
+				%div.mdl-textfield.mdl-js-textfield.mdl-textfield--floating-label
+					= f.label "initials", "Initials", class: "mdl-textfield__label"
+					= f.text_field :initials, class: "mdl-textfield__input"
+				%div.mdl-textfield.mdl-js-textfield.mdl-textfield--floating-label
+					= f.label "mascot", "Mascot", class: "mdl-textfield__label"
+					= f.text_field :mascot, class: "mdl-textfield__input"
+			%div.mdl-card__actions.mdl-card--border
+				= f.submit "Save", class:"mdl-button mdl-button--colored mdl-js-button mdl-js-ripple-effect"

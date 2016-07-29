@@ -42,7 +42,9 @@ Rails.application.routes.draw do
       get 'accept' => 'invitations#accept'
       get 'delete' => 'invitations#destroy'
     end
-    resources :schools
+    resources :schools do
+      resources :programs
+    end
   end
 
 

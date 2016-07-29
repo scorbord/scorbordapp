@@ -1,0 +1,25 @@
+-content_for(:title, "New Program")
+%div.mdl-grid
+  = form_for(@program, url: admin_school_programs_path) do |f|
+    %div.mdl-card.mdl-shadow--4dp
+      %div.mdl-card__title.mdl-card--border
+        New Program
+      %div.mdl-card__supporting-text
+        -#%div.mdl-textfield.mdl-js-textfield.mdl-textfield--floating--label
+          = f.label "sport", "Sport", class: "mdl-textfield__label"
+          = f.text_field :sport, class: "mdl-textfield__input"
+
+        %div
+          %label.mdl-radio.mdl-js-radio.mdl-js-ripple-effect{:for => "Football"}
+            = f.radio_button :sport, "1", id: "Football", class: "mdl-radio__button", checked: true
+            %span.mdl-radio__label
+              Football
+        %div
+          %label.mdl-radio.mdl-js-radio.mdl-js-ripple-effect{:for => "Basketball"}
+            = f.radio_button :sport, "2", id: "Basketball", class: "mdl-radio__button"
+            %span.mdl-radio__label
+              Basketball
+
+      %div.mdl-card__actions.mdl-card--border
+        = f.submit "Save", class:"mdl-button mdl-button--colored mdl-js-button mdl-js-ripple-effect"
+        = link_to "Cancel", :back, class:"mdl-button mdl-js-button mdl-js-ripple-effect mdl-color-text--grey"

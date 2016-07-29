@@ -1,6 +1,7 @@
 -content_for(:title, "Schools")
 %div#school_index.mdl-cell--12-col.mdl-grid
   %div.mdl-cell--12-col
+    =link_to "Create New School", new_admin_school_path, class:"mdl-button mdl-js-button mdl-js-button-ripple-effect"
     %ul.mdl-list
       - @schools.each do |school|
         %li.mdl-list__item.mdl-list__item--two-line

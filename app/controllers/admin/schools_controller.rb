@@ -4,6 +4,15 @@ class Admin::SchoolsController < Admin::BaseController
 		@school = School.new
 	end
 
+	def create
+		@school = School.new(school_params)
+		if @school.save
+			redirect_to admin_school_path(@school)
+		else
+			render edit
+		end
+	end
+
 	def index
 		@schools = School.all.order(:name)
 	end

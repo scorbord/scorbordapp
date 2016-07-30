@@ -29,7 +29,7 @@
     <main class="mdl-layout__content mdl-color--grey-100">
     	<div class="mdl-grid" id="main_content">
     		<% flash.each do |name, msg| -%>
-    			<div class="mdl-cell mdl-cell--12-col">
+    			<div class="mdl-cell mdl-cell--12-col alert">
 			    	<%= content_tag :div, msg, class: ["flash", name] %>
 			  	</div>
 			  <% end -%>

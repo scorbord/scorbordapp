@@ -23,7 +23,7 @@
     <div class='mdl-layout mdl-js-layout mdl-layout--fixed-header'>
   		<div class="mdl-layout__content">
 				<% flash.each do |name, msg| -%>
-					<div class="mdl-cell mdl-cell--12-col mdl-typography--text-center mdl-color-text--green">
+					<div class="mdl-cell mdl-cell--12-col mdl-typography--text-center mdl-color-text--green alert">
 						<%= content_tag :div, msg, class: ["flash", name] %>
 					</div>
 				<% end %>

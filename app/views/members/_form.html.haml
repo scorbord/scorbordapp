@@ -29,21 +29,32 @@
 					= f.label "cell_phone", "Cell Phone", class: "mdl-textfield__label"
 					= f.phone_field :cell_phone, class: "mdl-textfield__input"
 			%div.mdl-cell.mdl-cell--6-col
-				%div.mdl-textfield.mdl-js-textfield.mdl-textfield--floating-label.height.ft
+				-#%div.mdl-grid.height
+				%div.mdl-textfield.mdl-js-textfield.mdl-textfield--floating-label.mdl-cell--4-col
 					= f.label "heightft", "Height (ft.)", class: "mdl-textfield__label"
-					= f.number_field :heightft, class: "mdl-textfield__input"
-				%div.mdl-textfield.mdl-js-textfield.mdl-textfield--floating-label.height.in
-					= f.label "heightin", "Height (in.)", class: "mdl-textfield__label"
-					= f.number_field :heightin, class: "mdl-textfield__input"
+					= f.number_field :heightft, class: "mdl-textfield__input", max:"8", min:"3"
+				%div.mdl-textfield.mdl-js-textfield.mdl-textfield--floating-label.mdl-cell--4-col.heightin
+					= f.label "heightin", "(in.)", class: "mdl-textfield__label"
+					= f.number_field :heightin, class: "mdl-textfield__input", max:"11.9999", min:"0", step:"any"
 				%div.mdl-textfield.mdl-js-textfield.mdl-textfield--floating-label
 					= f.label "weight", "Weight (lbs.)", class: "mdl-textfield__label"
 					= f.number_field :weight, class: "mdl-textfield__input"
-				%div.mdl-textfield.mdl-js-textfield.mdl-textfield--floating-label
+				%div.horizontal-radio-buttons
+					%span.radio-label Gender
+					%label.mdl-radio.mdl-js-radio.mdl-js-ripple-effect{:for => "Male"}
+						= f.radio_button :gender, "Male", id: "Male", class: "mdl-radio__button", checked: true
+						%span.mdl-radio__label.male
+							Male
+					%label.mdl-radio.mdl-js-radio.mdl-js-ripple-effect{:for => "Female"}
+						= f.radio_button :gender, "Female", id: "Female", class: "mdl-radio__button"
+						%span.mdl-radio__label
+							Female
+				-#%div.mdl-textfield.mdl-js-textfield.mdl-textfield--floating-label
 					= f.label "gender", "Gender", class: "mdl-textfield__label"
 					= f.text_field :gender, class: "mdl-textfield__input"
 				%div.mdl-textfield.mdl-js-textfield.mdl-textfield--floating-label
 					= f.label "grad_year", "Graduation Year", class: "mdl-textfield__label"
-					= f.number_field :grad_year, class: "mdl-textfield__input"
+					= f.number_field :grad_year, class: "mdl-textfield__input", min:"1900", max:"2100"
 
 
 		%div.mdl-card__actions.mdl-card--border

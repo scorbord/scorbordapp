@@ -123,6 +123,38 @@ main {
   }
 }
 
+.height{
+	background-color: #de0018;
+	&.ft{
+		background-color: #99cc33;
+	}
+}
+
+#member_heightft{
+	&::after{
+		content: "ft.";
+	}
+}
+
+.horizontal-radio-buttons{
+	padding: 3px 0 21px 0;
+}
+
+.radio-label{
+	color: #3f51b5;
+	font-size: 12px;
+	display: block;
+}
+
+label[for="Male"]{
+	.male{
+		margin-right: 14px;
+	}
+}
+label[for="member_heightin"]{
+	visibility: hidden;
+}
+
 .mdl-menu {
 	a:-webkit-any-link {
 		text-decoration: none;

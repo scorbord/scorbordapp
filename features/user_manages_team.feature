@@ -64,9 +64,9 @@ Feature: User manages team
 		And I fill in "Email Address" with "walter@gmail.com"
 		And I fill in "Cell Phone" with "4267655464"
 		And I fill in "Height (ft.)" with "6"
-		And I fill in "Height (in.)" with "3"
+		And I fill in "(in.)" with "3"
 		And I fill in "Weight" with "250"
-		And I fill in "Gender" with "Male"
+		And I select the "Male" radio button
 		And I fill in "Graduation Year" with "1969"
 		When I press "Save"
 		Then I am taken to the roster page for "The Rollers"
@@ -83,9 +83,9 @@ Feature: User manages team
 		And I fill in "Email Address" with "donny@gmail.com"
 		And I fill in "Cell Phone" with "4267655464"
 		And I fill in "Height (ft.)" with "5"
-		And I fill in "Height (in.)" with "10"
+		And I fill in "(in.)" with "10"
 		And I fill in "Weight" with "180"
-		And I fill in "Gender" with "Male"
+		And I select the "Male" radio button
 		And I fill in "Graduation Year" with "1969"
 		And I press "Save"
 		Then I am taken to the roster page for "The Rollers"

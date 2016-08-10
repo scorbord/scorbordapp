@@ -29,6 +29,7 @@ Rails.application.routes.draw do
 
   resources :teams do
     get 'roster' => 'members#index'
+    get 'experimental_roster' => 'members#index2'
     resources :members
   end
 

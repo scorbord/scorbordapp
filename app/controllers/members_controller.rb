@@ -37,6 +37,7 @@ class MembersController < ApplicationController
 		@member = Member.find(params[:id])
 		@user = @member.user
 		respond_to do |format|
+			format.html
 			format.js
 		end
 	end

@@ -1,0 +1,24 @@
+- content_for(:title, "#{@team.name} #{@team.sport} > Roster")
+#team_show.experimental.mdl-cell--12-col.mdl-grid
+	%div.mdl-cell.mdl-cell--12-col.mdl-grid
+		%table.mdl-data-table.mdl-js-data-table.mdl-data-table--selectable.mdl-shadow--2dp
+			%thead
+				%tr
+					%th.mdl-data-table__cell--non-numeric Last Name
+					%th.mdl-data-table__cell--non-numeric First Name
+					%th.mdl-data-table__cell--non-numeric Email
+					%th.mdl-data-table__cell--non-numeric Cell Phone
+					%th.mdl-data-table__cell--non-numeric Height
+					%th.mdl-data-table__cell--non-numeric Weight
+					%th
+			%tbody
+				- @members.each do |member|
+					%tr
+						%td.mdl-data-table__cell--non-numeric= member.person.first_name
+						%td.mdl-data-table__cell--non-numeric= member.person.last_name
+						%td.mdl-data-table__cell--non-numeric= member.person.email
+						%td.mdl-data-table__cell--non-numeric= number_to_phone(member.cell_phone)
+						%td.mdl-data-table__cell--non-numeric= member.person.formatted_height
+						%td.mdl-data-table__cell--non-numeric= member.person.formatted_weight
+						%td
+							=link_to "view", team_member_path(member.id, @team.id), class: "mdl-button mdl-js-button mdl-js-ripple-effect mdl-button--colored"

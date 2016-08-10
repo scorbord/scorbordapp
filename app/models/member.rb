@@ -11,4 +11,11 @@ class Member < ActiveRecord::Base
 
 	sanitize(:cell_phone)
 
+	def first_name
+		self.person.first_name
+	end
+
+	def last_name
+		self.person.last_name
+	end
 end

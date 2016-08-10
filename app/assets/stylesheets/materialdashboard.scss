@@ -28,6 +28,9 @@ main {
 #team_show {
 	margin: -8px;
 	height: calc(100vh - 80px);
+  &.experimental {
+    height: 100%;
+  }
 }
 
 #admin_invitations_index {

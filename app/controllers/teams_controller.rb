@@ -9,7 +9,7 @@ class TeamsController < ApplicationController
 	def create
 		@team = Team.new(team_params)
 		if @team.save
-			@member = current_user.memberships.new(team_id: @team.id)
+			@member = current_user.person.memberships.new(team_id: @team.id)
 			if @member.save
 				redirect_to current_user
 			else

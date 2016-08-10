@@ -9,8 +9,12 @@ class User < ActiveRecord::Base
 	has_secure_password
 	validates :password, presence: true, length: { minimum: 4 }, allow_nil: true
 
-	has_many :memberships, class_name: "Member"
+	has_one :person
+	has_many :memberships, :through => :person, class_name: "Member"
 	has_many :teams, :through => :memberships
+
+	attr_accessor :heightft
+	attr_accessor :heightin
 
 	# Returns the hash digest of the given string.
   def User.digest(string)
@@ -48,4 +52,5 @@ class User < ActiveRecord::Base
 	def forget
 		update_attribute(:remember_digest, nil)
 	end
+
 end

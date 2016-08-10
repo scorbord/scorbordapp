@@ -33,12 +33,9 @@ Given(/^I have a (.*?) team named "(.*?)"$/) do |sport, name|
   @program = @school.programs.create(sport: 1)
   @team = @program.teams.create(name: name, sport: sport)
   @member = @team.members.create(
-                                  user_id: @user.id,
+    person_id: @user.person.id,
                                   admin: true,
                                   role: "Coach",
-                                  first_name: @user.first_name,
-                                  last_name: @user.last_name,
-                                  email: @user.email
                                 )
 end
 

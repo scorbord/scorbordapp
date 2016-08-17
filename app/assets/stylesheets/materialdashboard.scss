@@ -28,6 +28,7 @@ main {
 #team_show {
 	margin: -8px;
 	height: calc(100vh - 80px);
+  overflow-x: scroll;
   &.experimental {
     height: 100%;
   }

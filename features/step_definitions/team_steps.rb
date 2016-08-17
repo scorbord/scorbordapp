@@ -21,5 +21,5 @@ Given(/^there is a Player$/) do
 															 email: "donny@gmail.com",
 															 height: "74",
 															 weight: "185")
-	@person.memberships.create(role: "Player", team_id: @team.id)
+	@person.memberships.create(role: "Player", team_id: @team.id, nickname: "Donny", grad_year: 2005)
 end

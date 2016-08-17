@@ -1,41 +1,6 @@
 - content_for(:title, "#{@team.name} #{@team.sport} > Roster")
-#team_show.mdl-cell--12-col.mdl-grid
-	//%div.mdl-cell.mdl-cell--12-col.mdl-grid
-	%div.mdl-cell--5-col.mdl-shadow--2dp.list-panel
-		%div.mdl-cell.mdl-cell--12-col
-			%div.mdl-tabs.mdl-js-tabs.mdl-js-ripple-effect
-				%div.mdl-tabs__tab-bar
-					=link_to "All", "#all-panel", class:"mdl-tabs__tab is-active"
-					=link_to "Coaches", "#coaches-panel", class:"mdl-tabs__tab"
-					=link_to "Players", "#players-panel", class:"mdl-tabs__tab"
-				%div.mdl-tabs__panel.is-active#all-panel
-					%h5 All
-					%ul.mdl-list
-						-@members.each do |mbr|
-							= link_to team_member_path(@team, mbr), :remote => true do
-								%li.mdl-list__item.mdl-button.mdl-js-button
-									%span.mdl-list__item-primary-content
-										#{mbr.person.last_name.upcase}, #{mbr.person.first_name}
-				%div.mdl-tabs__panel#coaches-panel
-					%h5 Coaches
-					%ul.mdl-list
-						-@coaches.each do |mbr|
-							= link_to team_member_path(@team, mbr), :remote => true do
-								%li.mdl-list__item.mdl-button.mdl-js-button
-									%span.mdl-list__item-primary-content
-										#{mbr.person.last_name.upcase}, #{mbr.person.first_name}
-				%div.mdl-tabs__panel#players-panel
-					%h5 Players
-					%ul.mdl-list
-						-@players.each do |mbr|
-							= link_to team_member_path(@team, mbr), :remote => true do
-								%li.mdl-list__item.mdl-button.mdl-js-button
-									%span.mdl-list__item-primary-content
-										#{mbr.person.last_name.upcase}, #{mbr.person.first_name}
-	%div.mdl-cell--6-col#member-detail
-		=render 'member'
-
-	%div.mdl-cell--1-col.fab-col
+#team_show.experimental.mdl-cell--12-col.mdl-grid
+	%div.fab-col
 		%div.speed-dial
 			=link_to new_team_member_path(@team, :role => "Coach"), class:"mdl-button mdl-js-button mdl-button--colored mdl-js-ripple-effect mdl-button--fab" do
 				%i.material-icons
@@ -46,7 +11,29 @@
 				%i.material-icons
 					person
 			%span Player
-
 		%a.mdl-button.mdl-js-button.mdl-button--colored.mdl-js-ripple-effect.mdl-button--fab#expand-speed-dial
 			%i.material-icons
 				add
+	%div.mdl-cell.mdl-cell--12-col.mdl-grid
+		%table.mdl-data-table.mdl-js-data-table.mdl-shadow--2dp
+			%thead
+				%tr
+					%th.mdl-data-table__cell--non-numeric Last Name
+					%th.mdl-data-table__cell--non-numeric First Name
+					%th.mdl-data-table__cell--non-numeric Email
+					%th.mdl-data-table__cell--non-numeric Cell Phone
+					%th.mdl-data-table__cell--non-numeric Height
+					%th.mdl-data-table__cell--non-numeric Weight
+					%th
+			%tbody
+				- @members.each do |member|
+					%tr
+						%td.mdl-data-table__cell--non-numeric= member.last_name
+						%td.mdl-data-table__cell--non-numeric= member.first_name
+						%td.mdl-data-table__cell--non-numeric= member.person.email
+						%td.mdl-data-table__cell--non-numeric= number_to_phone(member.cell_phone)
+						%td.mdl-data-table__cell--non-numeric= member.person.formatted_height
+						%td.mdl-data-table__cell--non-numeric= member.person.formatted_weight
+						%td
+							=link_to "view", team_member_path(@team.id, member.id), class: "mdl-button mdl-js-button mdl-js-ripple-effect mdl-button--colored"
+							=link_to "edit", edit_team_member_path(@team.id, member.id), class: "mdl-button mdl-js-button mdl-js-ripple-effect mdl-button--colored"

@@ -32,6 +32,13 @@ main {
   &.experimental {
     height: 100%;
   }
+  .mdl-tabs__tab-bar {
+    float: left;
+    border-bottom: 0;
+  }
+  table {
+    width: 100%;
+  }
 }
 
 #admin_invitations_index {

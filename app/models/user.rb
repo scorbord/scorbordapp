@@ -9,8 +9,8 @@ class User < ActiveRecord::Base
 	has_secure_password
 	validates :password, presence: true, length: { minimum: 4 }, allow_nil: true
 
-	has_one :person
-	has_many :memberships, :through => :person, class_name: "Member"
+	has_many :people, class_name: "Person"
+	has_many :memberships, :through => :people, class_name: "Member"
 	has_many :teams, :through => :memberships
 
 	attr_accessor :heightft

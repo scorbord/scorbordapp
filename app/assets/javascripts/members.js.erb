@@ -3,3 +3,29 @@ $(document).ready(function() {
 		$( ".speed-dial" ).slideToggle( "fast" );
 	});
 });
+
+$(document).ready(function(){
+	var direction = -1;
+	var lastScrollTop = 0;
+	$("main").scroll(function() {
+		var st = $(this).scrollTop();
+
+		// if scrolling down
+		if (st > lastScrollTop){
+			// if direction WAS up
+			if ( direction == -1) {
+				direction = 1;
+				$(".fab-col").slideUp();
+			}
+		// if scrolling up and direction is still up
+		} else if ( st < lastScrollTop) {
+			// if scrolling up and direction WAS down
+			if ( direction == 1) {
+				direction = -1;
+				$(".fab-col").slideDown();
+			}
+		}
+		lastScrollTop = st;
+	});
+
+})

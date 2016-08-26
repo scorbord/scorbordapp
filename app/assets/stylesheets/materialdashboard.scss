@@ -71,7 +71,8 @@ main {
 
 .fab-col {
   position: fixed;
-  bottom: 8%;
+  bottom: 0;
+  padding-bottom: 5vh;
 	right: 3%;
   text-align: center;
 	z-index: 99;
@@ -140,12 +141,6 @@ main {
 	background-color: #de0018;
 	&.ft{
 		background-color: #99cc33;
-	}
-}
-
-#member_heightft{
-	&::after{
-		content: "ft.";
 	}
 }
 

@@ -57,6 +57,12 @@ When(/^(.*?) inside the "(.*?)" row/) do |action, scope|
   end
 end
 
+When(/^(.*?) inside the first "(.*?)" row/) do |action, scope|
+  within("(//tr[contains(.,'#{scope}')])[1]") do
+    step(action)
+  end
+end
+
 When(/^(.*?) inside the "(.*?)" list item$/) do |action, scope|
   within("//ul/li[contains(.,'#{scope}')]") do
     step(action)
@@ -92,6 +98,12 @@ end
 
 Then(/^(.*?) in the "(.*?)" row$/) do |action, row_identifier|
   within("//table//tr[contains(.,'#{row_identifier}')]") do
+    step(action)
+  end
+end
+
+Then(/^(.*?) in the first "(.*?)" row$/) do |action, row_identifier|
+  within("//table//tr[contains(.,'#{row_identifier}')[1]]") do
     step(action)
   end
 end

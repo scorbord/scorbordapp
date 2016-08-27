@@ -41,15 +41,11 @@ Feature: User manages team
 		And I fill in "Nickname" with "Walt"
 		And I fill in "Email Address" with "walter@gmail.com"
 		And I fill in "Cell Phone" with "4267655464"
-		And I fill in "Height (ft.)" with "6"
-		And I fill in "(in.)" with "3"
-		And I fill in "Weight" with "250"
 		And I select the "Male" radio button
-		And I fill in "Graduation Year" with "1969"
 		When I press "Save"
 		Then I am taken to the roster page for "The Rollers"
 		And I see "Sobchak"
-		And I see "6 ft. 3 in." in the "Sobchak" row
+		And I see "walter@gmail.com"
 
 	Scenario: Team owner adds a Player
 		Given I am logged in as a user
@@ -68,15 +64,15 @@ Feature: User manages team
 		And I fill in "Graduation Year" with "1969"
 		And I press "Save"
 		Then I am taken to the roster page for "The Rollers"
-		And I see "donny@gmail.com" in the "Kerabatsos" row
+		And I see "donny@gmail.com"
 
 	Scenario: Team owner removes a Coach from the Team
 		Given I am logged in as a user
 		And I have a Bowling team named "The Rollers"
 		And there is a Coach
 		And I visit the roster page for "The Rollers"
-		And I click "edit" in the "Sobchak" row
-		When I click "Delete this team member"
+		And I click "edit" inside the first "Sobchak" row
+		When I click "Delete this Coach"
 		Then I do not see "Sobchak"
 
 	Scenario: Team owner removes a Player from the Team
@@ -84,8 +80,8 @@ Feature: User manages team
 		And I have a Bowling team named "The Rollers"
 		And there is a Player
 		And I visit the roster page for "The Rollers"
-		And I click "edit" in the "Kerabatsos" row
-		When I click "Delete this team member"
+		And I click "edit" inside the first "Kerabatsos" row
+		When I click "Delete this Player"
 		Then I do not see "Kerabatsos"
 
 	Scenario: Team owner views a Player Profile
@@ -93,7 +89,7 @@ Feature: User manages team
 		And I have a Bowling team named "The Rollers"
 		And there is a Player
 		And I visit the roster page for "The Rollers"
-		When I click "view" in the "Kerabatsos" row
+		When I click "view" inside the first "Kerabatsos" row
 		Then I see "The Rollers > Theodore Kerabatsos (Player)"
 
 	Scenario: Team owner views a Coach Profile
@@ -101,20 +97,18 @@ Feature: User manages team
 		And I have a Bowling team named "The Rollers"
 		And there is a Coach
 		And I visit the roster page for "The Rollers"
-		When I click "view" in the "Sobchak" row
+		When I click "view" inside the first "Sobchak" row
 		Then I see "The Rollers > Walter Sobchak (Coach)"
 	
-	@javascript
 	Scenario: Team owner edits a Player's Profile
 		Given I am logged in as a user
 		And I have a Bowling team named "The Rollers"
 		And there is a Player
 		And I visit the roster page for "The Rollers"
-		When I click "edit" in the "Kerabatsos" row
-		Then I see "Edit Team Member"
+		When I click "edit" inside the first "Kerabatsos" row
+		Then I see "Edit Player"
 		And I do not see "edit"
 		When I fill in "First Name" with "newfirstname"
-		And screenshot
 		And I press "Save"
 		Then I am taken to the roster page for "The Rollers"
 		And I see "newfirstname"

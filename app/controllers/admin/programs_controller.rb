@@ -5,6 +5,11 @@ class Admin::ProgramsController < Admin::BaseController
 		@program = @school.programs.new
   end
 
+	def show
+		@school = School.find(params[:school_id])
+		@program = Program.find(params[:id])
+	end
+
   def create
 		@school = School.find(params[:school_id])
 		@program = @school.programs.new(sport: params[:program][:sport].to_i)

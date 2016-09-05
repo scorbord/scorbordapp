@@ -37,6 +37,8 @@ Given(/^I have a (.*?) team named "(.*?)"$/) do |sport, name|
                                   admin: true,
                                   role: "Coach",
                                 )
+
+  @team.positions << Position.where(sport: @team.program[:sport])
 end
 
 When(/^I logout$/) do

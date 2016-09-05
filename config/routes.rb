@@ -46,6 +46,10 @@ Rails.application.routes.draw do
     resources :schools do
       resources :programs
     end
+    resources :programs do
+      resources :teams
+    end
+    resources :teams
   end
 
 

@@ -1,8 +1,12 @@
 class MembersController < ApplicationController
 
 	def new
+		@team = Team.find(params[:team_id])
 		@person = Person.new
 		@member = @person.memberships.new(team_id: params[:id])
+		@offpos = @team.position_teams.side(1)
+		@defpos = @team.position_teams.side(2)
+		@stpos = @team.position_teams.side(3)
 	end
 
 	def index
@@ -30,9 +34,13 @@ class MembersController < ApplicationController
 
 	def edit
 		@member = Member.find(params[:id])
+		@team = @member.team
 		@person = @member.person
 		@person.heightft = @person.height / 12
 		@person.heightin = @person.height % 12
+		@offpos = @team.position_teams.side(1)
+		@defpos = @team.position_teams.side(2)
+		@stpos = @team.position_teams.side(3)
 	end
 
 	def create
@@ -73,7 +81,7 @@ class MembersController < ApplicationController
 	private
 
 		def member_params
-			params.require(:member).permit(:nickname, :role, :cell_phone, :admin, :grad_year)
+			params.require(:member).permit(:nickname, :role, :cell_phone, :admin, :grad_year, position_team_ids: [])
 		end
 
 		def person_params

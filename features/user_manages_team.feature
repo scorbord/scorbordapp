@@ -1,3 +1,4 @@
+@seed
 Feature: User manages team
 	
 	Scenario: User adds a new team
@@ -62,9 +63,12 @@ Feature: User manages team
 		And I fill in "Weight" with "180"
 		And I select the "Male" radio button
 		And I fill in "Graduation Year" with "1969"
+		And I select the "RB" checkbox
+		And I select the "K" checkbox
 		And I press "Save"
 		Then I am taken to the roster page for "The Rollers"
 		And I see "donny@gmail.com"
+		And I see "Kerabatsos Theodore RB" in the "players-panel" div
 
 	Scenario: Team owner removes a Coach from the Team
 		Given I am logged in as a user
@@ -99,7 +103,7 @@ Feature: User manages team
 		And I visit the roster page for "The Rollers"
 		When I click "view" inside the first "Sobchak" row
 		Then I see "The Rollers > Walter Sobchak (Coach)"
-	
+
 	Scenario: Team owner edits a Player's Profile
 		Given I am logged in as a user
 		And I have a Bowling team named "The Rollers"
@@ -109,6 +113,7 @@ Feature: User manages team
 		Then I see "Edit Player"
 		And I do not see "edit"
 		When I fill in "First Name" with "newfirstname"
+		And I select the "QB" checkbox
 		And I press "Save"
 		Then I am taken to the roster page for "The Rollers"
-		And I see "newfirstname"
+		And I see "Kerabatsos newfirstname QB" in the "players-panel" div

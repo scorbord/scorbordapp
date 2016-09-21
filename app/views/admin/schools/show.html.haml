@@ -17,6 +17,7 @@
             %span
               =program.sport
           %span.mdl-list__item-secondary-content
+            =link_to "view", admin_school_program_path(@school, program)
             =link_to admin_school_program_path(@school, program), :method => :delete do
               %i.material-icons
                 delete

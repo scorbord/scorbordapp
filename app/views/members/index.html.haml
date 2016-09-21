@@ -45,6 +45,7 @@
 						%tr
 							%th.mdl-data-table__cell--non-numeric Last Name
 							%th.mdl-data-table__cell--non-numeric First Name
+							%th.mdl-data-table__cell--non-numeric Position(s)
 							%th.mdl-data-table__cell--non-numeric Email
 							%th.mdl-data-table__cell--non-numeric Cell Phone
 							%th.mdl-data-table__cell--non-numeric Height
@@ -55,6 +56,9 @@
 							%tr
 								%td.mdl-data-table__cell--non-numeric= member.last_name
 								%td.mdl-data-table__cell--non-numeric= member.first_name
+								%td.mdl-data-table__cell--non-numeric
+									- member.position_teams.each do |pos|
+										= pos.initials
 								%td.mdl-data-table__cell--non-numeric= member.person.email
 								%td.mdl-data-table__cell--non-numeric= number_to_phone(member.cell_phone)
 								%td.mdl-data-table__cell--non-numeric= member.person.formatted_height

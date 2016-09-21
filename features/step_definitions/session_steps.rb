@@ -32,11 +32,13 @@ Given(/^I have a (.*?) team named "(.*?)"$/) do |sport, name|
   @school = School.create(name: "Abide High School", initials: "AHS", mascot: "Marmots")
   @program = @school.programs.create(sport: 1)
   @team = @program.teams.create(name: name, sport: sport)
+  TeamBuilder.new(@team).build_complete
   @member = @team.members.create(
     person_id: @user.people.first.id,
                                   admin: true,
                                   role: "Coach",
                                 )
+
 end
 
 When(/^I logout$/) do

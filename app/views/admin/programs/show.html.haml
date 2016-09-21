@@ -1,0 +1,8 @@
+-content_for(:title, "#{@school.name} #{@program.sport} Program")
+%div.mdl-cell.mdl-cell--12-col
+  %ul
+    - @program.teams.each do |team|
+      %li
+        =link_to "#{team.name} #{@program.sport}", admin_team_path(team)
+  =link_to "new team", new_admin_program_team_path(@program)
+

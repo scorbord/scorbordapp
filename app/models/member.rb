@@ -6,6 +6,10 @@ class Member < ActiveRecord::Base
 	has_one :user, :through => :person
 	belongs_to :team
 
+	has_many :member_position_teams
+	has_many :position_teams, :through => :member_position_teams
+	has_many :positions, :through => :position_teams
+
 	attr_accessor :heightft
 	attr_accessor :heightin
 

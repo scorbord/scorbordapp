@@ -1,8 +1,18 @@
 class MembersController < ApplicationController
 
 	def new
+		@team = Team.find(params[:team_id])
 		@person = Person.new
 		@member = @person.memberships.new(team_id: params[:id])
+		@sides = @team.sides
+		if params[:role] == 'Coach'
+			@positions = @team.position_teams.joins(:position).where('position_type = 1')
+		elsif params[:role] == 'Player'
+			@positions = @team.position_teams.joins(:position).where('position_type = 2')
+		end
+		@offpos = @positions.side(1)
+		@defpos = @positions.side(2)
+		@stpos = @positions.side(3)
 	end
 
 	def index
@@ -30,9 +40,19 @@ class MembersController < ApplicationController
 
 	def edit
 		@member = Member.find(params[:id])
+		@team = @member.team
 		@person = @member.person
 		@person.heightft = @person.height / 12
 		@person.heightin = @person.height % 12
+		@sides = @team.sides
+		if @member.role == 'Coach'
+			@positions = @team.position_teams.joins(:position).where('position_type = 1')
+		elsif @member.role == 'Player'
+			@positions = @team.position_teams.joins(:position).where('position_type = 2')
+		end
+		@offpos = @positions.side(1)
+		@defpos = @positions.side(2)
+		@stpos = @positions.side(3)
 	end
 
 	def create
@@ -73,7 +93,7 @@ class MembersController < ApplicationController
 	private
 
 		def member_params
-			params.require(:member).permit(:nickname, :role, :cell_phone, :admin, :grad_year)
+			params.require(:member).permit(:nickname, :role, :cell_phone, :admin, :grad_year, position_team_ids: [])
 		end
 
 		def person_params

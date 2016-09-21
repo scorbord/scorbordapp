@@ -69,6 +69,14 @@ Given(/^I select the "(.*?)" radio button$/) do |button|
   choose(button)
 end
 
+Given(/^I select the "(.*?)" checkbox$/) do |checkbox|
+  check(checkbox)
+end
+
 And("I wait for ajax") do
   wait_for_ajax
+end
+
+When("I scroll up") do
+  page.execute_script "window.scrollBy(0,-1)"
 end

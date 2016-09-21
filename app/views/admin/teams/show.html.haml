@@ -1,0 +1,5 @@
+-content_for(:title, "#{@team.school.initials} #{@team.name} #{@team.program.sport}")
+%div.mdl-cell.mdl-cell--8-col
+  %ul
+    -@team.positions.each do |pos|
+      %li= "#{pos.initials} #{pos.name} #{pos.side}"

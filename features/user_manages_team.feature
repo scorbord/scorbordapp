@@ -1,4 +1,5 @@
-@seed
+#@seed
+@football-seed
 Feature: User manages team
 	
 	Scenario: User adds a new team
@@ -64,7 +65,8 @@ Feature: User manages team
 		And I select the "Male" radio button
 		And I fill in "Graduation Year" with "1969"
 		And I select the "RB" checkbox
-		And I select the "K" checkbox
+		And I select the "DE" checkbox
+		And I select the "LS" checkbox
 		And I press "Save"
 		Then I am taken to the roster page for "The Rollers"
 		And I see "donny@gmail.com"

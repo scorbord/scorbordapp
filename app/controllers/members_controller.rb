@@ -4,9 +4,15 @@ class MembersController < ApplicationController
 		@team = Team.find(params[:team_id])
 		@person = Person.new
 		@member = @person.memberships.new(team_id: params[:id])
-		@offpos = @team.position_teams.side(1)
-		@defpos = @team.position_teams.side(2)
-		@stpos = @team.position_teams.side(3)
+		@sides = @team.sides
+		if params[:role] == 'Coach'
+			@positions = @team.position_teams.joins(:position).where('position_type = 1')
+		elsif params[:role] == 'Player'
+			@positions = @team.position_teams.joins(:position).where('position_type = 2')
+		end
+		@offpos = @positions.side(1)
+		@defpos = @positions.side(2)
+		@stpos = @positions.side(3)
 	end
 
 	def index
@@ -38,9 +44,15 @@ class MembersController < ApplicationController
 		@person = @member.person
 		@person.heightft = @person.height / 12
 		@person.heightin = @person.height % 12
-		@offpos = @team.position_teams.side(1)
-		@defpos = @team.position_teams.side(2)
-		@stpos = @team.position_teams.side(3)
+		@sides = @team.sides
+		if @member.role == 'Coach'
+			@positions = @team.position_teams.joins(:position).where('position_type = 1')
+		elsif @member.role == 'Player'
+			@positions = @team.position_teams.joins(:position).where('position_type = 2')
+		end
+		@offpos = @positions.side(1)
+		@defpos = @positions.side(2)
+		@stpos = @positions.side(3)
 	end
 
 	def create

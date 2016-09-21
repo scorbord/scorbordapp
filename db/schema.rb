@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20160910135521) do
+ActiveRecord::Schema.define(version: 20160912123711) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -65,6 +65,7 @@ ActiveRecord::Schema.define(version: 20160910135521) do
   create_table "position_teams", force: :cascade do |t|
     t.integer "position_id"
     t.integer "team_id"
+    t.integer "team_unit_id"
   end
 
   add_index "position_teams", ["position_id"], name: "index_position_teams_on_position_id", using: :btree
@@ -75,7 +76,8 @@ ActiveRecord::Schema.define(version: 20160910135521) do
     t.string  "name"
     t.string  "initials"
     t.integer "side"
-    t.integer "type"
+    t.integer "position_type"
+    t.integer "unit_id"
   end
 
   create_table "programs", force: :cascade do |t|
@@ -91,12 +93,30 @@ ActiveRecord::Schema.define(version: 20160910135521) do
     t.datetime "updated_at"
   end
 
+  create_table "team_units", force: :cascade do |t|
+    t.integer  "team_id"
+    t.integer  "unit_id"
+    t.integer  "coach_position_team_id"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
   create_table "teams", force: :cascade do |t|
     t.string   "name"
     t.string   "sport"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.integer  "program_id"
+  end
+
+  create_table "units", force: :cascade do |t|
+    t.string   "name"
+    t.string   "initials"
+    t.integer  "coach_position_id"
+    t.string   "unit_type"
+    t.integer  "parent_unit_id"
+    t.datetime "created_at"
+    t.datetime "updated_at"
   end
 
   create_table "users", force: :cascade do |t|

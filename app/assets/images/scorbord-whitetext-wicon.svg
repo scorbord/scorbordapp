@@ -1,0 +1,48 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<svg width="149px" height="29px" viewBox="0 0 149 29" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+    <!-- Generator: Sketch 40 (33762) - http://www.bohemiancoding.com/sketch -->
+    <title>Scorbord WhiteText wIcon</title>
+    <desc>Created with Sketch.</desc>
+    <defs>
+        <path d="M27.972028,4.71342685 L27.972028,25.7526378 C27.972028,26.9938217 26.9764887,28 25.7302435,28 L2.24178446,28 C1.00368109,28 0,27.0043987 0,25.7526378 L0,18.0200401 L5.59440559,11.3667335 L13.986014,21.3466934 L27.972028,4.71342685 Z" id="path-1"></path>
+        <filter x="-50%" y="-50%" width="200%" height="200%" filterUnits="objectBoundingBox" id="filter-2">
+            <feOffset dx="0" dy="0" in="SourceAlpha" result="shadowOffsetOuter1"></feOffset>
+            <feGaussianBlur stdDeviation="0.5" in="shadowOffsetOuter1" result="shadowBlurOuter1"></feGaussianBlur>
+            <feColorMatrix values="0 0 0 0 0   0 0 0 0 0   0 0 0 0 0  0 0 0 0.12 0" type="matrix" in="shadowBlurOuter1"></feColorMatrix>
+        </filter>
+        <polygon id="path-3" points="13.986014 24.0721443 33.2867133 5.2745491 30.0979021 2.02004008 13.986014 17.6192385 5.59440559 9.76352705 2.40559441 13.0180361 4.47552448 15.0941884"></polygon>
+        <filter x="-50%" y="-50%" width="200%" height="200%" filterUnits="objectBoundingBox" id="filter-4">
+            <feOffset dx="0" dy="0" in="SourceAlpha" result="shadowOffsetOuter1"></feOffset>
+            <feGaussianBlur stdDeviation="0.5" in="shadowOffsetOuter1" result="shadowBlurOuter1"></feGaussianBlur>
+            <feColorMatrix values="0 0 0 0 0   0 0 0 0 0   0 0 0 0 0  0 0 0 0.12 0" type="matrix" in="shadowBlurOuter1" result="shadowMatrixOuter1"></feColorMatrix>
+            <feOffset dx="1" dy="2" in="SourceAlpha" result="shadowOffsetOuter2"></feOffset>
+            <feGaussianBlur stdDeviation="1" in="shadowOffsetOuter2" result="shadowBlurOuter2"></feGaussianBlur>
+            <feColorMatrix values="0 0 0 0 0   0 0 0 0 0   0 0 0 0 0  0 0 0 0.12 0" type="matrix" in="shadowBlurOuter2" result="shadowMatrixOuter2"></feColorMatrix>
+            <feMerge>
+                <feMergeNode in="shadowMatrixOuter1"></feMergeNode>
+                <feMergeNode in="shadowMatrixOuter2"></feMergeNode>
+            </feMerge>
+        </filter>
+    </defs>
+    <g id="Page-1" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
+        <g id="Desktop-HD-Copy-7" transform="translate(-1437.000000, -499.000000)">
+            <g id="Scorbord-WhiteText-wIcon" transform="translate(1436.000000, 499.000000)">
+                <g id="Group2" transform="translate(113.713287, 0.000000)">
+                    <g id="Combined-Shape-Copy-2">
+                        <use fill="black" fill-opacity="1" filter="url(#filter-2)" xlink:href="#path-1"></use>
+                        <use fill="#558B2F" fill-rule="evenodd" xlink:href="#path-1"></use>
+                    </g>
+                    <path d="M27.972028,4.66163095 L27.972028,2.23502001 C27.972028,0.99880717 26.9683469,3.55271368e-15 25.7302435,3.55271368e-15 L2.24178446,3.55271368e-15 C0.995539285,3.55271368e-15 0,1.00065254 0,2.23502001 L0,17.0926468 L5.59440559,10.8771389 L13.986014,20.2004008 L27.972028,4.66163095 Z" id="Combined-Shape-Copy" fill="#8BC34A"></path>
+                    <polygon id="Path-2-Copy" fill="#C4E0A3" points="13.986014 22.3887776 32.1678322 4.15230461 29.9300699 2.18837675 13.986014 18.1803607 5.59440559 9.76352705 0 15.3747495 0 19.5831663 5.59440559 13.9719439"></polygon>
+                    <g id="Path-2-Copy">
+                        <use fill="black" fill-opacity="1" filter="url(#filter-4)" xlink:href="#path-3"></use>
+                        <use fill="#FFFFFF" fill-rule="evenodd" xlink:href="#path-3"></use>
+                    </g>
+                </g>
+                <text id="SCORBORD" font-family="Roboto-Thin, Roboto" font-size="19.8076152" font-style="condensed" font-weight="300" fill="#FFFFFF">
+                    <tspan x="0.933278694" y="20.4128257">SCORBORD</tspan>
+                </text>
+            </g>
+        </g>
+    </g>
+</svg>

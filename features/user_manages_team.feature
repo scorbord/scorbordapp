@@ -44,10 +44,14 @@ Feature: User manages team
 		And I fill in "Email Address" with "walter@gmail.com"
 		And I fill in "Cell Phone" with "4267655464"
 		And I select the "Male" radio button
+		And I select the "OC" checkbox
+		And I select the "OL" checkbox
 		When I press "Save"
 		Then I am taken to the roster page for "The Rollers"
 		And I see "Sobchak"
 		And I see "walter@gmail.com"
+		And I see "OC" in the "Sobchak" row within the "coaches-panel" panel
+		And I see "OL" in the "Sobchak" row within the "coaches-panel" panel
 
 	Scenario: Team owner adds a Player
 		Given I am logged in as a user
@@ -70,7 +74,10 @@ Feature: User manages team
 		And I press "Save"
 		Then I am taken to the roster page for "The Rollers"
 		And I see "donny@gmail.com"
-		And I see "Kerabatsos Theodore RB" in the "players-panel" div
+		And I see "Kerabatsos Theodore" in the "players-panel" div
+		And I see "RB" in the "Kerabatsos" row within the "players-panel" panel
+		And I see "DE" in the "Kerabatsos" row within the "players-panel" panel
+		And I see "LS" in the "Kerabatsos" row within the "players-panel" panel
 
 	Scenario: Team owner removes a Coach from the Team
 		Given I am logged in as a user
@@ -119,3 +126,20 @@ Feature: User manages team
 		And I press "Save"
 		Then I am taken to the roster page for "The Rollers"
 		And I see "Kerabatsos newfirstname QB" in the "players-panel" div
+	
+	Scenario: Team owner edits a Coach's Profile
+		Given I am logged in as a user
+		And I have a Bowling team named "The Rollers"
+		And there is a Coach
+		And I visit the roster page for "The Rollers"
+		When I click "edit" inside the first "Sobchak" row
+		Then I see "Edit Coach"
+		And I do not see "edit"
+		When I fill in "First Name" with "someothername"
+		And I select the "DC" checkbox
+		And I select the "DL" checkbox
+		And I press "Save"
+		Then I am taken to the roster page for "The Rollers"
+		And I see "Sobchak someothername" in the "coaches-panel" div
+		And I see "DC" in the "Sobchak" row within the "coaches-panel" panel	
+		And I see "DL" in the "Sobchak" row within the "coaches-panel" panel	

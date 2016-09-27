@@ -57,6 +57,12 @@ When(/^(.*?) inside the "(.*?)" row/) do |action, scope|
   end
 end
 
+When(/^(.*?) in the "(.*?)" row within the "(.*?)" panel/) do |action, scope, dividentifier |
+  within("//div[@id='#{dividentifier}']//tr[contains(.,'#{scope}')]") do
+    step(action)
+  end
+end
+
 When(/^(.*?) inside the first "(.*?)" row/) do |action, scope|
   within("(//tr[contains(.,'#{scope}')])[1]") do
     step(action)

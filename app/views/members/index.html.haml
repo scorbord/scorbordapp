@@ -47,6 +47,7 @@
 				%table.mdl-data-table.mdl-js-data-table.mdl-shadow--2dp
 					%thead
 						%tr
+							%th.mdl-data-table__cell #
 							%th.mdl-data-table__cell--non-numeric Last Name
 							%th.mdl-data-table__cell--non-numeric First Name
 							%th.mdl-data-table__cell--non-numeric Position(s)
@@ -58,6 +59,7 @@
 					%tbody
 						- @players.each do |member|
 							%tr
+								%td.mdl-data-table__cell= member.jersey_number
 								%td.mdl-data-table__cell--non-numeric= member.last_name
 								%td.mdl-data-table__cell--non-numeric= member.first_name
 								%td.mdl-data-table__cell--non-numeric

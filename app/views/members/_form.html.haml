@@ -24,6 +24,9 @@
 						= p.label "email", "Email Address", class: "mdl-textfield__label"
 						= p.email_field :email, class: "mdl-textfield__input"
 					-if role == 'Player'
+						%div.mdl-textfield.mdl-js-textfield.mdl-textfield--floating-label
+							= f.label "jersey_number", "Jersey Number", class: "mdl-textfield__label"
+							= f.number_field :jersey_number, class: "mdl-textfield__input", max:"99", min:"0"
 						%div.mdl-textfield.mdl-js-textfield.mdl-textfield--floating-label.mdl-cell--4-col
 							= p.label "heightft", "Height (ft.)", class: "mdl-textfield__label"
 							= p.number_field :heightft, class: "mdl-textfield__input", max:"8", min:"3"

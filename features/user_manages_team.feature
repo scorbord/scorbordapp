@@ -63,6 +63,7 @@ Feature: User manages team
 		And I fill in "Nickname" with "Donny"
 		And I fill in "Email Address" with "donny@gmail.com"
 		And I fill in "Cell Phone" with "4267655464"
+		And I fill in "Jersey Number" with "75"
 		And I fill in "Height (ft.)" with "5"
 		And I fill in "(in.)" with "10"
 		And I fill in "Weight" with "180"
@@ -78,6 +79,7 @@ Feature: User manages team
 		And I see "RB" in the "Kerabatsos" row within the "players-panel" panel
 		And I see "DE" in the "Kerabatsos" row within the "players-panel" panel
 		And I see "LS" in the "Kerabatsos" row within the "players-panel" panel
+		And I see "75" in the "Kerabatsos" row within the "players-panel" panel
 
 	Scenario: Team owner removes a Coach from the Team
 		Given I am logged in as a user

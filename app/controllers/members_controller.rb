@@ -93,7 +93,7 @@ class MembersController < ApplicationController
 	private
 
 		def member_params
-			params.require(:member).permit(:nickname, :role, :cell_phone, :admin, :grad_year, position_team_ids: [])
+			params.require(:member).permit(:nickname, :role, :cell_phone, :admin, :grad_year, :jersey_number, position_team_ids: [])
 		end
 
 		def person_params

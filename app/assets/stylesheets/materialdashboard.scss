@@ -1,5 +1,133 @@
 @import "card-mixin.scss";
 
+#schedule{
+  table {
+    width: 100%;
+    thead.past {
+      background-color: #d8d8d8;
+    }
+    tr.past {
+      background-color: #e6e6e6;
+      color: #8d8d8d;
+      span{
+        display: inline-block;
+        width: 16px;
+        font-weight: 600;
+        text-align: center;
+        &.loss{
+          &::before{
+            content: "L";
+          }
+          color: red;
+        }
+        &.win{
+          &::before{
+            content: "W";
+          }
+          color: #689F38;
+        }
+      }
+    }
+    tr.current{
+      background-color: transparentize(#ffeb3b, 0.6);
+    }
+  }
+  .disclaimer{
+    margin: 8px 8px;
+    display: inline-block;
+    color: #aaaaaa;
+    font-size: 12px;
+  }
+}
+
+#schedulev2 {
+  .previous-games{
+    .mdl-cell {
+      .mdl-card__title {
+        h2{
+          margin-right: 56px;
+          display: block;
+          white-space: nowrap;
+          overflow: hidden;
+          text-overflow: ellipsis;
+          max-width: 220px;
+
+          &:before {
+            padding-right: 3px;
+            font-size: 16px;
+            line-height: 32px;
+          }
+        }
+        .date {
+          font-size: 14px;
+          font-weight: 300;
+          display: inline-block;
+          position: absolute;
+          right: 16px;
+          top: 25px;
+          text-transform: capitalize;
+        }
+      }
+      .mdl-card__supporting-text{
+        text-align: center;
+        font-size: 30px;
+        min-height: 50px;
+        .score {
+          display: block;
+          padding: 20px 0;
+          margin-top: -15px;
+          vertical-align: top;
+        }
+      }
+      &.awayat {
+        .mdl-card__title {
+          h2:before {
+            content: "at ";
+          }
+        }
+      }
+      &.homevs {
+        .mdl-card__title {
+          h2:before {
+            content: "vs ";
+          }
+        }
+      }
+      &.win {
+        .score {
+          &:before {
+            font-size: 20px;
+            content: "W";
+            padding-right: 12px;
+            vertical-align: top;
+            color: #8BC34A;
+            font-weight: bold;
+          }
+        }
+      }
+      &.loss {
+        .score {
+          &:before {
+            font-size: 20px;
+            vertical-align: top;
+            content: "L";
+            padding-right: 12px;
+            color: red;
+            font-weight: bold;
+          }
+        }
+      }
+    }
+    .mdl-cell:nth-last-of-type(-n+2) {
+      //background-color: blue;
+    }
+  }
+  .next-game{
+  }
+  .upcoming-games{
+  }
+}
+
 .gitbranch {
   color: white;
   padding: 8px;

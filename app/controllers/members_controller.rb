@@ -1,5 +1,13 @@
 class MembersController < ApplicationController
 
+	def schedule
+		@team = Team.first
+	end
+
+	def schedulev2
+		@team = Team.first
+	end
+
 	def new
 		@team = Team.find(params[:team_id])
 		@person = Person.new

@@ -52,6 +52,10 @@
         %i.material-icons{ :role => "presentation" }
           assignment_ind
         Roster
+      = link_to schedule_path, class:"mdl-navigation__link" do
+        %i.material-icons{ :role => "presentation" }
+          event
+        Schedule
     - if current_user.super_admin?
       %div.super_admin_nav
         = link_to admin_invitations_path, class:"mdl-navigation__link" do

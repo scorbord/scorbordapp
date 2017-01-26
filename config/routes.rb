@@ -8,6 +8,9 @@ Rails.application.routes.draw do
     root 'static_pages#home'
   end
 
+  get 'schedule'    => 'members#schedule'
+  get 'schedulev2'  => 'members#schedulev2'
+
   get 'help'        => 'static_pages#help'
   get 'about'       => 'static_pages#about'
   get 'demo'        => 'static_pages#demo'

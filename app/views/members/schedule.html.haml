@@ -1,0 +1,184 @@
+- content_for(:title, "#{@team.name} #{@team.sport} > Schedule")
+%div.mdl-cell--12-col.mdl-cell#schedule
+	%div.mdl-tabs.mdl-js-tabs.mdl-js-ripple-effect
+		%div.mdl-tabs__tab-bar
+			=link_to "All", "#all-panel", class:"mdl-tabs__tab is-active"
+			=link_to "Upcoming", "#upcoming-panel", class:"mdl-tabs__tab"
+			=link_to "Region", "#region-panel", class:"mdl-tabs__tab"
+		%div.mdl-tabs__panel#all-panel.is-active
+			%h4 All Games
+			%table.mdl-data-table.mdl-js-data-table.mdl-shadow--2dp.past
+				%thead
+					%tr
+						%th.mdl-data-table__cell--non-numeric Date
+						%th.mdl-data-table__cell--non-numeric Opponent
+						%th.mdl-data-table__cell--non-numeric Result
+						%th.mdl-data-table__cell--non-numeric Record
+				%tbody
+					%tr.past(data-id="1")
+						%td.mdl-data-table__cell--non-numeric Fri, Aug 26
+						%td.mdl-data-table__cell--non-numeric at Crisp County
+						%td.mdl-data-table__cell--non-numeric
+							%span.loss
+							31-14
+						%td.mdl-data-table__cell--non-numeric 0-1 (0-0)
+					%tr.past
+						%td.mdl-data-table__cell--non-numeric Sat, Sep 3
+						%td.mdl-data-table__cell--non-numeric at Dooly County
+						%td.mdl-data-table__cell--non-numeric
+							%span.win
+							20-14 (OT)
+						%td.mdl-data-table__cell--non-numeric 1-1 (0-0)
+					%tr.past
+						%td.mdl-data-table__cell--non-numeric Fri, Sep 9
+						%td.mdl-data-table__cell--non-numeric vs Lee County
+						%td.mdl-data-table__cell--non-numeric
+							%span.loss
+							36-10
+						%td.mdl-data-table__cell--non-numeric 1-2 (0-0)
+					%tr.past
+						%td.mdl-data-table__cell--non-numeric Fri, Sep 16
+						%td.mdl-data-table__cell--non-numeric vs Westover *
+						%td.mdl-data-table__cell--non-numeric
+							%span.win
+							21-6
+						%td.mdl-data-table__cell--non-numeric 2-2 (1-0)
+					%tr.past
+						%td.mdl-data-table__cell--non-numeric Thu, Sep 22
+						%td.mdl-data-table__cell--non-numeric	at Northside-Columbus *
+						%td.mdl-data-table__cell--non-numeric
+							%span.loss
+							24-7
+						%td.mdl-data-table__cell--non-numeric 2-3 (1-1)
+					%tr.past
+						%td.mdl-data-table__cell--non-numeric Fri, Sep 30
+						%td.mdl-data-table__cell--non-numeric	at Cairo *
+						%td.mdl-data-table__cell--non-numeric
+							%span.loss
+							36-21
+						%td.mdl-data-table__cell--non-numeric 2-4 (1-2)
+					%tr.past
+						%td.mdl-data-table__cell--non-numeric Fri, Oct 14
+						%td.mdl-data-table__cell--non-numeric	vs Shaw *
+						%td.mdl-data-table__cell--non-numeric
+							%span.win
+							22-14
+						%td.mdl-data-table__cell--non-numeric 3-4 (2-2)
+				%thead
+					%tr
+						%th.mdl-data-table__cell--non-numeric Date
+						%th.mdl-data-table__cell--non-numeric Opponent
+						%th.mdl-data-table__cell--non-numeric Time
+						%th.mdl-data-table__cell--non-numeric Location
+				%tbody
+					%tr.current
+						%td.mdl-data-table__cell--non-numeric Fri, Oct 21
+						%td.mdl-data-table__cell--non-numeric	vs Hardaway *
+						%td.mdl-data-table__cell--non-numeric 7:30 PM
+						%td.mdl-data-table__cell--non-numeric
+							Americus-Sumter High School
+					%tr
+						%td.mdl-data-table__cell--non-numeric Fri, Oct 27
+						%td.mdl-data-table__cell--non-numeric	at Carver-Columbus *
+						%td.mdl-data-table__cell--non-numeric 7:00 PM
+						%td.mdl-data-table__cell--non-numeric
+							Memorial Stadium (Columbus, GA)
+					%tr
+						%td.mdl-data-table__cell--non-numeric Fri, Nov 4
+						%td.mdl-data-table__cell--non-numeric	vs Columbus *
+						%td.mdl-data-table__cell--non-numeric 7:30 PM
+						%td.mdl-data-table__cell--non-numeric
+							Americus-Sumter High School
+		%div.mdl-tabs__panel#upcoming-panel
+			%h4 Upcoming Games
+			%table.mdl-data-table.mdl-js-data-table.mdl-shadow--2dp
+				%thead
+					%tr
+						%th.mdl-data-table__cell--non-numeric Date
+						%th.mdl-data-table__cell--non-numeric Opponent
+						%th.mdl-data-table__cell--non-numeric Time
+						%th.mdl-data-table__cell--non-numeric Location
+				%tbody
+					%tr.current
+						%td.mdl-data-table__cell--non-numeric Fri, Oct 21
+						%td.mdl-data-table__cell--non-numeric	vs Hardaway *
+						%td.mdl-data-table__cell--non-numeric 7:30 PM
+						%td.mdl-data-table__cell--non-numeric
+							Americus-Sumter High School
+					%tr
+						%td.mdl-data-table__cell--non-numeric Fri, Oct 27
+						%td.mdl-data-table__cell--non-numeric	at Carver-Columbus *
+						%td.mdl-data-table__cell--non-numeric 7:00 PM
+						%td.mdl-data-table__cell--non-numeric
+							Memorial Stadium (Columbus, GA)
+					%tr
+						%td.mdl-data-table__cell--non-numeric Fri, Nov 4
+						%td.mdl-data-table__cell--non-numeric	vs Columbus *
+						%td.mdl-data-table__cell--non-numeric 7:30 PM
+						%td.mdl-data-table__cell--non-numeric
+							Americus-Sumter High School
+		%div.mdl-tabs__panel#region-panel
+			%h4 Region 1-AAAA Games
+			%table.mdl-data-table.mdl-js-data-table.mdl-shadow--2dp
+				%thead
+					%tr
+						%th.mdl-data-table__cell--non-numeric Date
+						%th.mdl-data-table__cell--non-numeric Opponent
+						%th.mdl-data-table__cell--non-numeric Result
+						%th.mdl-data-table__cell--non-numeric Record
+				%tbody
+					%tr.past
+						%td.mdl-data-table__cell--non-numeric Fri, Sep 16
+						%td.mdl-data-table__cell--non-numeric vs Westover *
+						%td.mdl-data-table__cell--non-numeric
+							%span.win
+							21-6
+						%td.mdl-data-table__cell--non-numeric 2-2 (1-0)
+					%tr.past
+						%td.mdl-data-table__cell--non-numeric Thu, Sep 22
+						%td.mdl-data-table__cell--non-numeric	at Northside-Columbus *
+						%td.mdl-data-table__cell--non-numeric
+							%span.loss
+							24-7
+						%td.mdl-data-table__cell--non-numeric 2-3 (1-1)
+					%tr.past
+						%td.mdl-data-table__cell--non-numeric Fri, Sep 30
+						%td.mdl-data-table__cell--non-numeric	at Cairo *
+						%td.mdl-data-table__cell--non-numeric
+							%span.loss
+							36-21
+						%td.mdl-data-table__cell--non-numeric 2-4 (1-2)
+					%tr.past
+						%td.mdl-data-table__cell--non-numeric Fri, Oct 14
+						%td.mdl-data-table__cell--non-numeric	vs Shaw *
+						%td.mdl-data-table__cell--non-numeric
+							%span.win
+							22-14
+						%td.mdl-data-table__cell--non-numeric 3-4 (2-2)
+				%thead
+					%tr
+						%th.mdl-data-table__cell--non-numeric Date
+						%th.mdl-data-table__cell--non-numeric Opponent
+						%th.mdl-data-table__cell--non-numeric Time
+						%th.mdl-data-table__cell--non-numeric Location
+				%tbody
+					%tr.current
+						%td.mdl-data-table__cell--non-numeric Fri, Oct 21
+						%td.mdl-data-table__cell--non-numeric	vs Hardaway *
+						%td.mdl-data-table__cell--non-numeric 7:30 PM
+						%td.mdl-data-table__cell--non-numeric
+							Americus-Sumter High School
+					%tr
+						%td.mdl-data-table__cell--non-numeric Fri, Oct 27
+						%td.mdl-data-table__cell--non-numeric	at Carver-Columbus *
+						%td.mdl-data-table__cell--non-numeric 7:00 PM
+						%td.mdl-data-table__cell--non-numeric
+							Memorial Stadium (Columbus, GA)
+					%tr
+						%td.mdl-data-table__cell--non-numeric Fri, Nov 4
+						%td.mdl-data-table__cell--non-numeric	vs Columbus *
+						%td.mdl-data-table__cell--non-numeric 7:30 PM
+						%td.mdl-data-table__cell--non-numeric
+							Americus-Sumter High School
+	%span.disclaimer
+		* - Region Game

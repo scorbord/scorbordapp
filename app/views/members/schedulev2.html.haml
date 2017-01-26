@@ -1,0 +1,93 @@
+- content_for(:title, "#{@team.name} #{@team.sport} > Schedule")
+%div.mdl-cell--12-col.mdl-cell#schedulev2
+	%div.mdl-cell--12-col.mdl-grid.previous-games
+		.mdl-card.mdl-cell.mdl-cell--4-col.mdl-shadow--2dp.clickable.loss.awayat
+			.mdl-card__title
+				%h2.mdl-card__title-text
+					Crisp County
+				%span.date
+					Aug 26
+			.mdl-card__supporting-text
+				%span.score 31 - 14
+			.mdl-card__actions.mdl-card--border
+				=link_to "Box Score", "#", class:"mdl-button mdl-button--colored mdl-js-button mdl-js-ripple-effect"
+				=link_to "Gamecenter", "#", class:"mdl-button mdl-button--colored mdl-js-button mdl-js-ripple-effect"
+
+		.mdl-card.mdl-cell.mdl-cell--4-col.mdl-shadow--2dp.clickable.awayat.win
+			.mdl-card__title
+				%h2.mdl-card__title-text
+					Dooly County
+				%span.date
+					Sep 3
+			.mdl-card__supporting-text
+				%span.score 20 - 14
+			.mdl-card__actions.mdl-card--border
+				=link_to "Box Score", "#", class:"mdl-button mdl-button--colored mdl-js-button mdl-js-ripple-effect"
+				=link_to "Gamecenter", "#", class:"mdl-button mdl-button--colored mdl-js-button mdl-js-ripple-effect"
+
+		.mdl-card.mdl-cell.mdl-cell--4-col.mdl-shadow--2dp.clickable.homevs.loss
+			.mdl-card__title
+				%h2.mdl-card__title-text
+					Lee County
+				%span.date
+					Sep 9
+			.mdl-card__supporting-text
+				%span.score 36 - 10
+			.mdl-card__actions.mdl-card--border
+				=link_to "Box Score", "#", class:"mdl-button mdl-button--colored mdl-js-button mdl-js-ripple-effect"
+				=link_to "Gamecenter", "#", class:"mdl-button mdl-button--colored mdl-js-button mdl-js-ripple-effect"
+
+		.mdl-card.mdl-cell.mdl-cell--4-col.mdl-shadow--2dp.clickable.homevs.win
+			.mdl-card__title
+				%h2.mdl-card__title-text
+					Westover
+				%span.date
+					Sep 16
+			.mdl-card__supporting-text
+				%span.score 21 - 6
+			.mdl-card__actions.mdl-card--border
+				=link_to "Box Score", "#", class:"mdl-button mdl-button--colored mdl-js-button mdl-js-ripple-effect"
+				=link_to "Gamecenter", "#", class:"mdl-button mdl-button--colored mdl-js-button mdl-js-ripple-effect"
+
+		.mdl-card.mdl-cell.mdl-cell--4-col.mdl-shadow--2dp.clickable.awayat.loss
+			.mdl-card__title
+				%h2.mdl-card__title-text
+					Northside-Columbus
+				%span.date
+					Sep 22
+			.mdl-card__supporting-text
+				%span.score 24 - 7
+			.mdl-card__actions.mdl-card--border
+				=link_to "Box Score", "#", class:"mdl-button mdl-button--colored mdl-js-button mdl-js-ripple-effect"
+				=link_to "Gamecenter", "#", class:"mdl-button mdl-button--colored mdl-js-button mdl-js-ripple-effect"
+
+		.mdl-card.mdl-cell.mdl-cell--4-col.mdl-shadow--2dp.clickable.awayat.loss
+			.mdl-card__title
+				%h2.mdl-card__title-text
+					Cairo
+				%span.date
+					Sep 30
+			.mdl-card__supporting-text
+				%span.score 36 - 21
+			.mdl-card__actions.mdl-card--border
+				=link_to "Box Score", "#", class:"mdl-button mdl-button--colored mdl-js-button mdl-js-ripple-effect"
+				=link_to "Gamecenter", "#", class:"mdl-button mdl-button--colored mdl-js-button mdl-js-ripple-effect"
+
+		.mdl-card.mdl-cell.mdl-cell--4-col.mdl-shadow--2dp.clickable.homevs.win
+			.mdl-card__title
+				%h2.mdl-card__title-text
+					Shaw
+				%span.date
+					Oct 14
+			.mdl-card__supporting-text
+				%span.score 22 - 14
+			.mdl-card__actions.mdl-card--border
+				=link_to "Box Score", "#", class:"mdl-button mdl-button--colored mdl-js-button mdl-js-ripple-effect"
+				=link_to "Gamecenter", "#", class:"mdl-button mdl-button--colored mdl-js-button mdl-js-ripple-effect"
+
+
+
+	%div.next-game
+		%h1 Next Game
+	%div.upcoming-games
+		%h1 Upcoming Games

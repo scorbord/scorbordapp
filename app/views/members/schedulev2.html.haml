@@ -1,6 +1,45 @@
 - content_for(:title, "#{@team.name} #{@team.sport} > Schedule")
 %div.mdl-cell--12-col.mdl-cell#schedulev2
-	%div.mdl-cell--12-col.mdl-grid.previous-games
+
+	%div.mdl-cell--12-col.mdl-grid#next-game
+		.mdl-card.mdl-cell.mdl-cell--12-col.mdl-shadow--2dp.homevs
+			.mdl-card__title
+				.mdl-card__title-text
+					Hardaway
+				.mdl-card__subtitle-text
+					Friday, October 21 - 7:30 PM
+			.mdl-card__supporting-text
+				.location
+					.title
+						Location
+					.address
+						Finklea-Robinson Stadium
+						%br
+						805 Harrold Avenue
+						%br
+						Americus, GA 31709
+				.recent-activity
+					.title
+						Last 3 Games
+					.game
+						%h2
+							vs Shaw
+							%span.score.loss 21-7
+					.game
+						%h2
+							@ Carver-Columbus
+							%span.score.loss 38-12
+					.game
+						%h2
+							vs Kendrick
+							%span.score.win 16-7
+			.mdl-card__actions.mdl-card--border
+				=link_to "Gameplan", "#", class:"mdl-button mdl-button--colored mdl-js-button mdl-js-ripple-effect"
+
+
+
+
+	%div.mdl-cell--12-col.mdl-grid#previous-games
 		.mdl-card.mdl-cell.mdl-cell--4-col.mdl-shadow--2dp.clickable.loss.awayat
 			.mdl-card__title
 				%h2.mdl-card__title-text
@@ -87,7 +126,5 @@
 
 
 
-	%div.next-game
-		%h1 Next Game
 	%div.upcoming-games
 		%h1 Upcoming Games

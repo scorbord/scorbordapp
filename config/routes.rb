@@ -1,5 +1,6 @@
 Rails.application.routes.draw do
 
+  get 'ui(/:action)(/:page)', controller: 'ui' unless Rails.env.production?
   get 'sessions/new'
 
   if ENV['BETA_STATUS'] == "ON"

@@ -41,7 +41,35 @@
 }
 
 #schedulev2 {
-  .previous-games{
+  #next-game {
+    .mdl-card__title {
+      .mdl-card__title-text {
+        padding-right: 10px;
+        text-transform: uppercase;
+        &:before {
+          padding-right: 5px;
+          font-size: 16px;
+          line-height: 32px;
+          content: "vs ";
+          display: block;
+          width: 100%;
+          position: relative;
+          margin: 0 0;
+        }
+      }
+      .mdl-card__subtitle-text {
+        display: block;
+        position: relative;
+      }
+    }
+    .mdl-card__supporting-text {
+      .title {
+        font-weight: bold;
+      }
+    }
+  }
+
+  #previous-games{
     .mdl-cell {
       .mdl-card__title {
         h2{
@@ -51,7 +79,7 @@
           overflow: hidden;
           text-overflow: ellipsis;
           max-width: 220px;
-
+          text-transform: uppercase;
           &:before {
             padding-right: 3px;
             font-size: 16px;
@@ -122,7 +150,51 @@
       //background-color: blue;
     }
   }
-  .next-game{
+  #next-game{
+    .location {
+      display: inline-block;
+      position: relative;
+      width: 50%;
+      float: left;
+      .address {
+        padding-left: 8px;
+      }
+    }
+    .recent-activity {
+      display: inline-block;
+      position: relative;
+      float: left;
+      vertical-align: top;
+      .game {
+        padding-left: 8px;
+      }
+      h2 {
+        font-size: 1rem;
+        margin: 0;
+        line-height: 18px;
+      }
+      .score {
+        font-size: 1rem;
+        padding: 0 5px 0 6px;
+        &:before {
+          padding-right: 5px;
+        }
+        &.loss {
+          &:before {
+            content: "L";
+            font-weight: bold;
+            color: red;
+          }
+        }
+        &.win {
+          &:before {
+            content: "W";
+            color: #8BC34A;
+            font-weight: bold;
+          }
+        }
+      }
+    }
   }
   .upcoming-games{
   }

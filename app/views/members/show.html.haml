@@ -1,7 +1,7 @@
-- content_for(:title, "#{@member.team.name} > #{@member.first_name} #{@member.last_name} (#{@member.role})")
+- content_for(:title, "#{@member.team.name} > #{@member.first_name} #{@member.last_name} (#{@member.role.capitalize})")
 %div.mdl-grid.mdl-cell
 	%div.mdl-cell.mdl-cell--12-col
-		%h5	
+		%h5
 			= @member.first_name
 			= "\"#{@member.nickname}\"" unless @member.nickname.blank?
 			= @member.last_name

@@ -4,6 +4,11 @@ class Unit < ActiveRecord::Base
 	belongs_to :coach_position, class_name: 'Position', foreign_key: 'coach_position_id'
 	has_many :positions
 
+	enum unit_type: {
+		side: 1,
+		position_unit: 2
+	}
+
 	def all_positions(positions_array = [])
 		positions_array << self.positions
 		child_units = Unit.where(parent_unit_id: self.id)

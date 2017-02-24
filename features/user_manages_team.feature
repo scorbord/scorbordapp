@@ -75,7 +75,8 @@ Feature: User manages team
 		And I press "Save"
 		Then I am taken to the roster page for "The Rollers"
 		And I see "donny@gmail.com"
-		And I see "Kerabatsos Theodore" in the "players-panel" div
+		And I see "Kerabatsos" in the "players-panel" div
+		And I see "Theodore" in the "players-panel" div
 		And I see "RB" in the "Kerabatsos" row within the "players-panel" panel
 		And I see "DE" in the "Kerabatsos" row within the "players-panel" panel
 		And I see "LS" in the "Kerabatsos" row within the "players-panel" panel

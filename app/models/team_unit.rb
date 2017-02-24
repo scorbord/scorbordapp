@@ -17,7 +17,7 @@ class TeamUnit < ActiveRecord::Base
 
 	def team_unit_child_coach_positions(team_unit_child_coach_positions_array = [])
 		team_unit_child_coach_positions_array << PositionTeam.find(self.coach_position_team_id)
-		if self.unit.unit_type == 'Side'
+		if self.unit.unit_type == 'side'
 			child_units = self.unit.children_units
 			child_units.each do |child|
 				team_unit_child_coach_positions_array << self.team.position_teams.where('position_id = ?', child.coach_position_id).all

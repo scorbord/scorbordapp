@@ -8,5 +8,5 @@ class Team < ActiveRecord::Base
 
 	has_many :team_units, dependent: :destroy
 	has_many :units, :through => :team_units
-	has_many :sides, -> { joins(:unit).where('units.unit_type = ?', 'Side')}, class_name: 'TeamUnit'
+	has_many :sides, -> { joins(:unit).where('units.unit_type = ?', 1)}, class_name: 'TeamUnit'
 end

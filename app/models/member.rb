@@ -10,6 +10,12 @@ class Member < ActiveRecord::Base
 	has_many :position_teams, :through => :member_position_teams
 	has_many :positions, :through => :position_teams
 
+	enum role: {
+		coach: 0,
+		player: 1,
+		manager: 2
+	}
+
 	attr_accessor :heightft
 	attr_accessor :heightin
 

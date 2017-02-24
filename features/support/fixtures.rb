@@ -2,13 +2,13 @@ module DataFixtures
 
   def self.football_offensive_coordinator_position
     [
-      { name: 'Offensive Coordinator', initials: 'OC', position_type: 1, sport: 1, side: 1}
+      { name: 'Offensive Coordinator', initials: 'OC', position_type: 'coach', sport: 'football', side: 'offense'}
     ]
   end
 
   def self.football_offensive_unit
     [
-      { name: 'Offense', initials: 'O', unit_type: 'Side' }
+      { name: 'Offense', initials: 'O', unit_type: 'side' }
     ]
   end
 
@@ -47,13 +47,13 @@ module DataFixtures
 
   def self.football_defensive_coordinator_position
     [
-      { name: 'Defensive Coordinator', initials: 'DC', position_type: 1, sport: 1, side: 2}
+      { name: 'Defensive Coordinator', initials: 'DC', position_type: 'coach', sport: 'football', side: 'defense'}
     ]
   end
 
   def self.football_defensive_unit
     [
-      { name: 'Defense', initials: 'D', unit_type: 'Side' }
+      { name: 'Defense', initials: 'D', unit_type: 'side' }
     ]
   end
 
@@ -95,13 +95,13 @@ module DataFixtures
 
   def self.football_specialteams_unit
     [
-      { name: 'Special Teams', initials: 'ST', unit_type: 'Side' }
+      { name: 'Special Teams', initials: 'ST', unit_type: 'side' }
     ]
   end
 
   def self.football_specialteams_coordinator_position
     [
-      { name: 'Special Teams Coordinator', initials: 'STC', position_type: 1, sport: 1, side: 3}
+      { name: 'Special Teams Coordinator', initials: 'STC', position_type: 'coach', sport: 'football', side: 'special_teams'}
     ]
   end
 

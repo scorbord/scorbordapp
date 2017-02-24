@@ -13,9 +13,9 @@ class MembersController < ApplicationController
 		@person = Person.new
 		@member = @person.memberships.new(team_id: params[:id])
 		@sides = @team.sides
-		if params[:role] == 'Coach'
+		if params[:role] == 'coach'
 			@positions = @team.position_teams.joins(:position).where('position_type = 1')
-		elsif params[:role] == 'Player'
+		elsif params[:role] == 'player'
 			@positions = @team.position_teams.joins(:position).where('position_type = 2')
 		end
 		@offpos = @positions.side(1)
@@ -26,9 +26,9 @@ class MembersController < ApplicationController
 	def index
 		@team = Team.find(params[:team_id])
 		@members = @team.members.joins(:person).order('people.last_name')
-		@coaches = @members.where(:role => 'Coach').joins(:person).order('people.last_name')
-		@players = @members.where(:role => 'Player').joins(:person).order('people.last_name')
-		@member = @members.joins(:person).order('people.last_name').first
+		@coaches = @members.where(role: 0) #.joins(:person).order('people.last_name')
+		@players = @members.where(role: 1) #.joins(:person).order('people.last_name')
+		@member = @members.first #.joins(:person).order('people.last_name').first
 	end
 
 	def index2
@@ -53,10 +53,10 @@ class MembersController < ApplicationController
 		@person.heightft = @person.height / 12
 		@person.heightin = @person.height % 12
 		@sides = @team.sides
-		if @member.role == 'Coach'
+		if @member.role == 'coach'
+			@positions = @team.position_teams.joins(:position).where('position_type = 0')
+		elsif @member.role == 'player'
 			@positions = @team.position_teams.joins(:position).where('position_type = 1')
-		elsif @member.role == 'Player'
-			@positions = @team.position_teams.joins(:position).where('position_type = 2')
 		end
 		@offpos = @positions.side(1)
 		@defpos = @positions.side(2)

@@ -12,15 +12,12 @@ class MembersController < ApplicationController
 		@team = Team.find(params[:team_id])
 		@person = Person.new
 		@member = @person.memberships.new(team_id: params[:id])
-		@sides = @team.sides
+		@sides = @team.sides.order(:unit_id)
 		if params[:role] == 'coach'
 			@positions = @team.position_teams.joins(:position).where('position_type = 1')
 		elsif params[:role] == 'player'
 			@positions = @team.position_teams.joins(:position).where('position_type = 2')
 		end
-		@offpos = @positions.side(1)
-		@defpos = @positions.side(2)
-		@stpos = @positions.side(3)
 	end
 
 	def index
@@ -28,7 +25,6 @@ class MembersController < ApplicationController
 		@members = @team.members.joins(:person).order('people.last_name')
 		@coaches = @members.where(role: 0) #.joins(:person).order('people.last_name')
 		@players = @members.where(role: 1) #.joins(:person).order('people.last_name')
-		@member = @members.first #.joins(:person).order('people.last_name').first
 	end
 
 	def index2

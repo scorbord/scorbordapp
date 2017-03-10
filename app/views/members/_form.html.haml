@@ -59,37 +59,26 @@
 				%div.mdl-textfield.mdl-js-textfield.mdl-textfield--floating-label
 					= f.label "cell_phone", "Cell Phone", class: "mdl-textfield__label"
 					= f.phone_field :cell_phone, class: "mdl-textfield__input"
-			-# if role == 'Player'
-			%div.mdl-cell.mdl-cell--12-col
-				- @sides.each do |side|
-					%div.position-section
-						%span.radio-label= side.unit.name
-						// not right!!! Gotta pull the actual position_teams.positions stuff
-						- if role == 'coach' ? collection = side.team_unit_child_coach_positions : collection = side.all_position_teams
-							= f.collection_check_boxes :position_team_ids, collection, :id, :initials do |b|
-								= b.check_box
-								= b.label do
-									%span= b.label
-			-#
-				%div.position-section
-					%span.radio-label Offense
-					= f.collection_check_boxes :position_team_ids, @offpos, :id, :initials do |b|
-						= b.check_box
-						= b.label do
-							%span= b.label
-				%div.position-section
-					%span.radio-label Defense
-					= f.collection_check_boxes :position_team_ids, @defpos, :id, :initials do |b|
-						= b.check_box
-						= b.label do
-							%span= b.label
-				%div.position-section
-					%span.radio-label Special Teams
-					= f.collection_check_boxes :position_team_ids, @stpos, :id, :initials do |b|
-						= b.check_box
-						= b.label do
-							%span= b.label
 
+			%div.mdl-cell.mdl-cell--12-col
+				- if role == 'player'
+					- @sides.each do |side|
+						%div.position-section
+							%span.radio-label= side.unit.name
+							// not right!!! Gotta pull the actual position_teams.positions stuff
+							- if role == 'coach' ? collection = side.team_unit_child_coach_positions : collection = side.all_position_teams
+								= f.collection_check_boxes :position_team_ids, collection, :id, :initials do |b|
+									= b.check_box
+									= b.label do
+										%span= b.label
+				- elsif role == 'coach'
+					%div.position-section
+						%span.radio-label Coach Positions
+						- collection = @team.position_teams.joins(:position).where('position_type = 1')
+						= f.collection_check_boxes :position_team_ids, collection, :id, :initials do |b|
+							= b.check_box
+							= b.label do
+								%span= b.label
 
 		%div.mdl-card__actions.mdl-card--border
 			= f.submit "Save", class:"mdl-button mdl-button--colored mdl-js-button mdl-js-ripple-effect"

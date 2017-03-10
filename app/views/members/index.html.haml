@@ -14,84 +14,91 @@
 		%a.mdl-button.mdl-js-button.mdl-button--colored.mdl-js-ripple-effect.mdl-button--fab#expand-speed-dial
 			%i.material-icons
 				add
-	%div.mdl-cell.mdl-cell--12-col.mdl-grid
-		%div.mdl-tabs.mdl-js-tabs.mdl-js-ripple-effect
-			%div.mdl-tabs__tab-bar
-				=link_to "All", "#all-panel", class:"mdl-tabs__tab"
-				=link_to "Players", "#players-panel", class:"mdl-tabs__tab is-active"
-				=link_to "Coaches", "#coaches-panel", class:"mdl-tabs__tab"
-			%div.mdl-tabs__panel#all-panel
-				%table.mdl-data-table.mdl-js-data-table.mdl-shadow--2dp
-					%thead
-						%tr
-							%th.mdl-data-table__cell--non-numeric Last Name
-							%th.mdl-data-table__cell--non-numeric First Name
-							%th.mdl-data-table__cell--non-numeric Position
-							%th.mdl-data-table__cell--non-numeric Email
-							%th.mdl-data-table__cell--non-numeric Cell Phone
-							%th
-					%tbody
-						- @members.each do |member|
+	- unless @members.empty?
+		%div.mdl-cell.mdl-cell--12-col.mdl-grid
+			%div.mdl-tabs.mdl-js-tabs.mdl-js-ripple-effect
+				%div.mdl-tabs__tab-bar
+					=link_to "All", "#all-panel", class:"mdl-tabs__tab"
+					=link_to "Players", "#players-panel", class:"mdl-tabs__tab is-active"
+					=link_to "Coaches", "#coaches-panel", class:"mdl-tabs__tab"
+				%div.mdl-tabs__panel#all-panel
+					%table.mdl-data-table.mdl-js-data-table.mdl-shadow--2dp
+						%thead
 							%tr
-								%td.mdl-data-table__cell--non-numeric= member.last_name
-								%td.mdl-data-table__cell--non-numeric= member.first_name
-								%td.mdl-data-table__cell--non-numeric
-									- member.position_teams.each do |pos|
-										= pos.initials
-								%td.mdl-data-table__cell--non-numeric= member.person.email
-								%td.mdl-data-table__cell--non-numeric= number_to_phone(member.cell_phone)
-								%td
-									=link_to "view", team_member_path(@team.id, member.id), class: "mdl-button mdl-js-button mdl-js-ripple-effect mdl-button--colored"
-									=link_to "edit", edit_team_member_path(@team.id, member.id), class: "mdl-button mdl-js-button mdl-js-ripple-effect mdl-button--colored"
-			%div.mdl-tabs__panel.is-active#players-panel
-				%table.mdl-data-table.mdl-js-data-table.mdl-shadow--2dp
-					%thead
-						%tr
-							%th.mdl-data-table__cell #
-							%th.mdl-data-table__cell--non-numeric Last Name
-							%th.mdl-data-table__cell--non-numeric First Name
-							%th.mdl-data-table__cell--non-numeric Position(s)
-							%th.mdl-data-table__cell--non-numeric Email
-							%th.mdl-data-table__cell--non-numeric Cell Phone
-							%th.mdl-data-table__cell--non-numeric Height
-							%th.mdl-data-table__cell--non-numeric Weight
-							%th
-					%tbody
-						- @players.each do |member|
+								%th.mdl-data-table__cell--non-numeric Last Name
+								%th.mdl-data-table__cell--non-numeric First Name
+								%th.mdl-data-table__cell--non-numeric Position
+								%th.mdl-data-table__cell--non-numeric Email
+								%th.mdl-data-table__cell--non-numeric Cell Phone
+								%th
+						%tbody
+							- @members.each do |member|
+								%tr
+									%td.mdl-data-table__cell--non-numeric= member.last_name
+									%td.mdl-data-table__cell--non-numeric= member.first_name
+									%td.mdl-data-table__cell--non-numeric
+										- member.position_teams.each do |pos|
+											= pos.initials
+									%td.mdl-data-table__cell--non-numeric= member.person.email
+									%td.mdl-data-table__cell--non-numeric= number_to_phone(member.cell_phone)
+									%td
+										=link_to "view", team_member_path(@team.id, member.id), class: "mdl-button mdl-js-button mdl-js-ripple-effect mdl-button--colored"
+										=link_to "edit", edit_team_member_path(@team.id, member.id), class: "mdl-button mdl-js-button mdl-js-ripple-effect mdl-button--colored"
+				%div.mdl-tabs__panel.is-active#players-panel
+					%table.mdl-data-table.mdl-js-data-table.mdl-shadow--2dp
+						%thead
 							%tr
-								%td.mdl-data-table__cell= member.jersey_number
-								%td.mdl-data-table__cell--non-numeric= member.last_name
-								%td.mdl-data-table__cell--non-numeric= member.first_name
-								%td.mdl-data-table__cell--non-numeric
-									- member.position_teams.each do |pos|
-										= pos.initials
-								%td.mdl-data-table__cell--non-numeric= member.person.email
-								%td.mdl-data-table__cell--non-numeric= number_to_phone(member.cell_phone)
-								%td.mdl-data-table__cell--non-numeric= member.person.formatted_height
-								%td.mdl-data-table__cell--non-numeric= member.person.formatted_weight
-								%td
-									=link_to "view", team_member_path(@team.id, member.id), class: "mdl-button mdl-js-button mdl-js-ripple-effect mdl-button--colored"
-									=link_to "edit", edit_team_member_path(@team.id, member.id), class: "mdl-button mdl-js-button mdl-js-ripple-effect mdl-button--colored"
-			%div.mdl-tabs__panel#coaches-panel
-				%table.mdl-data-table.mdl-js-data-table.mdl-shadow--2dp
-					%thead
-						%tr
-							%th.mdl-data-table__cell--non-numeric Last Name
-							%th.mdl-data-table__cell--non-numeric First Name
-							%th.mdl-data-table__cell--non-numeric Position
-							%th.mdl-data-table__cell--non-numeric Email
-							%th.mdl-data-table__cell--non-numeric Cell Phone
-							%th
-					%tbody
-						- @coaches.each do |member|
+								%th.mdl-data-table__cell #
+								%th.mdl-data-table__cell--non-numeric Last Name
+								%th.mdl-data-table__cell--non-numeric First Name
+								%th.mdl-data-table__cell--non-numeric Position(s)
+								%th.mdl-data-table__cell--non-numeric Email
+								%th.mdl-data-table__cell--non-numeric Cell Phone
+								%th.mdl-data-table__cell--non-numeric Height
+								%th.mdl-data-table__cell--non-numeric Weight
+								%th
+						%tbody
+							- @players.each do |member|
+								%tr
+									%td.mdl-data-table__cell= member.jersey_number
+									%td.mdl-data-table__cell--non-numeric= member.last_name
+									%td.mdl-data-table__cell--non-numeric= member.first_name
+									%td.mdl-data-table__cell--non-numeric
+										- member.position_teams.each do |pos|
+											= pos.initials
+									%td.mdl-data-table__cell--non-numeric= member.person.email
+									%td.mdl-data-table__cell--non-numeric= number_to_phone(member.cell_phone)
+									%td.mdl-data-table__cell--non-numeric= member.person.formatted_height
+									%td.mdl-data-table__cell--non-numeric= member.person.formatted_weight
+									%td
+										=link_to "view", team_member_path(@team.id, member.id), class: "mdl-button mdl-js-button mdl-js-ripple-effect mdl-button--colored"
+										=link_to "edit", edit_team_member_path(@team.id, member.id), class: "mdl-button mdl-js-button mdl-js-ripple-effect mdl-button--colored"
+				%div.mdl-tabs__panel#coaches-panel
+					%table.mdl-data-table.mdl-js-data-table.mdl-shadow--2dp
+						%thead
 							%tr
-								%td.mdl-data-table__cell--non-numeric= member.last_name
-								%td.mdl-data-table__cell--non-numeric= member.first_name
-								%td.mdl-data-table__cell--non-numeric
-									- member.position_teams.each do |pos|
-										= pos.initials
-								%td.mdl-data-table__cell--non-numeric= member.person.email
-								%td.mdl-data-table__cell--non-numeric= number_to_phone(member.cell_phone)
-								%td
-									=link_to "view", team_member_path(@team.id, member.id), class: "mdl-button mdl-js-button mdl-js-ripple-effect mdl-button--colored"
-									=link_to "edit", edit_team_member_path(@team.id, member.id), class: "mdl-button mdl-js-button mdl-js-ripple-effect mdl-button--colored"
+								%th.mdl-data-table__cell--non-numeric Last Name
+								%th.mdl-data-table__cell--non-numeric First Name
+								%th.mdl-data-table__cell--non-numeric Position
+								%th.mdl-data-table__cell--non-numeric Email
+								%th.mdl-data-table__cell--non-numeric Cell Phone
+								%th
+						%tbody
+							- @coaches.each do |member|
+								%tr
+									%td.mdl-data-table__cell--non-numeric= member.last_name
+									%td.mdl-data-table__cell--non-numeric= member.first_name
+									%td.mdl-data-table__cell--non-numeric
+										- member.position_teams.each do |pos|
+											= pos.initials
+									%td.mdl-data-table__cell--non-numeric= member.person.email
+									%td.mdl-data-table__cell--non-numeric= number_to_phone(member.cell_phone)
+									%td
+										=link_to "view", team_member_path(@team.id, member.id), class: "mdl-button mdl-js-button mdl-js-ripple-effect mdl-button--colored"
+										=link_to "edit", edit_team_member_path(@team.id, member.id), class: "mdl-button mdl-js-button mdl-js-ripple-effect mdl-button--colored"
+	- else
+		%div.mdl-cell.mdl-cell--12-col.mdl-grid
+			%p
+				Fill out your roster!
+				%br
+				Click the button in the bottom right of the window!

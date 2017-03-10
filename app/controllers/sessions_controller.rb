@@ -31,4 +31,9 @@ class SessionsController < ApplicationController
   	log_out if logged_in?
   	redirect_to root_url
   end
+
+  def set_current_team
+    current_user.update_attribute(:current_team_id, params[:team_id])
+    redirect_to current_team
+  end
 end

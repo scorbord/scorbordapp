@@ -21,6 +21,39 @@ Given(/^I am logged in as a user$/) do
   log_in_user(@user)
 end
 
+Given(/^I am a user$/) do
+  attrs = { first_name: 'Jeffrey', last_name: 'Lebowski', email: 'dude@gmail.com' }
+  @user = find_or_create_user(attrs)
+end
+
+Given(/^I am logged in$/) do
+  log_in_user(@user)
+end
+
+Given(/^I am logged in as a user with multiple teams$/) do
+  attrs = { first_name: 'Jeffrey', last_name: 'Lebowski', email: 'dude@gmail.com' }
+  @user = find_or_create_user(attrs)
+
+  @school = School.create(name: "Abide High School", initials: "AHS", mascot: "Marmots")
+  @program = @school.programs.create(sport: 1)
+  @team = @program.teams.create(name: "The Hitters", sport: 1)
+  TeamBuilder.new(@team).build_complete
+  @member = @team.members.create(
+                                  person_id: @user.people.first.id,
+                                  admin: true,
+                                  role: "coach",
+                                )
+  @program = @school.programs.create(sport: 2)
+  @team = @program.teams.create(name: "The Kickers", sport: 2)
+  TeamBuilder.new(@team).build_complete
+  @member = @team.members.create(
+                                  person_id: @user.people.first.id,
+                                  admin: true,
+                                  role: "coach",
+                                )
+  log_in_user(@user)
+end
+
 Given(/^I am logged in as a SuperAdmin$/) do
   attrs = { first_name: 'Jackie', last_name: 'Treehorn', email: 'jackie@treehornprod.com' }
   allow(Rails.configuration).to receive(:admins).and_return([attrs[:email]])
@@ -36,9 +69,22 @@ Given(/^I have a (.*?) team named "(.*?)"$/) do |sport, name|
   @member = @team.members.create(
     person_id: @user.people.first.id,
                                   admin: true,
-                                  role: "coach",
+                                  role: "coach"
                                 )
 
+end
+
+Given(/^I have the following teams:$/) do |table|
+  table.hashes.each do |attrs|
+    @school = School.create(name: "Abide High School", initials: "AHS", mascot: "Marmots")
+    @program = @school.programs.create(sport: attrs['sport'])
+    @team = @program.teams.create(name: attrs['name'], sport: @program[:sport])
+    TeamBuilder.new(@team).build_complete
+    @member = @team.members.create(
+      person_id: @user.people.first.id,
+      admin: true,
+      role: 0)
+  end
 end
 
 When(/^I logout$/) do

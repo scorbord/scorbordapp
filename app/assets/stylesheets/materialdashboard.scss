@@ -1,5 +1,23 @@
 @import "card-mixin.scss";
 
+#team-selector {
+  padding: 4px 16px;
+  color: white;
+  font-size: .9rem;
+  a {
+    font-size: .85rem;
+    padding-left: 8px;
+    color: #e6e6e6;
+    &:hover {
+      color: white;
+    }
+  }
+  .active {
+    font-weight: bold;
+    color: #8BC34A;
+  }
+}
+
 #schedule{
   table {
     width: 100%;

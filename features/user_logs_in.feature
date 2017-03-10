@@ -76,3 +76,20 @@ Feature: User logs in
 		And I fill in "Password confirm" with "abide12345"
 		And I press "Set Password"
 		Then I see "My Account"
+
+	Scenario: User changes teams
+		Given I am a user
+		And I have the following teams:
+			| name        | sport    |
+			| The Hitters | Football |
+			| The Kickers | Soccer   |
+		And I am logged in
+		And I see "Teams:"
+		When I click "THE HITTERS"
+		Then I see "The Hitters" in the sidenav
+		When I click "THE KICKERS"
+		Then I see "The Kickers" in the sidenav
+
+	Scenario: User with less than 2 teams doesn't see select bar
+		Given I am logged in as a user
+		Then I do not see "Teams:"

@@ -12,6 +12,7 @@ class User < ActiveRecord::Base
 	has_many :people, class_name: "Person"
 	has_many :memberships, :through => :people, class_name: "Member"
 	has_many :teams, :through => :memberships
+	belongs_to :current_team, class_name: "Team"
 
 	attr_accessor :heightft
 	attr_accessor :heightin

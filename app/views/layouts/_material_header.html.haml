@@ -29,7 +29,7 @@
       %span
         = current_user.email
         %br
-        %strong= current_user.teams.any? ? current_user.teams.first.name : ""
+        %strong= current_team.name
       %div.mdl-layout-spacer
       %button.mdl-button.mdl-js-button.mdl-js-ripple-effect.mdl-button--icon{ :id => "accbtn" }
         %i.material-icons{ :role => "presentation"}
@@ -44,11 +44,11 @@
 
   %nav.demo-navigation.mdl-navigation.mdl-color--light-green
     - if current_user.teams.any?
-      = link_to current_user.teams.first, class:"mdl-navigation__link" do
+      = link_to current_team, class:"mdl-navigation__link" do
         %i.material-icons{ :role => "presentation" }
           dashboard
         Dashboard
-      = link_to team_roster_path(current_user.teams.first), class:"mdl-navigation__link" do
+      = link_to team_roster_path(current_team), class:"mdl-navigation__link" do
         %i.material-icons{ :role => "presentation" }
           assignment_ind
         Roster

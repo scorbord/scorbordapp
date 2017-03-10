@@ -94,6 +94,12 @@ Then(/^(.*?) in the header$/) do |action|
   end
 end
 
+Then(/^(.*?) in the sidenav$/) do |action|
+  within("//header[@id='sidenav']") do
+    step(action)
+  end
+end
+
 Then(/^(.*?) in the email for '(.*?)'$/) do |action, email_address|
   email = open_email(email_address)
   expect(email).to be_present, ->{ 'Expected to find email' }

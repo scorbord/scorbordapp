@@ -3,6 +3,7 @@ module SessionsHelper
 	# Logs the given user IN
 	def log_in(user)
 		session[:user_id] = user.id
+		current_team
 	end
 
 	# Remembers a user in a permanent session
@@ -72,7 +73,19 @@ module SessionsHelper
 		flash[:error] = "You must be logged in to do that."
 	end
 
+	def current_team
+		if current_user.current_team_id
+			current_user.current_team
+		elsif current_user.teams.any?
+			current_user.update_attribute(:current_team_id, current_user.teams.first.id)
+			current_user.current_team
+		else
+			Team.new(name: "STILL MISSING A TEAM")
+		end
+	end
 
-
+	def current_team?(team)
+		current_user.current_team == team
+	end
 
 end

@@ -23,6 +23,15 @@
 		<% if Rails.env.development? %>
 				<%= branch_info %>
 		<% end %>
+		<% if current_user.teams.count > 1 %>
+			<div id="team-selector" class="mdl-color--grey-800 mdl-text-color--white">
+				<span>Teams: </span>
+				<% current_user.teams.each do |team| %>
+					<%= link_to "#{team.school.initials.upcase} #{team.name.upcase} (#{team.program.sport.upcase})", set_current_team_path(:team_id => team.id), class:"mdl-navigation__link #{current_team?(team) ? "active" : "" }" %>
+				<% end %>
+			</div>
+		<% end %>
+
 		<div class="demo-layout mdl-layout mdl-js-layout mdl-layout--fixed-drawer mdl-layout--fixed-header">
       <%= render 'layouts/material_header' %>
 

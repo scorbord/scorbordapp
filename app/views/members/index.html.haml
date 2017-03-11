@@ -1,19 +1,20 @@
 - content_for(:title, "#{@team.name} #{@team.sport} > Roster")
 #team_show.experimental.mdl-cell--12-col.mdl-grid
-	%div.fab-col
-		%div.speed-dial
-			=link_to new_team_member_path(@team, :role => "coach"), class:"mdl-button mdl-js-button mdl-button--colored mdl-js-ripple-effect mdl-button--fab" do
+	- if admin_of_current_team?(current_user)
+		%div.fab-col
+			%div.speed-dial
+				=link_to new_team_member_path(@team, :role => "coach"), class:"mdl-button mdl-js-button mdl-button--colored mdl-js-ripple-effect mdl-button--fab" do
+					%i.material-icons
+						supervisor_account
+				%span Coach
+			%div.speed-dial
+				=link_to new_team_member_path(@team, :role => "player"), class:"mdl-button mdl-js-button mdl-button--colored mdl-js-ripple-effect mdl-button--fab" do
+					%i.material-icons
+						person
+				%span Player
+			%a.mdl-button.mdl-js-button.mdl-button--colored.mdl-js-ripple-effect.mdl-button--fab#expand-speed-dial
 				%i.material-icons
-					supervisor_account
-			%span Coach
-		%div.speed-dial
-			=link_to new_team_member_path(@team, :role => "player"), class:"mdl-button mdl-js-button mdl-button--colored mdl-js-ripple-effect mdl-button--fab" do
-				%i.material-icons
-					person
-			%span Player
-		%a.mdl-button.mdl-js-button.mdl-button--colored.mdl-js-ripple-effect.mdl-button--fab#expand-speed-dial
-			%i.material-icons
-				add
+					add
 	- unless @members.empty?
 		%div.mdl-cell.mdl-cell--12-col.mdl-grid
 			%div.mdl-tabs.mdl-js-tabs.mdl-js-ripple-effect

@@ -88,4 +88,8 @@ module SessionsHelper
 		current_user.current_team == team
 	end
 
+	def admin_of_current_team?(user)
+		user.memberships.where("team_id = #{current_team.id}").pluck(:admin).include?(true)
+	end
+
 end

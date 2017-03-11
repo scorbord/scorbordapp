@@ -53,6 +53,20 @@ Feature: User manages team
 		And I see "OC" in the "Sobchak" row within the "coaches-panel" panel
 		And I see "OL" in the "Sobchak" row within the "coaches-panel" panel
 
+	Scenario: NonAdmin User cannot add someone to team
+		Given I am logged in as a user
+		And I belong to a Soccer team named "The Kickers"
+		When I visit the roster page for "The Kickers"
+		Then I do not see "add"
+
+	Scenario: NonAdmin User cannot remove someone from team
+		Given I am logged in as a user
+		And I belong to a Soccer team named "The Kickers"
+		And there is a Player
+		When I visit the roster page for "The Kickers"
+		And I click "edit" in the "players-panel" div
+		Then I do not see "Delete"
+
 	Scenario: Team owner adds a Player
 		Given I am logged in as a user
 		And I have a Bowling team named "The Rollers"

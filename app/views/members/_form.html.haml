@@ -83,7 +83,7 @@
 		%div.mdl-card__actions.mdl-card--border
 			= f.submit "Save", class:"mdl-button mdl-button--colored mdl-js-button mdl-js-ripple-effect"
 			= link_to "cancel", :back, class:"mdl-color-text--grey mdl-button mdl-button--colored mdl-js-button mdl-js-ripple-effect"
-	- if params[:action] == "edit" && admin_of_current_team?(current_user)
+	- if params[:action] == "edit" && admin_of_current_team?(current_user) && @member.user != current_user
 		%div.team_delete
 			= link_to team_member_path(@member.team_id, @member.id), class:"mdl-button mdl-button--colored mdl-js-button mdl-js-ripple-effect mdl-color-text--red", :method => 'delete' do
 				Delete this #{role.capitalize}

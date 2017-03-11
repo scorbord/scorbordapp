@@ -105,6 +105,13 @@ Feature: User manages team
 		When I click "Delete this Coach"
 		Then I do not see "Sobchak"
 
+	Scenario: Team admin cannot remove himself from the Team
+		Given I am logged in as a user
+		And I have a Bowling team named "The Rollers"
+		And I visit the roster page for "The Rollers"
+		And I click "edit" inside the first "Lebowski" row
+		Then I do not see "Delete"
+
 	Scenario: Team owner removes a Player from the Team
 		Given I am logged in as a user
 		And I have a Bowling team named "The Rollers"

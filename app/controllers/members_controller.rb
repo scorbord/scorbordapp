@@ -46,8 +46,10 @@ class MembersController < ApplicationController
 		@member = Member.find(params[:id])
 		@team = @member.team
 		@person = @member.person
-		@person.heightft = @person.height / 12
-		@person.heightin = @person.height % 12
+		if @person.height
+			@person.heightft = @person.height / 12
+			@person.heightin = @person.height % 12
+		end
 		@sides = @team.sides
 		if @member.role == 'coach'
 			@positions = @team.position_teams.joins(:position).where('position_type = 0')

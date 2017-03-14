@@ -29,3 +29,7 @@ end
 Given(/^I visit the organization page for "(.*?)"$/) do |name|
   visit(admin_organization_path(Organization.find_by!(name: name)))
 end
+
+Then(/^I am viewing the redeem page for the invitation$/) do
+  expect(current_path).to eq(invitation_redeem_path(@inv.token))
+end

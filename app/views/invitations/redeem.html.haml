@@ -1,5 +1,5 @@
 - content_for(:title, "Redeem Invitation")
-%div.mdl-grid.mdl-color--green
+%div.mdl-grid
   %div.pricing-section-header
     %h2 #{@user.first_name}, redeem your invitation!
   %div.login-section.mdl-grid
@@ -19,7 +19,7 @@
               = f.text_field :email, class: "mdl-textfield__input"
             %div.mdl-textfield.mdl-js-textfield.mdl-textfield--floating-label
               = f.label :password, "Password", class: "mdl-textfield__label"
-              = f.password_field :password, class: "mdl-textfield__input"
+              = f.password_field :password, class: "mdl-textfield__input", :autofocus => true
             %div.mdl-textfield.mdl-js-textfield.mdl-textfield--floating-label
               = f.label :password_confirm, "Password Confirm", class: "mdl-textfield__label"
               = f.password_field :password_confirm, class: "mdl-textfield__input"

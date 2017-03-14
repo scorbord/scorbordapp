@@ -27,9 +27,9 @@ class InvitationsController < ApplicationController
   end
 
 	def redeem
-		@invitation = Invitation.find_by(token: params[:invitation_id])
+		@invitation ||= Invitation.find_by(token: params[:invitation_id])
 		@user = User.new(email: @invitation.email, first_name: @invitation.first_name, last_name: @invitation.last_name)
-		render :layout => 'materialhome'
+    render :layout => 'beta'
 	end
 
   private

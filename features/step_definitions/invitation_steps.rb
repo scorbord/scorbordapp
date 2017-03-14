@@ -5,3 +5,11 @@ Given(/^the following invitation request has been submitted:$/) do |table|
     #UserMailer.invitation_request_admin_notify(@inv).deliver_now
   end
 end
+
+Given(/^SuperAdmin approves the following invitation request:$/) do |table|
+  table.hashes.each do |attrs|
+    attrs.merge!(status: 'Approved', token: "#{SecureRandom.uuid}")
+    @inv = Invitation.create(attrs)
+    UserMailer.invitation_email(@inv).deliver_now
+  end
+end

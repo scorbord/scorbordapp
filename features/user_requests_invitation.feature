@@ -31,3 +31,24 @@ Feature: User requests invitation
 		And I fill in "Email" with "dude@gmail.com"
 		When I press "Request Invitation"
 		Then I see "Email has already been taken"
+
+	Scenario: User redeems invitation
+		Given SuperAdmin approves the following invitation request:
+			| first_name | last_name      | email          |
+			| Jeffrey    | Lebowski       | dude@gmail.com |
+		When I click "Accept Invitation" in the email for 'dude@gmail.com'
+		And I fill in "Password" with "password"
+		And I fill in "Password Confirm" with "password"
+		When I press "Redeem Invitation"
+		Then I see "dude@gmail.com" in the sidenav
+
+	Scenario: User submits invalid password and password confirmation at Invitation Redeem
+		Given SuperAdmin approves the following invitation request:
+			| first_name | last_name      | email          |
+			| Jeffrey    | Lebowski       | dude@gmail.com |
+		When I click "Accept Invitation" in the email for 'dude@gmail.com'
+		And I fill in "Password" with "password"
+		And I fill in "Password Confirm" with "wrongpassword"
+		When I press "Redeem Invitation"
+		Then I am viewing the redeem page for the invitation
+		And I see "Password and Password Confirm must match!"

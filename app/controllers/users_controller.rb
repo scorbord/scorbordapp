@@ -10,7 +10,7 @@ class UsersController < ApplicationController
 
   def create
   	@user = User.new(user_params)
-    if params[:user][:password] && params[:user][:password] == params[:user][:password_confirm]
+    if params[:user][:password] && params[:user][:password] == params[:user][:password_confirmation]
       if @user.save
         log_in @user
         remember_requester(@user.first_name)

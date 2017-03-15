@@ -55,8 +55,8 @@ Feature: User logs in
 
 	Scenario: User requests new password
 		Given the following user:
-			| first_name | last_name | email          | password_reset_token |
-			| Jeffrey    | Lebowski  | dude@gmail.com | abc123               |
+			| first_name | last_name | email          |
+			| Jeffrey    | Lebowski  | dude@gmail.com |
 		And I am not logged in
 		And I visit the login page
 		And I click "Forgot password?"

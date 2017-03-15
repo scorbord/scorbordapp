@@ -8,6 +8,7 @@ class Invitations::UsersController < ApplicationController
       if user_params[:password] == user_params[:password_confirmation]
         @user.password = user_params[:password]
         @user.password_confirmation = user_params[:password_confirmation]
+        @user.password_reset_token = SecureRandom.uuid
         if @user.save
           inv.delete
           log_in(@user)

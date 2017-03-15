@@ -51,4 +51,28 @@ Feature: User requests invitation
 		And I fill in "Password Confirm" with "wrongpassword"
 		When I press "Redeem Invitation"
 		Then I am viewing the redeem page for the invitation
-		And I see "Password and Password Confirm must match!"
+		And I see "Password confirmation doesn't match"
+
+	Scenario: User cannot submit nil passwords at Invitation Redeem
+		Given SuperAdmin approves the following invitation request:
+			| first_name | last_name      | email          |
+			| Jeffrey    | Lebowski       | dude@gmail.com |
+		And I click "Accept Invitation" in the email for 'dude@gmail.com'
+		When I press "Redeem Invitation"
+		Then I am viewing the redeem page for the invitation
+		And I see "Password can't be blank"
+
+	Scenario: User cannot accept invitation multiple times
+		Given SuperAdmin approves the following invitation request:
+			| first_name | last_name      | email          |
+			| Jeffrey    | Lebowski       | dude@gmail.com |
+		When I click "Accept Invitation" in the email for 'dude@gmail.com'
+		And I fill in "Password" with "password"
+		And I fill in "Password Confirm" with "password"
+		And I press "Redeem Invitation"
+		Then I see "dude@gmail.com" in the sidenav
+		Then I logout
+		When I click "Accept Invitation" in the email for 'dude@gmail.com'
+		Then I am taken to the login page
+
+

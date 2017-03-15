@@ -1,5 +1,9 @@
 class InvitationsController < ApplicationController
 
+  before_action :only => :redeem do
+    redirect_to(login_path) unless Invitation.find_by(token: params[:invitation_id]).present?
+  end
+
   def new
     @invitation = Invitation.new
     if ENV['BETA_STATUS'] == "ON"
@@ -28,7 +32,7 @@ class InvitationsController < ApplicationController
 
 	def redeem
 		@invitation ||= Invitation.find_by(token: params[:invitation_id])
-		@user = User.new(email: @invitation.email, first_name: @invitation.first_name, last_name: @invitation.last_name)
+		@user = User.find_by(email: @invitation.email, first_name: @invitation.first_name, last_name: @invitation.last_name)
     render :layout => 'beta'
 	end
 

@@ -4,7 +4,7 @@
     %h2 #{@user.first_name}, redeem your invitation!
   %div.login-section.mdl-grid
     %div.mdl-cell--6-col.card-centered
-      = form_for(@user) do |f|
+      = form_for([@invitation, @user]) do |f|
         %div.mdl-card.mdl-shadow--4dp
           %div.mdl-card__supporting-text.mdl-typography--text-center
             = render 'shared/user_error_messages'

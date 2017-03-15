@@ -41,6 +41,7 @@ Rails.application.routes.draw do
 
   resources :invitations do
     get 'redeem' => 'invitations#redeem'
+    resource :user, controller: 'invitations/users'
   end
 
   namespace :admin do

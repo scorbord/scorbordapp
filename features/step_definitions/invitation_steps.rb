@@ -9,7 +9,10 @@ end
 Given(/^SuperAdmin approves the following invitation request:$/) do |table|
   table.hashes.each do |attrs|
     attrs.merge!(status: 'Approved', token: "#{SecureRandom.uuid}")
-    @inv = Invitation.create(attrs)
+    Invitation.create(attrs)
+    @inv = Invitation.find_by(attrs)
+    @user = UserBuilder.new(@inv).setup_user_from_invite
+    @user.save
     UserMailer.invitation_email(@inv).deliver_now
   end
 end

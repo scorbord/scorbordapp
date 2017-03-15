@@ -11,7 +11,8 @@
 							Login
 					%div.mdl-card__supporting-text.mdl-typography--text-center
 						- flash.each do |name, msg|
-							%div.mdl-color-text--red= msg
+							- unless name == 'success'
+								%div.mdl-color-text--red= msg
 						%div.mdl-textfield.mdl-js-textfield.mdl-textfield--floating-label
 							= f.label "email", "Email address", class:"mdl-textfield__label"
 							= f.email_field :email, :class => "mdl-textfield__input", :autofocus => true

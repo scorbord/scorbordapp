@@ -1,5 +1,4 @@
 - if @user.errors.any?
-  %h3.mdl-color-text--red Uh-oh!
   %div.mdl-color-text--red.mdl-typography--text-left
     %ul
       - @user.errors.full_messages.each do |msg|

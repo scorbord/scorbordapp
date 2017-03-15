@@ -10,8 +10,7 @@
 						%h2.mdl-card__title-text
 							Reset your password
 					%div.mdl-card__supporting-text.mdl-typography--text-center
-						- flash.each do |name, msg|
-							%div.mdl-color-text--red= msg
+						= render 'shared/user_error_messages'
 						%div.mdl-textfield.mdl-js-textfield.mdl-textfield--floating-label
 							= f.label "password", "Password", class:"mdl-textfield__label"
 							= f.password_field :password, :class => "mdl-textfield__input", :autofocus => true

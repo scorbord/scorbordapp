@@ -1,11 +1,8 @@
 class SessionsController < ApplicationController
 
+  layout :beta_layout?
+
   def new
-    if ENV['BETA_STATUS'] == "ON"
-      render :layout => 'beta'
-    else
-      render :layout => 'materialhome'
-    end
   end
 
   def create
@@ -16,14 +13,8 @@ class SessionsController < ApplicationController
   		remember user
   		redirect_back_or(user)
   	else
-  		# tell them they messed up
-  		flash.now[:danger] = 'Invalid email-password combination.'
-  		# and send them back to the login page
-      if ENV['BETA_STATUS'] == "ON"
-        render 'new', :layout => 'beta'
-      else
-        render 'new', :layout => 'materialhome'
-      end
+  		flash.now[:error] = 'Invalid email-password combination.'
+      render 'new'
   	end
   end
 
@@ -36,4 +27,15 @@ class SessionsController < ApplicationController
     current_user.update_attribute(:current_team_id, params[:team_id])
     redirect_to current_team
   end
+
+  private
+
+    def beta_layout?
+      if ENV['BETA_STATUS'] == "ON"
+        'beta'
+      else
+        'materialhome'
+      end
+    end
+
 end

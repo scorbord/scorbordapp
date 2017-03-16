@@ -62,6 +62,7 @@
           %i.material-icons{ :role => "presentation" }
             inbox
           Invitations
+          .mdl-badge(data-badge="#{Invitation.where('status IS NULL').count}")
         = link_to admin_schools_path, class:"mdl-navigation__link" do
           %i.material-icons{ :role => "presentation" }
             business

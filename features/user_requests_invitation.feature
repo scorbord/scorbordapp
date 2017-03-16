@@ -32,6 +32,18 @@ Feature: User requests invitation
 		When I press "Request Invitation"
 		Then I see "Email has already been taken"
 
+	Scenario: Person requests invitation with email in use by a User
+		Given I am not logged in
+		And the following user:
+			| first_name | last_name | email          |
+			| Jeff       | Lebowsky  | dude@gmail.com |
+		And I visit the new invitation page
+		And I fill in "First Name" with "Jeffrey"
+		And I fill in "Last Name" with "Lebowski"
+		And I fill in "Email" with "dude@gmail.com"
+		When I press "Request Invitation"
+		Then I see "Email has already been signed up!"
+
 	Scenario: User redeems invitation
 		Given SuperAdmin approves the following invitation request:
 			| first_name | last_name      | email          |

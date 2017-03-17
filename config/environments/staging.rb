@@ -71,6 +71,8 @@ Rails.application.configure do
     host: 'https://scorbord-staging.herokuapp.com'
   }
 
+  config.action_mailer.asset_host = "https://d2bqvim0lrvxrx.cloudfront.net"
+
   config.action_mailer.delivery_method = :smtp
   config.action_mailer.smtp_settings = {
     address:              'smtp.gmail.com',

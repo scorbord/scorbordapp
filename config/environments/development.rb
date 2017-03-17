@@ -54,4 +54,6 @@ Rails.application.configure do
 		enable_starttls_auto: true  }
 
   Haml::Template.options[:ugly] = true
+
+  config.action_mailer.asset_host = "https://d2bqvim0lrvxrx.cloudfront.net"
 end

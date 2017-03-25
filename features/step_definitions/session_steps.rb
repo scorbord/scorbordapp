@@ -63,8 +63,7 @@ end
 
 Given(/^I have a (.*?) team named "(.*?)"$/) do |sport, name|
   @school = School.create(name: "Abide High School", initials: "AHS", mascot: "Marmots")
-  @program = @school.programs.create(sport: 1)
-  @team = @program.teams.create(name: name, sport: sport)
+  @team = @school.teams.create(name: name, sport: sport)
   TeamBuilder.new(@team).build_complete
   @member = @team.members.create(
     person_id: @user.people.first.id,
@@ -76,8 +75,7 @@ end
 
 Given(/^I belong to a (.*?) team named "(.*?)"$/) do |sport, name|
   @school = School.create(name: "Abide High School", initials: "AHS", mascot: "Marmots")
-  @program = @school.programs.create(sport: 1)
-  @team = @program.teams.create(name: name, sport: sport)
+  @team = @school.teams.create(name: name, sport: sport)
   TeamBuilder.new(@team).build_complete
   @member = @team.members.create(
     person_id: @user.people.first.id,
@@ -90,8 +88,7 @@ end
 Given(/^I have the following teams:$/) do |table|
   table.hashes.each do |attrs|
     @school = School.create(name: "Abide High School", initials: "AHS", mascot: "Marmots")
-    @program = @school.programs.create(sport: attrs['sport'])
-    @team = @program.teams.create(name: attrs['name'], sport: @program[:sport])
+    @team = @school.teams.create(name: attrs['name'], sport: attrs[:sport])
     TeamBuilder.new(@team).build_complete
     @member = @team.members.create(
       person_id: @user.people.first.id,

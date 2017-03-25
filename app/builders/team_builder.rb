@@ -24,7 +24,7 @@ class TeamBuilder
 	private
 
 		def build_position_teams
-			@team.positions << Position.where(sport: @team.program[:sport])
+			@team.positions << Position.where(sport: @team[:sport])
 		end
 
 		def build_team_units

@@ -51,9 +51,6 @@ Rails.application.routes.draw do
       get 'delete' => 'invitations#destroy'
     end
     resources :schools do
-      resources :programs
-    end
-    resources :programs do
       resources :teams
     end
     resources :teams

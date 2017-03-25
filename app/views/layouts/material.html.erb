@@ -29,7 +29,7 @@
 			<div id="team-selector" class="mdl-color--grey-800 mdl-text-color--white">
 				<span>Teams: </span>
 				<% current_user.teams.each do |team| %>
-					<%= link_to "#{team.school.initials.upcase} #{team.name.upcase} (#{team.program.sport.upcase})", set_current_team_path(:team_id => team.id), class:"mdl-navigation__link #{current_team?(team) ? "active" : "" }" %>
+					<%= link_to "#{team.school.initials.upcase} #{team.name.upcase} (#{team.sport.upcase})", set_current_team_path(:team_id => team.id), class:"mdl-navigation__link #{current_team?(team) ? "active" : "" }" %>
 				<% end %>
 			</div>
 		<% end %>

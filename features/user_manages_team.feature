@@ -7,10 +7,10 @@ Feature: User manages team
 		And I view my account
 		When I click "Add a team"
 		And I fill in "Team Name" with "The Rollers"
-		And I fill in "Sport" with "Bowling"
+		And I fill in "Sport" with "Football"
 		And I press "Create Team"
 		Then I see "The Rollers"
-		And I see "Bowling"
+		And I see "Football"
 
 	Scenario: User sees blank slate when he has no teams
 		Given I am logged in as a user
@@ -19,15 +19,15 @@ Feature: User manages team
 
 	Scenario: User views a list of all his teams
 		Given I am logged in as a user
-		And I have a Bowling team named "The Rollers"
-		And I have a Golf team named "The Swingers"
+		And I have a Football team named "The Rollers"
+		And I have a Soccer team named "The Swingers"
 		When I view my account
 		Then I see "The Rollers"
 		And I see "The Swingers"
 
 	Scenario: User views a team
 		Given I am logged in as a user
-		And I have a Bowling team named "The Rollers"
+		And I have a Football team named "The Rollers"
 		And I am viewing my account
 		When I click "launch" inside the "The Rollers" list item
 		Then I am on the team show page for "The Rollers"
@@ -35,7 +35,7 @@ Feature: User manages team
 
 	Scenario: Team owner adds a Coach
 		Given I am logged in as a user
-		And I have a Bowling team named "The Rollers"
+		And I have a Football team named "The Rollers"
 		And I visit the roster page for "The Rollers"
 		And I click "supervisor_account"
 		And I fill in "First Name" with "Walter"
@@ -69,7 +69,7 @@ Feature: User manages team
 
 	Scenario: Team owner adds a Player
 		Given I am logged in as a user
-		And I have a Bowling team named "The Rollers"
+		And I have a Football team named "The Rollers"
 		And I visit the roster page for "The Rollers"
 		When I click "person"
 		And I fill in "First Name" with "Theodore"
@@ -98,7 +98,7 @@ Feature: User manages team
 
 	Scenario: Team owner removes a Coach from the Team
 		Given I am logged in as a user
-		And I have a Bowling team named "The Rollers"
+		And I have a Football team named "The Rollers"
 		And there is a Coach
 		And I visit the roster page for "The Rollers"
 		And I click "edit" inside the first "Sobchak" row
@@ -107,14 +107,14 @@ Feature: User manages team
 
 	Scenario: Team admin cannot remove himself from the Team
 		Given I am logged in as a user
-		And I have a Bowling team named "The Rollers"
+		And I have a Football team named "The Rollers"
 		And I visit the roster page for "The Rollers"
 		And I click "edit" inside the first "Lebowski" row
 		Then I do not see "Delete"
 
 	Scenario: Team owner removes a Player from the Team
 		Given I am logged in as a user
-		And I have a Bowling team named "The Rollers"
+		And I have a Football team named "The Rollers"
 		And there is a Player
 		And I visit the roster page for "The Rollers"
 		And I click "edit" inside the first "Kerabatsos" row
@@ -123,7 +123,7 @@ Feature: User manages team
 
 	Scenario: Team owner views a Player Profile
 		Given I am logged in as a user
-		And I have a Bowling team named "The Rollers"
+		And I have a Football team named "The Rollers"
 		And there is a Player
 		And I visit the roster page for "The Rollers"
 		When I click "view" inside the first "Kerabatsos" row
@@ -131,7 +131,7 @@ Feature: User manages team
 
 	Scenario: Team owner views a Coach Profile
 		Given I am logged in as a user
-		And I have a Bowling team named "The Rollers"
+		And I have a Football team named "The Rollers"
 		And there is a Coach
 		And I visit the roster page for "The Rollers"
 		When I click "view" inside the first "Sobchak" row
@@ -139,7 +139,7 @@ Feature: User manages team
 
 	Scenario: Team owner edits a Player's Profile
 		Given I am logged in as a user
-		And I have a Bowling team named "The Rollers"
+		And I have a Football team named "The Rollers"
 		And there is a Player
 		And I visit the roster page for "The Rollers"
 		When I click "edit" inside the first "Kerabatsos" row
@@ -153,7 +153,7 @@ Feature: User manages team
 	
 	Scenario: Team owner edits a Coach's Profile
 		Given I am logged in as a user
-		And I have a Bowling team named "The Rollers"
+		And I have a Football team named "The Rollers"
 		And there is a Coach
 		And I visit the roster page for "The Rollers"
 		When I click "edit" inside the first "Sobchak" row

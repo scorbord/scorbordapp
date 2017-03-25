@@ -30,6 +30,7 @@ class InvitationsController < ApplicationController
 	def redeem
 		@invitation ||= Invitation.find_by(token: params[:invitation_id])
 		@user = User.find_by(email: @invitation.email, first_name: @invitation.first_name, last_name: @invitation.last_name)
+    render :layout => 'beta'
 	end
 
   private

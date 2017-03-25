@@ -35,16 +35,14 @@ Given(/^I am logged in as a user with multiple teams$/) do
   @user = find_or_create_user(attrs)
 
   @school = School.create(name: "Abide High School", initials: "AHS", mascot: "Marmots")
-  @program = @school.programs.create(sport: 1)
-  @team = @program.teams.create(name: "The Hitters", sport: 1)
+  @team = @school.teams.create(name: "The Hitters", sport: 1)
   TeamBuilder.new(@team).build_complete
   @member = @team.members.create(
                                   person_id: @user.people.first.id,
                                   admin: true,
                                   role: "coach",
                                 )
-  @program = @school.programs.create(sport: 2)
-  @team = @program.teams.create(name: "The Kickers", sport: 2)
+  @team = @school.teams.create(name: "The Kickers", sport: 2)
   TeamBuilder.new(@team).build_complete
   @member = @team.members.create(
                                   person_id: @user.people.first.id,

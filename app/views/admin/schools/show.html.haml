@@ -18,7 +18,7 @@
               =team.name
           %span.mdl-list__item-secondary-content
             =link_to "view", admin_school_team_path(@school, team)
-            =link_to admin_school_program_path(@school, team), :method => :delete do
+            =link_to admin_school_team_path(@school, team), :method => :delete do
               %i.material-icons
                 delete
     =link_to "Add a Team", new_admin_school_team_path(@school), class: "mdl-button mdl-js-button mdl-button--colored"

@@ -1,4 +1,4 @@
--content_for(:title, "#{@team.school.initials} #{@team.name} #{@team.program.sport}")
+-content_for(:title, "#{@team.school.initials} #{@team.name} #{@team.sport}")
 %div.mdl-cell.mdl-cell--8-col
   %ul
     -@team.positions.each do |pos|

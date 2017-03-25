@@ -5,11 +5,6 @@ class TeamBuilder
 		@team = team
 	end
 
-	#initialize the object
-#	def initialize(params)
-#		@team = Team.create(name: params[:team][:name], program_id: params[:program_id])
-#	end
-
 	#callable method goes here!
 	def build_complete
 		begin

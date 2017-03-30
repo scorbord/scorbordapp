@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20170325203619) do
+ActiveRecord::Schema.define(version: 20170330015334) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -89,6 +89,33 @@ ActiveRecord::Schema.define(version: 20170325203619) do
     t.datetime "end_date"
     t.datetime "created_at"
     t.datetime "updated_at"
+  end
+
+  create_table "prospects", force: :cascade do |t|
+    t.integer  "college_team_id"
+    t.string   "first_name"
+    t.string   "last_name"
+    t.string   "nickname"
+    t.string   "email"
+    t.integer  "hs_grad_year"
+    t.string   "cell_phone"
+    t.string   "twitter"
+    t.string   "facebook"
+    t.string   "instagram"
+    t.string   "snapchat"
+    t.string   "home_city"
+    t.string   "home_state"
+    t.string   "intended_major"
+    t.string   "club_team_name"
+    t.string   "club_team_city"
+    t.string   "club_team_state"
+    t.string   "high_school_name"
+    t.string   "high_school_city"
+    t.string   "high_school_state"
+    t.text     "notes"
+    t.datetime "birthday"
+    t.string   "dominant_foot"
+    t.string   "position"
   end
 
   create_table "schools", force: :cascade do |t|

@@ -45,6 +45,8 @@ Rails.application.routes.draw do
     resources :members
   end
 
+  resources :prospects
+
   resources :invitations do
     get 'redeem' => 'invitations#redeem'
     resource :user, controller: 'invitations/users'

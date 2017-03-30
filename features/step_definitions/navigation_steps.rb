@@ -33,3 +33,7 @@ end
 Then(/^I am viewing the redeem page for the invitation$/) do
   expect(current_path).to eq(invitation_redeem_path(@inv.token))
 end
+
+Given(/^I am viewing the recruiting page$/) do
+  visit(prospects_path)
+end

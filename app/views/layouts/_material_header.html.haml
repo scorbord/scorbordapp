@@ -56,10 +56,11 @@
         %i.material-icons{ :role => "presentation" }
           event
         Schedule
-      = link_to prospects_path, class:"mdl-navigation__link" do
-        %i.material-icons{ :role => "presentation" }
-          event
-        Prospects
+      - if admin_or_coach_of_current_team?(current_user)
+        = link_to prospects_path, class:"mdl-navigation__link" do
+          %i.material-icons{ :role => "presentation" }
+            event
+          Prospects
     - if current_user.super_admin?
       %div.super_admin_nav
         = link_to admin_invitations_path, class:"mdl-navigation__link" do

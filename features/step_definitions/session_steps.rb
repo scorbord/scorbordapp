@@ -76,12 +76,29 @@ Given(/^I belong to a (.*?) team named "(.*?)"$/) do |sport, name|
   @team = @school.teams.create(name: name, sport: sport)
   TeamBuilder.new(@team).build_complete
   @member = @team.members.create(
+    user_id: @user.id,
     person_id: @user.people.first.id,
-                                  admin: false,
-                                  role: "coach"
-                                )
+    admin: false,
+    role: "coach"
+    )
+  @user.update_attributes(current_team_id: @team.id)
 
 end
+
+Given(/^I am a player on a (.*?) team named "(.*?)"$/) do |sport, name|
+  @school = School.create(name: "Abide High School", initials: "AHS", mascot: "Marmots")
+  @team = @school.teams.create(name: name, sport: sport)
+  TeamBuilder.new(@team).build_complete
+  @member = @team.members.create(
+    user_id: @user.id,
+    person_id: @user.people.first.id,
+    admin: false,
+    role: "player"
+    )
+  @user.update_attributes(current_team_id: @team.id)
+
+end
+
 
 Given(/^I have the following teams:$/) do |table|
   table.hashes.each do |attrs|

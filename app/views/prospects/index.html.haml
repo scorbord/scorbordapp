@@ -1,0 +1,42 @@
+- content_for(:title, "Prospects")
+#prospects_index.mdl-cell--12-col.mdl-grid
+
+  %div.fab-col
+    =link_to new_prospect_path, class:"mdl-button mdl-js-button mdl-button--colored mdl-js-ripple-effect mdl-button--fab" do
+      %i.material-icons
+        add
+
+  %div.mdl-cell.mdl-cell--12-col.mdl-grid
+    %table.mdl-data-table.mdl-js-data-table.mdl-shadow--2dp
+      %thead
+        %tr
+          %th.mdl-data-table__cell--non-numeric
+            Last Name
+          %th.mdl-data-table__cell--non-numeric
+            First Name
+          %th.mdl-data-table__cell--non-numeric
+            Class
+          %th.mdl-data-table__cell--non-numeric
+            Position
+          %th.mdl-data-table__cell--non-numeric
+            Hometown
+          %th
+      %tbody
+        -@prospects.each do |prospect|
+          %tr
+            %td.mdl-data-table__cell--non-numeric
+              = prospect.last_name
+            %td.mdl-data-table__cell--non-numeric
+              = prospect.first_name
+            %td.mdl-data-table__cell--non-numeric
+              = prospect.hs_grad_year
+            %td.mdl-data-table__cell--non-numeric
+              "add pos"
+            %td.mdl-data-table__cell--non-numeric
+              = "#{prospect.home_city}, #{prospect.home_state}"
+            %td.mdl-data-table__cell--non-numeric
+              = link_to "view", prospect, class: "mdl-button mdl-js-button mdl-js-ripple-effect mdl-button--colored"
+              = link_to "edit", edit_prospect_path(prospect), class: "mdl-button mdl-js-button mdl-js-ripple-effect mdl-button--colored"
+
+
+

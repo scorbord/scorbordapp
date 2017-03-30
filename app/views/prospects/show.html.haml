@@ -1,0 +1,79 @@
+- content_for(:title, "Prospects > #{@prospect.first_name} #{@prospect.last_name}")
+%div.mdl-grid.mdl-cell--12-col#prospect_show
+	%div.mdl-cell.mdl-cell--12-col.headliner
+		%h3
+			#{@prospect.first_name}
+			- if @prospect.nickname
+				"#{@prospect.nickname}"
+			#{@prospect.last_name}
+		%span.grad_year= @prospect.hs_grad_year
+		%span.position= @prospect.position
+		%span.dominant_foot= @prospect.dominant_foot
+		%span= "#{@prospect.home_city}, #{@prospect.home_state}"
+	%div.mdl-cell.mdl-cell--12-col.subdetail
+		%span= "#{@prospect.club_team_name} (#{@prospect.club_team_city}, #{@prospect.club_team_state})"
+	%div.mdl-cell.mdl-cell--12-col.subdetail
+		%span= "#{@prospect.high_school_name} (#{@prospect.high_school_city}, #{@prospect.high_school_state})"
+
+	%div.mdl-cell.mdl-cell--12-col
+		Intended Major:
+		%span= @prospect.intended_major
+
+	%div.mdl-cell.mdl-cell--12-col.contact
+		%span= @prospect.cell_phone
+		%span= @prospect.email
+		%span= @prospect.birthday
+	%div.mdl-cell.mdl-cell--12-col.socialmedia
+		-if @prospect.twitter?
+			%span.twitter= @prospect.twitter
+		-if @prospect.facebook?
+			%span.facebook= @prospect.facebook
+		-if @prospect.instagram?
+			%span.instagram= @prospect.instagram
+		-if @prospect.snapchat?
+			%span.snapchat= @prospect.snapchat
+
+
+	%div.mdl-cell.mdl-cell--12-col.mdl-grid
+		%div.mdl-cell.mdl-cell--6-col
+			Mr. Father McLastName
+			%br
+			Father
+			%br
+			(444) 555-4321
+			%br
+			fathermclastname@example.com
+
+		%div.mdl-cell.mdl-cell--6-col
+			Mrs. Mother McLastName
+			%br
+			Mother
+			%br
+			(444) 555-2345
+			%br
+			mothermclastname@example.com
+
+	%div.mdl-cell.mdl-cell--12-col.mdl-grid
+		%div.mdl-cell.mdl-cell--6-col
+			Mr. ClubCoach Surname
+			%br
+			Club Coach (FC Blazers)
+			%br
+			(444) 555-9876
+			%br
+			clubcoach@club.com
+
+		%div.mdl-cell.mdl-cell--6-col
+			Mr. HSCoach Surname
+			%br
+			High School Coach (High School)
+			%br
+			(444) 555-2468
+			%br
+			hscoach@schooldistrict.edu
+
+	%div.mdl-cell.mdl-cell--12-col
+		= @prospect.notes
+
+= link_to "edit", edit_prospect_path(@prospect)
+= @prospect.first_name

@@ -6,6 +6,7 @@
 			- if @prospect.nickname
 				"#{@prospect.nickname}"
 			#{@prospect.last_name}
+			= link_to "edit", edit_prospect_path(@prospect), class:"mdl-button mdl-js-button mdl-js-ripple-effect"
 		%span.grad_year= @prospect.hs_grad_year
 		%span.position= @prospect.position
 		%span.dominant_foot= @prospect.dominant_foot
@@ -74,6 +75,3 @@
 
 	%div.mdl-cell.mdl-cell--12-col
 		= @prospect.notes
-
-= link_to "edit", edit_prospect_path(@prospect)
-= @prospect.first_name

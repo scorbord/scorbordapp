@@ -69,6 +69,5 @@ Feature: Coach manages recruiting prospects
 			| Landon     | Donovan   |
 		When I am logged in
 		Then I do not see "Prospects"
-		
 		And I visit the prospects page	
 		Then I see "You do not have access to that page"

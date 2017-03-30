@@ -92,4 +92,8 @@ module SessionsHelper
 		user.memberships.where("team_id = #{current_team.id}").pluck(:admin).include?(true)
 	end
 
+	def admin_or_coach_of_current_team?(user)
+		user.memberships.where("team_id = #{current_team.id}").pluck(:admin).include?(true) || user.memberships.where("team_id = #{current_team.id}").pluck(:role).include?(0)
+	end
+
 end

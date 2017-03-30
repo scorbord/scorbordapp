@@ -1,4 +1,10 @@
 class ProspectsController < ApplicationController
+  before_action do
+    unless admin_or_coach_of_current_team?(current_user)
+      flash[:error] = "You do not have access to that page"
+      redirect_to current_team
+    end
+  end
 
   def index
     @prospects = current_team.prospects

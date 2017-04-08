@@ -45,7 +45,10 @@ Rails.application.routes.draw do
     resources :members
   end
 
-  resources :prospects
+  resources :prospects do
+    resources :contacts
+    resources :coaches
+  end
 
   resources :invitations do
     get 'redeem' => 'invitations#redeem'

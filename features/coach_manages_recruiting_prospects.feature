@@ -71,3 +71,109 @@ Feature: Coach manages recruiting prospects
 		Then I do not see "Prospects"
 		And I visit the prospects page	
 		Then I see "You do not have access to that page"
+
+	Scenario: Coach adds a Contact to a Prospect
+		Given I am logged in as a user
+		And I have a Soccer team named "The Kickers"
+		And the "The Kickers" team has the following prospects:
+			| first_name | last_name |
+			| Freddy     | Adu       |
+			| Landon     | Donovan   |
+		And I visit the prospects page
+		And I click "view" in the "Donovan" row
+		When I click "add a contact"
+		And I fill in "Relation" with "Father"
+		And I fill in "Salutation" with "Mr."
+		#And I select "Father" from "Relation"
+		#And I select "Mr." from "Salutation"
+		And I fill in "First Name" with "Landad"
+		And I fill in "Last Name" with "Finishovan"
+		And I fill in "Primary Phone" with "770-777-8532"
+		And I fill in "Email" with "landad@example.com"
+		And I press "Save"
+		Then I see "Mr. Landad Finishovan Father"
+
+	Scenario: Coach edits a Prospect's Contact
+		Given I am logged in as a user
+		And I have a Soccer team named "The Kickers"
+		And the "The Kickers" team has the following prospects:
+			| first_name | last_name |
+			| Freddy     | Adu       |
+			| Landon     | Donovan   |
+		And the prospect "Landon Donovan" has the following contacts:
+			| relation | salutation | first_name | last_name  |
+			| Father   | Mr.        | Landad     | Finishovan |
+		And I visit the prospects page
+		And I click "view" in the "Donovan" row
+		When I click "edit" in the "Mr. Landad Finishovan" card actions
+		And I fill in "Last Name" with "Donovan"
+		And I press "Save"
+		Then I see "Mr. Landad Donovan"
+
+	Scenario: Coach removes a Prospect's Contact
+		Given I am logged in as a user
+		And I have a Soccer team named "The Kickers"
+		And the "The Kickers" team has the following prospects:
+			| first_name | last_name |
+			| Freddy     | Adu       |
+			| Landon     | Donovan   |
+		And the prospect "Landon Donovan" has the following contacts:
+			| relation | salutation | first_name | last_name  |
+			| Father   | Mr.        | Landad     | Finishovan |
+		And I visit the prospects page
+		And I click "view" in the "Donovan" row
+		When I click "delete" in the "Landad" card actions
+		Then I do not see "Mr. Landad Finishovan"
+		And I see "Landad deleted from contacts"
+
+	Scenario: Coach adds a Coach to a Prospect
+		Given I am logged in as a user
+		And I have a Soccer team named "The Kickers"
+		And the "The Kickers" team has the following prospects:
+			| first_name | last_name |
+			| Freddy     | Adu       |
+			| Landon     | Donovan   |
+		And I visit the prospects page
+		And I click "view" in the "Donovan" row
+		When I click "add a coach"
+		And I fill in "First Name" with "Coach"
+		And I fill in "Last Name" with "McCoacherson"
+		And I select the "High School" radio button
+		And I fill in "Team Name" with "Abide High School"
+		And I fill in "Primary Phone" with "770-777-8532"
+		And I fill in "Email" with "coach@examplehs.edu"
+		And I press "Save"
+		Then I see "Coach McCoacherson"
+		And I see "Abide High School"
+
+	Scenario: Coach edits a Prospect's Contact
+		Given I am logged in as a user
+		And I have a Soccer team named "The Kickers"
+		And the "The Kickers" team has the following prospects:
+			| first_name | last_name |
+			| Freddy     | Adu       |
+			| Landon     | Donovan   |
+		And the prospect "Landon Donovan" has the following coaches:
+			| first_name | last_name |
+			| Coach      | McCoach   |
+		And I visit the prospects page
+		And I click "view" in the "Donovan" row
+		When I click "edit" in the "Coach McCoach" card actions
+		And I fill in "Last Name" with "Donovan"
+		And I press "Save"
+		Then I see "Coach Donovan"
+
+	Scenario: Coach removes a Prospect's Contact
+		Given I am logged in as a user
+		And I have a Soccer team named "The Kickers"
+		And the "The Kickers" team has the following prospects:
+			| first_name | last_name |
+			| Freddy     | Adu       |
+			| Landon     | Donovan   |
+		And the prospect "Landon Donovan" has the following coaches:
+			| first_name | last_name |
+			| Coach      | McCoach   |
+		And I visit the prospects page
+		And I click "view" in the "Donovan" row
+		When I click "delete" in the "Coach McCoach" card actions
+		Then I do not see "Coach McCoach"

@@ -56,6 +56,10 @@ When(/^I find and press "(.*?)" within "(.*?)"$/) do |link_text, scope|
   end
 end
 
+When(/^I select "(.*?)" from "(.*?)"$/) do |option, dropdown|
+  select(option, from: dropdown)
+end
+
 When(/^I press "(.*?)"$/) do |button|
   click_button(button)
 end

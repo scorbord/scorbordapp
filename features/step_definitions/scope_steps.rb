@@ -6,6 +6,13 @@ Then(/^(.*?) in the "(.*?)" section$/) do |action, identifier|
   end
 end
 
+Then(/^(.*?) in the "(.*?)" mdl-cell$/) do |action, identifier|
+  thecard = "(.//div[contains(.,'#{identifier}')])"
+  within ("#{thecard}[last()]") do
+    step(action)
+  end
+end
+
 Then(/^(.*?) in the "(.*?)" card menu$/) do |action, identifier|
   thecard = "(//div[contains(@class,'mdl-card')][//div[contains(@class,'mdl-card__title')][contains(.,'#{identifier}')]])"
   within ("#{thecard}//div[contains(@class,'mdl-card__menu')]") do
@@ -35,6 +42,12 @@ end
 
 Then(/^(.*?) in the "(.*?)" modal definition list$/) do |action, fieldset|
   within("//div[@id='modal']//dl[dt[contains(.,'#{fieldset}')]]") do
+    step(action)
+  end
+end
+
+Then(/^(.*?) in the "(.*?)" cell$/) do |action, divcontent|
+  within("//div[contains(.,'#{divcontent}')][last()]") do
     step(action)
   end
 end

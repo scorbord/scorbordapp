@@ -1,0 +1,41 @@
+= form_for([@prospect, @contact]) do |f|
+  %div.mdl-card.mdl-shadow--4dp.mdl-cell--8-col.mdl-cell--2-offset
+    %div.mdl-card__title.mdl-card--border
+      = "#{params[:action].capitalize} Contact"
+    %div.mdl-card__supporting-text.mdl-grid
+      %div.mdl-cell.mdl-cell--6-col
+        %div.mdl-textfield.mdl-js-textfield.mdl-textfield--floating-label
+          = f.label "relation", "Relation", class: "mdl-textfield__label"
+          = f.text_field :relation, class:"mdl-textfield__input", :autofocus => true
+        %div.mdl-textfield.mdl-js-textfield.mdl-textfield--floating-label
+          = f.label "salutation", "Salutation", class: "mdl-textfield__label"
+          = f.text_field :salutation, class:"mdl-textfield__input", :autofocus => true
+        %div.mdl-textfield.mdl-js-textfield.mdl-textfield--floating-label
+          = f.label "first_name", "First Name", class: "mdl-textfield__label"
+          = f.text_field :first_name, class:"mdl-textfield__input", :autofocus => true
+        %div.mdl-textfield.mdl-js-textfield.mdl-textfield--floating-label
+          = f.label "last_name", "Last Name", class: "mdl-textfield__label"
+          = f.text_field :last_name, class:"mdl-textfield__input"
+        %div.mdl-textfield.mdl-js-textfield.mdl-textfield--floating-label
+          = f.label "email", "Email", class: "mdl-textfield__label"
+          = f.email_field :email, class:"mdl-textfield__input"
+        %div.mdl-textfield.mdl-js-textfield.mdl-textfield--floating-label
+          = f.label "primary_phone", "Primary Phone", class: "mdl-textfield__label"
+          = f.phone_field :primary_phone, class:"mdl-textfield__input"
+        %div.mdl-textfield.mdl-js-textfield.mdl-textfield--floating-label
+          = f.label "twitter", "Twitter", class: "mdl-textfield__label"
+          = f.text_field :twitter, class:"mdl-textfield__input"
+        %div.mdl-textfield.mdl-js-textfield.mdl-textfield--floating-label
+          = f.label "facebook", "Facebook", class: "mdl-textfield__label"
+          = f.text_field :facebook, class:"mdl-textfield__input"
+        %div.mdl-textfield.mdl-js-textfield.mdl-textfield--floating-label
+          = f.label "instagram", "Instagram", class: "mdl-textfield__label"
+          = f.text_field :instagram, class:"mdl-textfield__input"
+        %div.mdl-textfield.mdl-js-textfield.mdl-textfield--floating-label
+          = f.label "snapchat", "Snapchat", class: "mdl-textfield__label"
+          = f.text_field :snapchat, class:"mdl-textfield__input"
+
+
+    %div.mdl-card__actions.mdl-card--border
+      = f.submit "Save", class:"mdl-button mdl-button--colored mdl-js-button mdl-js-ripple-effect"
+

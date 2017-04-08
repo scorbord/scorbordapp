@@ -35,43 +35,99 @@
 			%span.snapchat= @prospect.snapchat
 
 
-	%div.mdl-cell.mdl-cell--12-col.mdl-grid
-		%div.mdl-cell.mdl-cell--6-col
-			Mr. Father McLastName
-			%br
-			Father
-			%br
-			(444) 555-4321
-			%br
-			fathermclastname@example.com
+	%div.mdl-cell.mdl-cell--12-col.mdl-grid.contacts
+		%div.mdl-cell.mdl-cell--12-col
+			%h5
+				Contacts
+				=link_to "add a contact", new_prospect_contact_path(@prospect), class:"mdl-button mdl-js-button mdl-js-ripple-effect mdl-button--colored"
 
-		%div.mdl-cell.mdl-cell--6-col
-			Mrs. Mother McLastName
-			%br
-			Mother
-			%br
-			(444) 555-2345
-			%br
-			mothermclastname@example.com
+		- @prospect.contacts.each do |contact|
+			%div.mdl-cell.mdl-cell--6-col.mdl-card.mdl-shadow--2dp
+				%div.mdl-card__title.mdl-card--border
+					%h2.mdl-card__title-text
+						= "#{contact.salutation} #{contact.first_name} #{contact.last_name}"
+					%div.mdl-card__subtitle-text
+						= contact.relation
+				%div.mdl-card__supporting-text
+					%li.mdl-list__item.mdl-list__item--two-line
+						.mdl-list__item-primary-content
+							%i.material-icons.mdl-list__item-icon
+								phone
+							=number_to_phone(contact.primary_phone)
+							%span.mdl-list__item-sub-title
+								Primary Phone
+					%li.mdl-list__item.mdl-list__item--two-line
+						.mdl-list__item-primary-content
+							%i.material-icons.mdl-list__item-icon
+								email
+							=contact.email
+							%span.mdl-list__item-sub-title
+								Email
+					-if contact.facebook?
+						%li.mdl-list__item.mdl-list__item--two-line
+							.mdl-list__item-primary-content
+								%i.material-icons.mdl-list__item-icon
+									account_box
+								="fb.co/#{contact.facebook}"
+								%span.mdl-list__item-sub-title
+									Facebook
+					-if contact.twitter?
+						%li.mdl-list__item.mdl-list__item--two-line
+							.mdl-list__item-primary-content
+								%i.material-icons.mdl-list__item-icon
+									account_box
+								="@#{contact.twitter}"
+								%span.mdl-list__item-sub-title
+									Twitter
+					-if contact.instagram?
+						%li.mdl-list__item.mdl-list__item--two-line
+							.mdl-list__item-primary-content
+								%i.material-icons.mdl-list__item-icon
+									account_box
+								="@#{contact.instagram}"
+								.mdl-list__item-sub-title
+									Instagram
+				%div.mdl-card__actions.mdl-card--border
+					=link_to "edit", edit_prospect_contact_path(@prospect, contact), class:"mdl-button mdl-js-button mdl-js-ripple-effect mdl-button--colored"
+					=link_to "delete", prospect_contact_path(@prospect, contact), method: :delete, class:"mdl-button mdl-js-button mdl-js-ripple-effect mdl-button--colored"
 
-	%div.mdl-cell.mdl-cell--12-col.mdl-grid
-		%div.mdl-cell.mdl-cell--6-col
-			Mr. ClubCoach Surname
-			%br
-			Club Coach (FC Blazers)
-			%br
-			(444) 555-9876
-			%br
-			clubcoach@club.com
+		%div.mdl-cell.mdl-cell--12-col
+			%h5
+				Coaches
+				=link_to "add a coach", new_prospect_coach_path(@prospect), class:"mdl-button mdl-js-button mdl-js-ripple-effect mdl-button--colored"
+		-@prospect.coaches.each do |coach|
+			%div.mdl-cell.mdl-cell--6-col.mdl-card.mdl-shadow--2dp
+				%div.mdl-card__title.mdl-card--border
+					%h2.mdl-card__title-text
+						="#{coach.first_name} #{coach.last_name}"
+					%div.mdl-card__subtitle-text
+						="#{coach.program_kind} Coach"
 
-		%div.mdl-cell.mdl-cell--6-col
-			Mr. HSCoach Surname
-			%br
-			High School Coach (High School)
-			%br
-			(444) 555-2468
-			%br
-			hscoach@schooldistrict.edu
+				%div.mdl-card__supporting-text
+					%li.mdl-list__item.mdl-list__item--two-line
+						.mdl-list__item-primary-content
+							%i.material-icons.mdl-list__item-icon
+								school
+							= coach.program_name
+							%span.mdl-list__item-sub-title
+								Program Name
+					%li.mdl-list__item.mdl-list__item--two-line
+						.mdl-list__item-primary-content
+							%i.material-icons.mdl-list__item-icon
+								phone
+							= number_to_phone(coach.primary_phone)
+							%span.mdl-list__item-sub-title
+								Primary Phone
+					%li.mdl-list__item.mdl-list__item--two-line
+						.mdl-list__item-primary-content
+							%i.material-icons.mdl-list__item-icon
+								email
+							= coach.email
+							%span.mdl-list__item-sub-title
+								Email
+				%div.mdl-card__actions.mdl-card--border
+					=link_to "edit", edit_prospect_coach_path(@prospect, coach), class:"mdl-button mdl-js-button mdl-js-ripple-effect mdl-button--colored"
+					=link_to "delete", prospect_coach_path(@prospect, coach), method: :delete, class:"mdl-button mdl-js-button mdl-js-ripple-effect mdl-button--colored"
 
 	%div.mdl-cell.mdl-cell--12-col
 		= @prospect.notes

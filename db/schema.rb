@@ -11,10 +11,35 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20170330015334) do
+ActiveRecord::Schema.define(version: 20170408190821) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
+
+  create_table "coaches", force: :cascade do |t|
+    t.string  "first_name"
+    t.string  "last_name"
+    t.integer "prospect_id"
+    t.string  "program_name"
+    t.integer "program_kind"
+    t.string  "primary_phone"
+    t.string  "email"
+  end
+
+  create_table "contacts", force: :cascade do |t|
+    t.integer "prospect_id"
+    t.integer "relation"
+    t.string  "salutation"
+    t.string  "first_name"
+    t.string  "last_name"
+    t.string  "primary_phone"
+    t.string  "secondary_phone"
+    t.string  "email"
+    t.string  "facebook"
+    t.string  "twitter"
+    t.string  "instagram"
+    t.string  "snapchat"
+  end
 
   create_table "invitations", force: :cascade do |t|
     t.string   "first_name"

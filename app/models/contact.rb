@@ -4,11 +4,18 @@ class Contact < ActiveRecord::Base
 	enum relation: {
 		Father: 1,
 		Mother: 2,
-		Sibling: 3,
-		Aunt: 4,
-		Uncle: 5,
-		Grandparent: 6,
-		Guardian: 7
+		'Step Father': 3,
+		'Step Mother': 4,
+		Aunt: 5,
+		Uncle: 6,
+		Grandparent: 7,
+		Guardian: 8
+	}
+
+	enum salutation: {
+		'Mr.': 1,
+		'Mrs.': 2,
+		'Ms.': 3
 	}
 
 end

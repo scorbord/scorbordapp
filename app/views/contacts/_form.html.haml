@@ -4,15 +4,15 @@
       = "#{params[:action].capitalize} Contact"
     %div.mdl-card__supporting-text.mdl-grid
       %div.mdl-cell.mdl-cell--6-col
-        %div.mdl-textfield.mdl-js-textfield.mdl-textfield--floating-label
+        %div.mdl-textfield.mdl-js-textfield.mdl-textfield--floating-label.is-dirty
           = f.label "relation", "Relation", class: "mdl-textfield__label"
-          = f.text_field :relation, class:"mdl-textfield__input", :autofocus => true
-        %div.mdl-textfield.mdl-js-textfield.mdl-textfield--floating-label
+          = f.select(:relation, Contact.relations.map {|k,v| [k.humanize, k]}.unshift(["",nil]), :selected => f.object.relation)
+        %div.mdl-textfield.mdl-js-textfield.mdl-textfield--floating-label.is-dirty
           = f.label "salutation", "Salutation", class: "mdl-textfield__label"
-          = f.text_field :salutation, class:"mdl-textfield__input", :autofocus => true
+          = f.select(:salutation, Contact.salutations.map {|k,v| [k.humanize, k]}.unshift(["",nil]), :selected => f.object.salutation)
         %div.mdl-textfield.mdl-js-textfield.mdl-textfield--floating-label
           = f.label "first_name", "First Name", class: "mdl-textfield__label"
-          = f.text_field :first_name, class:"mdl-textfield__input", :autofocus => true
+          = f.text_field :first_name, class:"mdl-textfield__input"
         %div.mdl-textfield.mdl-js-textfield.mdl-textfield--floating-label
           = f.label "last_name", "Last Name", class: "mdl-textfield__label"
           = f.text_field :last_name, class:"mdl-textfield__input"
@@ -38,4 +38,5 @@
 
     %div.mdl-card__actions.mdl-card--border
       = f.submit "Save", class:"mdl-button mdl-button--colored mdl-js-button mdl-js-ripple-effect"
+      = link_to "Cancel", :back, class:"mdl-button mdl-button--colored mdl-js-button mdl-js-ripple-effect mdl-color-text--grey"
 

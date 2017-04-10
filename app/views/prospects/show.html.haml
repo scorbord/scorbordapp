@@ -3,36 +3,98 @@
 	%div.mdl-cell.mdl-cell--12-col.headliner
 		%h3
 			#{@prospect.first_name}
-			- if @prospect.nickname
+			- if @prospect.nickname?
 				"#{@prospect.nickname}"
 			#{@prospect.last_name}
-			= link_to "edit", edit_prospect_path(@prospect), class:"mdl-button mdl-js-button mdl-js-ripple-effect"
+			= link_to "edit", edit_prospect_path(@prospect), class:"mdl-button mdl-js-button mdl-js-ripple-effect mdl-button--colored"
 		%span.grad_year= @prospect.hs_grad_year
 		%span.position= @prospect.position
 		%span.dominant_foot= @prospect.dominant_foot
 		%span= "#{@prospect.home_city}, #{@prospect.home_state}"
-	%div.mdl-cell.mdl-cell--12-col.subdetail
-		%span= "#{@prospect.club_team_name} (#{@prospect.club_team_city}, #{@prospect.club_team_state})"
-	%div.mdl-cell.mdl-cell--12-col.subdetail
-		%span= "#{@prospect.high_school_name} (#{@prospect.high_school_city}, #{@prospect.high_school_state})"
 
 	%div.mdl-cell.mdl-cell--12-col
-		Intended Major:
-		%span= @prospect.intended_major
+		= @prospect.notes
 
-	%div.mdl-cell.mdl-cell--12-col.contact
-		%span= @prospect.cell_phone
-		%span= @prospect.email
-		%span= @prospect.birthday
-	%div.mdl-cell.mdl-cell--12-col.socialmedia
-		-if @prospect.twitter?
-			%span.twitter= @prospect.twitter
-		-if @prospect.facebook?
-			%span.facebook= @prospect.facebook
-		-if @prospect.instagram?
-			%span.instagram= @prospect.instagram
-		-if @prospect.snapchat?
-			%span.snapchat= @prospect.snapchat
+	%div.mdl-cell.mdl-cell--12-col
+		%ul.mdl-list
+			%li.mdl-list__item.mdl-list__item--two-line
+				%span.mdl-list__item-primary-content
+					%i.material-icons.mdl-list__item-icon
+						group_work
+					= "#{@prospect.club_team_name} (#{@prospect.club_team_city}, #{@prospect.club_team_state})"
+					%span.mdl-list__item-sub-title
+						Club Team
+			%li.mdl-list__item.mdl-list__item--two-line
+				%span.mdl-list__item-primary-content
+					%i.material-icons.mdl-list__item-icon
+						location_city
+					= "#{@prospect.high_school_name} (#{@prospect.high_school_city}, #{@prospect.high_school_state})"
+					%span.mdl-list__item-sub-title
+						High School
+			%li.mdl-list__item.mdl-list__item--two-line
+				%span.mdl-list__item-primary-content
+					%i.material-icons.mdl-list__item-icon
+						school
+					= @prospect.intended_major
+					%span.mdl-list__item-sub-title
+						Intended Major
+
+	%div.mdl-cell.mdl-cell--12-col
+		%ul.mdl-list
+			%li.mdl-list__item.mdl-list__item--two-line
+				%span.mdl-list__item-primary-content
+					%i.material-icons.mdl-list__item-icon
+						phone
+					=link_to @prospect.cell_phone, "tel:#{@prospect.cell_phone}"
+					%span.mdl-list__item-sub-title
+						Cell Phone
+			%li.mdl-list__item.mdl-list__item--two-line
+				%span.mdl-list__item-primary-content
+					%i.material-icons.mdl-list__item-icon
+						email
+					=link_to @prospect.email, "mailto:#{@prospect.email}"
+					%span.mdl-list__item-sub-title
+						Email
+			-if @prospect.birthday?
+				%li.mdl-list__item.mdl-list__item--two-line
+					%span.mdl-list__item-primary-content
+						%i.material-icons.mdl-list__item-icon
+							cake
+						= @prospect.birthday
+						%span.mdl-list__item-sub-title
+							Birthday
+
+	%div.mdl-cell.mdl-cell--12-col
+		%ul.mdl-list
+			-if @prospect.twitter?
+				%li.mdl-list__item.mdl-list__item--two-line
+					%span.mdl-list__item-primary-content
+						%i= image_tag 'twitter.svg', :class => "mmaterial-icons mdl-list__item-icon"
+						=link_to "@#{@prospect.twitter}", "https://twitter.com/#{@prospect.twitter}"
+						%span.mdl-list__item-sub-title
+							Twitter
+			-if @prospect.facebook?
+				%li.mdl-list__item.mdl-list__item--two-line
+					%span.mdl-list__item-primary-content
+						%i= image_tag 'facebook.svg', :class => "mmaterial-icons mdl-list__item-icon"
+						=link_to "fb.co/#{@prospect.facebook}", "https://www.facebook.com/#{@prospect.facebook}"
+						%span.mdl-list__item-sub-title
+							Facebook
+			-if @prospect.instagram?
+				%li.mdl-list__item.mdl-list__item--two-line
+					%span.mdl-list__item-primary-content
+						/%i.mdl-list__item-icon
+						%i= image_tag 'instagram.svg', :class => "material-icons mdl-list__item-icon"
+						=link_to "@#{@prospect.instagram}", "https://www.instagram.com/#{@prospect.instagram}"
+						%span.mdl-list__item-sub-title
+							Instagram
+			-if @prospect.snapchat?
+				%li.mdl-list__item.mdl-list__item--two-line
+					%span.mdl-list__item-primary-content
+						%i= image_tag 'snapchat.svg', :class => "material-icons mdl-list__item-icon"
+						=link_to "@#{@prospect.snapchat}", "https://www.snapchat.com/add/#{@prospect.snapchat}"
+						%span.mdl-list__item-sub-title
+							Snapchat
 
 
 	%div.mdl-cell.mdl-cell--12-col.mdl-grid.contacts
@@ -53,38 +115,35 @@
 						.mdl-list__item-primary-content
 							%i.material-icons.mdl-list__item-icon
 								phone
-							=number_to_phone(contact.primary_phone)
+							=link_to number_to_phone(contact.primary_phone), "tel:#{contact.primary_phone}"
 							%span.mdl-list__item-sub-title
 								Primary Phone
 					%li.mdl-list__item.mdl-list__item--two-line
 						.mdl-list__item-primary-content
 							%i.material-icons.mdl-list__item-icon
 								email
-							=contact.email
+							=link_to contact.email, "mailto:#{contact.email}"
 							%span.mdl-list__item-sub-title
 								Email
 					-if contact.facebook?
 						%li.mdl-list__item.mdl-list__item--two-line
 							.mdl-list__item-primary-content
-								%i.material-icons.mdl-list__item-icon
-									account_box
-								="fb.co/#{contact.facebook}"
+								%i= image_tag 'facebook.svg', :class => "material-icons mdl-list__item-icon"
+								=link_to "fb.co/#{contact.facebook}", "https://www.facebook.com/#{contact.facebook}"
 								%span.mdl-list__item-sub-title
 									Facebook
 					-if contact.twitter?
 						%li.mdl-list__item.mdl-list__item--two-line
 							.mdl-list__item-primary-content
-								%i.material-icons.mdl-list__item-icon
-									account_box
-								="@#{contact.twitter}"
+								%i= image_tag 'twitter.svg', :class => "material-icons mdl-list__item-icon"
+								=link_to "@#{contact.twitter}", "https://www.twitter.com/#{contact.twitter}"
 								%span.mdl-list__item-sub-title
 									Twitter
 					-if contact.instagram?
 						%li.mdl-list__item.mdl-list__item--two-line
 							.mdl-list__item-primary-content
-								%i.material-icons.mdl-list__item-icon
-									account_box
-								="@#{contact.instagram}"
+								%i= image_tag 'instagram.svg', :class => "material-icons mdl-list__item-icon"
+								=link_to "@#{contact.instagram}", "https://www.instagram.com/#{contact.instagram}"
 								.mdl-list__item-sub-title
 									Instagram
 				%div.mdl-card__actions.mdl-card--border
@@ -115,19 +174,17 @@
 						.mdl-list__item-primary-content
 							%i.material-icons.mdl-list__item-icon
 								phone
-							= number_to_phone(coach.primary_phone)
+							=link_to number_to_phone(coach.primary_phone), "tel:#{coach.primary_phone}"
 							%span.mdl-list__item-sub-title
 								Primary Phone
 					%li.mdl-list__item.mdl-list__item--two-line
 						.mdl-list__item-primary-content
 							%i.material-icons.mdl-list__item-icon
 								email
-							= coach.email
+							=link_to coach.email, "mailto:#{coach.email}"
 							%span.mdl-list__item-sub-title
 								Email
 				%div.mdl-card__actions.mdl-card--border
 					=link_to "edit", edit_prospect_coach_path(@prospect, coach), class:"mdl-button mdl-js-button mdl-js-ripple-effect mdl-button--colored"
 					=link_to "delete", prospect_coach_path(@prospect, coach), method: :delete, class:"mdl-button mdl-js-button mdl-js-ripple-effect mdl-button--colored"
 
-	%div.mdl-cell.mdl-cell--12-col
-		= @prospect.notes

@@ -82,10 +82,8 @@ Feature: Coach manages recruiting prospects
 		And I visit the prospects page
 		And I click "view" in the "Donovan" row
 		When I click "add a contact"
-		And I fill in "Relation" with "Father"
-		And I fill in "Salutation" with "Mr."
-		#And I select "Father" from "Relation"
-		#And I select "Mr." from "Salutation"
+		And I select "Father" from "Relation"
+		And I select "Mr." from "Salutation"
 		And I fill in "First Name" with "Landad"
 		And I fill in "Last Name" with "Finishovan"
 		And I fill in "Primary Phone" with "770-777-8532"

@@ -82,7 +82,7 @@ Feature: User manages team
 		And I fill in "(in.)" with "10"
 		And I fill in "Weight" with "180"
 		And I select the "Male" radio button
-		And I fill in "Graduation Year" with "1969"
+		And I fill in "Grad Year" with "1969"
 		And I select the "RB" checkbox
 		And I select the "DE" checkbox
 		And I select the "LS" checkbox

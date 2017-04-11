@@ -16,7 +16,8 @@ class Position < ActiveRecord::Base
 		offense: 1,
 		defense: 2,
 		special_teams: 3,
-		midfield: 4
+		midfield: 4,
+		goalkeeper: 5
 	}
 
 	enum position_type: {

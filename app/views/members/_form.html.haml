@@ -20,26 +20,45 @@
 					%div.mdl-textfield.mdl-js-textfield.mdl-textfield--floating-label
 						= p.label "first_name", "First Name", class: "mdl-textfield__label"
 						= p.text_field :first_name, class: "mdl-textfield__input", :autofocus => true
+				%div.mdl-cell.mdl-cell--4-col
 					%div.mdl-textfield.mdl-js-textfield.mdl-textfield--floating-label
 						= p.label "last_name", "Last Name", class: "mdl-textfield__label"
 						= p.text_field :last_name, class: "mdl-textfield__input"
+				%div.mdl-cell.mdl-cell--4-col
 					%div.mdl-textfield.mdl-js-textfield.mdl-textfield--floating-label
-						= p.label "email", "Email Address", class: "mdl-textfield__label"
-						= p.email_field :email, class: "mdl-textfield__input"
-					-if role == 'player'
+						= f.label "nickname", "Nickname", class: "mdl-textfield__label"
+						= f.text_field :nickname, class: "mdl-textfield__input"
+				-if role == 'player'
+					%div.mdl-cell.mdl-cell--3-col
 						%div.mdl-textfield.mdl-js-textfield.mdl-textfield--floating-label
 							= f.label "jersey_number", "Jersey Number", class: "mdl-textfield__label"
 							= f.number_field :jersey_number, class: "mdl-textfield__input", max:"99", min:"0"
-						%div
-							%div.mdl-textfield.mdl-js-textfield.mdl-textfield--floating-label.mdl-cell--4-col
-								= p.label "heightft", "Height (ft.)", class: "mdl-textfield__label"
-								= p.number_field :heightft, class: "mdl-textfield__input", max:"8", min:"3"
-							%div.mdl-textfield.mdl-js-textfield.mdl-textfield--floating-label.mdl-cell--4-col.heightin
-								= p.label "heightin", "(in.)", class: "mdl-textfield__label"
-								= p.number_field :heightin, class: "mdl-textfield__input", max:"11.9999", min:"0", step:"any"
+					%div.mdl-cell.mdl-cell--3-col
+						%div.mdl-textfield.mdl-js-textfield.mdl-textfield--floating-label.mdl-cell--7-col
+							= p.label "heightft", "Height (ft.)", class: "mdl-textfield__label"
+							= p.number_field :heightft, class: "mdl-textfield__input", max:"8", min:"3"
+						%div.mdl-textfield.mdl-js-textfield.mdl-textfield--floating-label.mdl-cell--5-col
+							= p.label "heightin", "(in.)", class: "mdl-textfield__label"
+							= p.number_field :heightin, class: "mdl-textfield__input", max:"11.9999", min:"0", step:"any"
+					%div.mdl-cell.mdl-cell--3-col
 						%div.mdl-textfield.mdl-js-textfield.mdl-textfield--floating-label
 							= p.label "weight", "Weight (lbs.)", class: "mdl-textfield__label"
 							= p.number_field :weight, class: "mdl-textfield__input"
+					-if role == 'player'
+						%div.mdl-cell.mdl-cell--3-col
+							%div.mdl-textfield.mdl-js-textfield.mdl-textfield--floating-label
+								= f.label "grad_year", "Grad Year", class: "mdl-textfield__label"
+								= f.number_field :grad_year, class: "mdl-textfield__input", min:"1900", max:"2100"
+
+				%div.mdl-cell.mdl-cell--6-col
+					%div.mdl-textfield.mdl-js-textfield.mdl-textfield--floating-label
+						= p.label "email", "Email Address", class: "mdl-textfield__label"
+						= p.email_field :email, class: "mdl-textfield__input"
+				%div.mdl-cell.mdl-cell--6-col
+					%div.mdl-textfield.mdl-js-textfield.mdl-textfield--floating-label
+						= f.label "cell_phone", "Cell Phone", class: "mdl-textfield__label"
+						= f.phone_field :cell_phone, class: "mdl-textfield__input"
+				%div.mdl-cell.mdl-cell--6-col
 					%div.horizontal-radio-buttons
 						%span.radio-label Gender
 						%label.mdl-radio.mdl-js-radio.mdl-js-ripple-effect{:for => "Male"}
@@ -50,18 +69,6 @@
 							= p.radio_button :gender, "2", id: "Female", class: "mdl-radio__button"
 							%span.mdl-radio__label
 								Female
-
-			%div.mdl-cell.mdl-cell--6-col
-				%div.mdl-textfield.mdl-js-textfield.mdl-textfield--floating-label
-					= f.label "nickname", "Nickname", class: "mdl-textfield__label"
-					= f.text_field :nickname, class: "mdl-textfield__input"
-				-if role == 'player'
-					%div.mdl-textfield.mdl-js-textfield.mdl-textfield--floating-label
-						= f.label "grad_year", "Graduation Year", class: "mdl-textfield__label"
-						= f.number_field :grad_year, class: "mdl-textfield__input", min:"1900", max:"2100"
-				%div.mdl-textfield.mdl-js-textfield.mdl-textfield--floating-label
-					= f.label "cell_phone", "Cell Phone", class: "mdl-textfield__label"
-					= f.phone_field :cell_phone, class: "mdl-textfield__input"
 
 			%div.mdl-cell.mdl-cell--12-col
 				- if role == 'player'

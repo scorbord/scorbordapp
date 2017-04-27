@@ -1,15 +1,15 @@
 class MembersController < ApplicationController
 
 	def schedule
-		@team = Team.first
+		@team = current_team
 	end
 
 	def schedulev2
-		@team = Team.first
+		@team = current_team
 	end
 
 	def new
-		@team = Team.find(params[:team_id])
+		@team = current_team
 		@person = Person.new
 		@member = @person.memberships.new(team_id: params[:id])
 		@sides = @team.sides.order(:unit_id)
@@ -21,16 +21,15 @@ class MembersController < ApplicationController
 	end
 
 	def index
-		@team = Team.find(params[:team_id])
+		@team = current_team
 		@members = @team.members.joins(:person).order('people.last_name')
 		@coaches = @members.where(role: 0) #.joins(:person).order('people.last_name')
 		@players = @members.where(role: 1) #.joins(:person).order('people.last_name')
 	end
 
 	def index2
-		@team = Team.find(params[:team_id])
+		@team = current_team
 		@members = @team.members.joins(:person).order('people.last_name')
-		#@members = @team.members.joins(:person).order('people.last_name')
 	end
 
 	def show
@@ -65,9 +64,9 @@ class MembersController < ApplicationController
 		@person = Person.find_or_initialize_by(person_params)
 		if @person.save
 			@member = @person.memberships.new(member_params)
-			@member.team_id = params[:team_id]
+			@member.team = current_team
 			if @member.save
-				redirect_to team_roster_path(params[:team_id])
+				redirect_to roster_path
 			else
 				render 'new'
 			end
@@ -81,7 +80,7 @@ class MembersController < ApplicationController
 		@person = @member.person
 		if @person.update_attributes(person_params)
 			if @member.update_attributes(member_params)
-				redirect_to team_roster_path(@member.team)
+				redirect_to roster_path
 			else
 				render 'edit'
 			end

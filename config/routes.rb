@@ -32,6 +32,11 @@ Rails.application.routes.draw do
 
   resource :profile, controller: 'users'
 
+  get 'roster' => 'members#index'
+  scope '/roster' do
+    resources :members
+  end
+
   resources :password_reset
 
   resources :users do

@@ -3,12 +3,12 @@
 	- if admin_of_current_team?(current_user)
 		%div.fab-col
 			%div.speed-dial
-				=link_to new_team_member_path(@team, :role => "coach"), class:"mdl-button mdl-js-button mdl-button--colored mdl-js-ripple-effect mdl-button--fab" do
+				=link_to new_member_path(:role => "coach"), class:"mdl-button mdl-js-button mdl-button--colored mdl-js-ripple-effect mdl-button--fab" do
 					%i.material-icons
 						supervisor_account
 				%span Coach
 			%div.speed-dial
-				=link_to new_team_member_path(@team, :role => "player"), class:"mdl-button mdl-js-button mdl-button--colored mdl-js-ripple-effect mdl-button--fab" do
+				=link_to new_member_path(:role => "player"), class:"mdl-button mdl-js-button mdl-button--colored mdl-js-ripple-effect mdl-button--fab" do
 					%i.material-icons
 						person
 				%span Player
@@ -43,8 +43,8 @@
 									%td.mdl-data-table__cell--non-numeric= member.person.email
 									%td.mdl-data-table__cell--non-numeric= number_to_phone(member.cell_phone)
 									%td
-										=link_to "view", team_member_path(@team.id, member.id), class: "mdl-button mdl-js-button mdl-js-ripple-effect mdl-button--colored"
-										=link_to "edit", edit_team_member_path(@team.id, member.id), class: "mdl-button mdl-js-button mdl-js-ripple-effect mdl-button--colored"
+										=link_to "view", member, class: "mdl-button mdl-js-button mdl-js-ripple-effect mdl-button--colored"
+										=link_to "edit", edit_member_path(member), class: "mdl-button mdl-js-button mdl-js-ripple-effect mdl-button--colored"
 				%div.mdl-tabs__panel.is-active#players-panel
 					%table.mdl-data-table.mdl-js-data-table.mdl-shadow--2dp
 						%thead
@@ -72,8 +72,8 @@
 									%td.mdl-data-table__cell--non-numeric= member.person.formatted_height
 									%td.mdl-data-table__cell--non-numeric= member.person.formatted_weight
 									%td
-										=link_to "view", team_member_path(@team.id, member.id), class: "mdl-button mdl-js-button mdl-js-ripple-effect mdl-button--colored"
-										=link_to "edit", edit_team_member_path(@team.id, member.id), class: "mdl-button mdl-js-button mdl-js-ripple-effect mdl-button--colored"
+										=link_to "view", member, class: "mdl-button mdl-js-button mdl-js-ripple-effect mdl-button--colored"
+										=link_to "edit", edit_member_path(member.id), class: "mdl-button mdl-js-button mdl-js-ripple-effect mdl-button--colored"
 				%div.mdl-tabs__panel#coaches-panel
 					%table.mdl-data-table.mdl-js-data-table.mdl-shadow--2dp
 						%thead
@@ -95,8 +95,8 @@
 									%td.mdl-data-table__cell--non-numeric= member.person.email
 									%td.mdl-data-table__cell--non-numeric= number_to_phone(member.cell_phone)
 									%td
-										=link_to "view", team_member_path(@team.id, member.id), class: "mdl-button mdl-js-button mdl-js-ripple-effect mdl-button--colored"
-										=link_to "edit", edit_team_member_path(@team.id, member.id), class: "mdl-button mdl-js-button mdl-js-ripple-effect mdl-button--colored"
+										=link_to "view", member, class: "mdl-button mdl-js-button mdl-js-ripple-effect mdl-button--colored"
+										=link_to "edit", edit_member_path(member), class: "mdl-button mdl-js-button mdl-js-ripple-effect mdl-button--colored"
 	- else
 		%div.mdl-cell.mdl-cell--12-col.mdl-grid
 			%p

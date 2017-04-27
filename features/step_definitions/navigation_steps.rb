@@ -1,5 +1,5 @@
 Given(/^I (?:view|am viewing) my account$/) do
-  visit(user_path(@user))
+  visit(profile_path)
 end
 
 Given(/^I (?:visit|go to) the roster page for "(.*?)"$/) do |team_name|

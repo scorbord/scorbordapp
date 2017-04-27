@@ -27,6 +27,11 @@ Rails.application.routes.draw do
 
   get 'set_current_team' => 'sessions#set_current_team'
 
+  get 'profile'     => 'users#show'
+
+
+  resource :profile, controller: 'users'
+
   resources :password_reset
 
   resources :users do

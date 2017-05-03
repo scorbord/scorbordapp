@@ -1,7 +1,7 @@
 - content_for(:title, "Edit Profile")
 %div.mdl-cell.mdl-cell--6-col.mdl-cell--middle
 	= render 'shared/user_error_messages'
-	= form_for(@user) do |f|
+	= form_for(@user, url: profile_path) do |f|
 		%div.mdl-card.mdl-shadow--4dp
 			%div.mdl-card__supporting-text
 				%div.mdl-textfield.mdl-js-textfield.mdl-textfield--floating-label
@@ -24,4 +24,4 @@
 					= f.password_field :password_confirmation, :class => "mdl-textfield__input"
 			%div.mdl-card__actions.mdl-card--border
 				=f.submit "Save", :method => :submit, class:"mdl-button mdl-button--colored mdl-js-button mdl-js-ripple-effect"
-				=link_to "cancel", current_user, class:"mdl-button mdl-button--colored mdl-js-button mdl-js-ripple-effect"
+				=link_to "cancel", profile_path, class:"mdl-button mdl-button--colored mdl-js-button mdl-js-ripple-effect"

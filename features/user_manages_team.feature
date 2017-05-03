@@ -1,17 +1,6 @@
-#@seed
 @football-seed
 Feature: User manages team
 	
-	Scenario: User adds a new team
-		Given I am logged in as a user
-		And I view my account
-		When I click "Add a team"
-		And I fill in "Team Name" with "The Rollers"
-		And I fill in "Sport" with "Football"
-		And I press "Create Team"
-		Then I see "The Rollers"
-		And I see "Football"
-
 	Scenario: User sees blank slate when he has no teams
 		Given I am logged in as a user
 		When I view my account

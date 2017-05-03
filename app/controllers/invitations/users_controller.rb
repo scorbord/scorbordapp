@@ -12,7 +12,7 @@ class Invitations::UsersController < ApplicationController
         if @user.save
           inv.delete
           log_in(@user)
-          redirect_to @user
+          redirect_to profile_path
         else
           flash[:error] = @user.errors.full_messages.join(', ')
           redirect_to invitation_redeem_path(inv.token)

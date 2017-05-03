@@ -39,10 +39,6 @@ Rails.application.routes.draw do
 
   resources :password_reset
 
-  resources :users do
-    resources :teams
-  end
-
   resources :teams do
     get 'roster' => 'members#index'
     get 'experimental_roster' => 'members#index2'

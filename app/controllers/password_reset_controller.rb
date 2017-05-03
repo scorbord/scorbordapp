@@ -31,7 +31,7 @@ class PasswordResetController < ApplicationController
       @user.password_reset_token = SecureRandom.uuid
       if @user.save
         log_in @user
-        redirect_to @user
+        redirect_to profile_path
         flash[:success] = "Your password has been successfully changed!"
       end
     else

@@ -14,7 +14,7 @@ class UsersController < ApplicationController
       if @user.save
         log_in @user
         remember_requester(@user.first_name)
-        redirect_to @user
+        redirect_to profile_path
       end
     else
       @user.errors.set(:password, ['must match!'])
@@ -28,19 +28,19 @@ class UsersController < ApplicationController
   end
 
   def update
-    @user = User.find(params[:id])
+    @user = current_user
 		if params[:user][:password].blank? && params[:user][:password_confirmation].blank?
 			if @user.update_attributes(user_params)
 				# Handle a successful update
 				# flash[:success] = "Profile updated"
-				redirect_to @user
+				redirect_to profile_path
 			else
 				render 'edit'
 			end
 		else
 			if is_password?(params[:user][:current_password])
 				if @user.update_attributes(user_params)
-					redirect_to @user
+					redirect_to profile_path
 				else
 					render 'edit'
 				end

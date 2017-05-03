@@ -38,7 +38,7 @@
           Accounts
       %ul.mdl-menu.mdl-menu--bottom-right.mdl-js-menu.mdl-js-ripple-effect{ :for => "accbtn" }
         %li.mdl-menu__item
-          = link_to "Account", current_user, class:"mdl-navigation__link"
+          = link_to "Account", profile_path, class:"mdl-navigation__link"
         %li.mdl-menu__item
           = link_to "Logout", logout_path, class:"mdl-navigation__link"
 
@@ -48,7 +48,7 @@
         %i.material-icons{ :role => "presentation" }
           dashboard
         Dashboard
-      = link_to team_roster_path(current_team), class:"mdl-navigation__link" do
+      = link_to roster_path, class:"mdl-navigation__link" do
         %i.material-icons{ :role => "presentation" }
           assignment_ind
         Roster

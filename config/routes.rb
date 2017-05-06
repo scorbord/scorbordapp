@@ -28,9 +28,9 @@ Rails.application.routes.draw do
   get 'set_current_team' => 'sessions#set_current_team'
 
   get 'profile'     => 'users#show'
-
-
   resource :profile, controller: 'users'
+
+  get 'dashboard' => 'dashboard#show'
 
   get 'roster' => 'members#index'
   scope '/roster' do

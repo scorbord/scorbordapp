@@ -175,3 +175,19 @@ Feature: Coach manages recruiting prospects
 		And I click "view" in the "Donovan" row
 		When I click "delete" in the "Coach McCoach" card actions
 		Then I do not see "Coach McCoach"
+
+	Scenario: Coach adds a YouTube Highlight to a Prospectwith a long URL
+		Given I am logged in as a user
+		And I have a Soccer team named "The Kickers"
+		And the "The Kickers" team has the following prospects:
+			| first_name | last_name |
+			| Freddy     | Adu       |
+			| Landon     | Donovan   |
+		And I visit the prospects page
+		And I click "view" in the "Donovan" row
+		When I click "add a highlight"
+		And I fill in "Link" with "https://www.youtube.com/watch?v=SHU9pzmZcsQ"
+		And I press "Save"
+		And I wait for ajax
+		Then I see "https://www.youtube.com/embed/SHU9pzmZcsQ"
+

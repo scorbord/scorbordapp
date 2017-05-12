@@ -48,6 +48,7 @@ Rails.application.routes.draw do
   resources :prospects do
     resources :contacts
     resources :coaches
+    resources :highlights
   end
 
   resources :invitations do

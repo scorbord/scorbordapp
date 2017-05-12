@@ -188,3 +188,17 @@
 					=link_to "edit", edit_prospect_coach_path(@prospect, coach), class:"mdl-button mdl-js-button mdl-js-ripple-effect mdl-button--colored"
 					=link_to "delete", prospect_coach_path(@prospect, coach), method: :delete, class:"mdl-button mdl-js-button mdl-js-ripple-effect mdl-button--colored"
 
+	%div.mdl-cell.mdl-cell--12-col.mdl-grid.highlights.grid
+		%div.mdl-cell.mdl-cell--12-col
+			%h5
+				Highlights
+				=link_to "add a highlight", new_prospect_highlight_path(@prospect), class:"mdl-button mdl-js-button mdl-js-ripple-effect mdl-button--colored"
+
+		- @prospect.highlights.each do |highlight|
+			%div.mdl-cell.mdl-cell--6-col.mdl-card.mdl-shadow--2dp
+				%div.mdl-card__supporting-text
+					%iframe{ allowfullscreen:"true", frameborder:"0", height:"315", width:"560", src:"#{highlight.embed_src}"}
+				%div.mdl-card__actions.mdl-card--border
+					=link_to "delete", prospect_highlight_path(@prospect, highlight), method: :delete, class:"mdl-button mdl-js-button mdl-js-ripple-effect mdl-button--colored"
+
+

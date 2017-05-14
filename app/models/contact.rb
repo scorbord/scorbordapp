@@ -1,5 +1,5 @@
 class Contact < ActiveRecord::Base
-	belongs_to :prospect
+	belongs_to :relatable, polymorphic: true
 
 	enum relation: {
 		'Father' => 1,

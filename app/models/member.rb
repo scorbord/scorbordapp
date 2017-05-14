@@ -9,6 +9,7 @@ class Member < ActiveRecord::Base
 	has_many :member_position_teams
 	has_many :position_teams, :through => :member_position_teams
 	has_many :positions, :through => :position_teams
+	has_many :contacts, as: :relatable
 
 	enum role: {
 		coach: 0,

@@ -51,6 +51,11 @@ Rails.application.routes.draw do
     resources :highlights
   end
 
+  resources :contacts
+  resources :members do
+    resources :contacts
+  end
+
   resources :invitations do
     get 'redeem' => 'invitations#redeem'
     resource :user, controller: 'invitations/users'

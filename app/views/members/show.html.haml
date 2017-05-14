@@ -1,8 +1,16 @@
 - content_for(:title, "#{@member.team.name} > #{@member.first_name} #{@member.last_name} (#{@member.role.capitalize})")
-%div.mdl-grid.mdl-cell
+%div.mdl-grid.mdl-cell--12-col#member_show
 	%div.mdl-cell.mdl-cell--12-col
 		%h5
 			= @member.first_name
 			= "\"#{@member.nickname}\"" unless @member.nickname.blank?
 			= @member.last_name
 		= link_to "edit", edit_team_member_path(@member.team, @member), class:"mdl-button mdl-button--colored mdl-js-button mdl-js-ripple-effect" unless !current_user.is_team_admin?(@member.team)
+
+	%div.mdl-cell.mdl-cell--12-col.mdl-grid.contacts
+		%div.mdl-cell.mdl-cell--12-col
+			%h5
+				Contacts
+				=link_to "add a contact", new_member_contact_path(@member), class:"mdl-button mdl-js-button mdl-js-ripple-effect mdl-button--colored"
+		- @member.contacts.each do |contact|
+			= render contact

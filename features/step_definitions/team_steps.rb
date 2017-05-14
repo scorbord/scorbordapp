@@ -23,3 +23,7 @@ Given(/^there is a Player$/) do
 															 weight: "185")
 	@person.memberships.create(role: "player", team_id: @team.id, nickname: "Donny", grad_year: 2005)
 end
+
+Given(/^the player has a Contact$/) do
+	@person.memberships.last.contacts.create(relation: 'Father', first_name: 'Just', last_name: 'Dad')
+end

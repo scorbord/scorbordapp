@@ -156,3 +156,47 @@ Feature: User manages team
 		And I see "Sobchak someothername" in the "coaches-panel" div
 		And I see "DC" in the "Sobchak" row within the "coaches-panel" panel	
 		And I see "DL" in the "Sobchak" row within the "coaches-panel" panel	
+
+	Scenario: Team owner adds a Contact to a Player
+		Given I am logged in as a user
+		And I have a Football team named "The Rollers"
+		And there is a Player
+		And I visit the roster page for "The Rollers"
+		And I click "view" inside the first "Kerabatsos" row
+		When I click "add a contact"
+		And I select "Father" from "Relation"
+		And I fill in "First Name" with "Just"
+		And I fill in "Last Name" with "Dad"
+		And I press "Save"
+		Then I see "add a contact"
+		And I see "Just Dad Father"
+		And I see "Kerabatsos"
+
+	Scenario: Team owner edits a Contact for a Player
+		Given I am logged in as a user
+		And I have a Football team named "The Rollers"
+		And there is a Player
+		And the player has a Contact
+		And I visit the roster page for "The Rollers"
+		And I click "view" inside the first "Kerabatsos" row
+		When I click "edit" in the "Just Dad" card actions
+		And I fill in "Email" with "justdad@gmail.com"
+		And I press "Save"
+		Then I see "add a contact"
+		And I see "justdad@gmail.com"
+
+	Scenario: Team owner removes a Contact for a Player
+		Given I am logged in as a user
+		And I have a Football team named "The Rollers"
+		And there is a Player
+		And the player has a Contact
+		And I visit the roster page for "The Rollers"
+		And I click "view" inside the first "Kerabatsos" row
+		When I click "edit" in the "Just Dad" card actions
+		And I click "Delete this contact"
+		Then I see "add a contact"
+		And I see "Kerabatsos"
+		And I do not see "Just Dad"
+
+		
+	

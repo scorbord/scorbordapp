@@ -1,27 +1,25 @@
 class ContactsController < ApplicationController
+  before_filter :find_relatable
 
   def new
-    @prospect = Prospect.find(params[:prospect_id])
-    @contact = @prospect.contacts.new
+    @contact = @relatable.contacts.new
   end
 
   def create
-    @prospect = Prospect.find(params[:prospect_id])
-    @contact = @prospect.contacts.new(contact_params)
+    @contact = @relatable.contacts.new(contact_params)
     if @contact.save
-      redirect_to @contact.prospect
+      redirect_to @relatable
     end
   end
 
   def edit
-    @prospect = Prospect.find(params[:prospect_id])
     @contact = Contact.find(params[:id])
   end
 
   def update
     @contact = Contact.find(params[:id])
     if @contact.update_attributes(contact_params)
-      redirect_to @contact.prospect
+      redirect_to @contact.relatable
     else
       render :edit
     end
@@ -31,10 +29,10 @@ class ContactsController < ApplicationController
     @contact = Contact.find(params[:id])
     if @contact.delete
       flash[:success] = "#{@contact.first_name} deleted from contacts"
-      redirect_to @contact.prospect
+      redirect_to @contact.relatable
     else
       flash[:error] = "unable to delete"
-      redirect_to @contact.prospect
+      redirect_to @contact.relatable
 
     end
   end
@@ -55,5 +53,13 @@ class ContactsController < ApplicationController
         :instagram,
         :snapchat
       )
+    end
+
+    def find_relatable
+      if params[:member_id]
+        @relatable = Member.find(params[:member_id])
+      elsif params[:prospect_id]
+        @relatable = Prospect.find(params[:prospect_id])
+      end
     end
 end

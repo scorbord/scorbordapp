@@ -1,0 +1,46 @@
+%div.mdl-cell.mdl-cell--6-col.mdl-card.mdl-shadow--2dp
+	%div.mdl-card__title.mdl-card--border
+		%h2.mdl-card__title-text
+			= "#{contact.salutation} #{contact.first_name} #{contact.last_name}"
+		%div.mdl-card__subtitle-text
+			= contact.relation
+	%div.mdl-card__supporting-text
+		%li.mdl-list__item.mdl-list__item--two-line
+			.mdl-list__item-primary-content
+				%i.material-icons.mdl-list__item-icon
+					phone
+				=link_to number_to_phone(contact.primary_phone), "tel:#{contact.primary_phone}"
+				%span.mdl-list__item-sub-title
+					Primary Phone
+		%li.mdl-list__item.mdl-list__item--two-line
+			.mdl-list__item-primary-content
+				%i.material-icons.mdl-list__item-icon
+					email
+				=link_to contact.email, "mailto:#{contact.email}"
+				%span.mdl-list__item-sub-title
+					Email
+		-if contact.facebook?
+			%li.mdl-list__item.mdl-list__item--two-line
+				.mdl-list__item-primary-content
+					%i= image_tag 'facebook.svg', :class => "material-icons mdl-list__item-icon"
+					=link_to "fb.co/#{contact.facebook}", "https://www.facebook.com/#{contact.facebook}"
+					%span.mdl-list__item-sub-title
+						Facebook
+		-if contact.twitter?
+			%li.mdl-list__item.mdl-list__item--two-line
+				.mdl-list__item-primary-content
+					%i= image_tag 'twitter.svg', :class => "material-icons mdl-list__item-icon"
+					=link_to "@#{contact.twitter}", "https://www.twitter.com/#{contact.twitter}"
+					%span.mdl-list__item-sub-title
+						Twitter
+		-if contact.instagram?
+			%li.mdl-list__item.mdl-list__item--two-line
+				.mdl-list__item-primary-content
+					%i= image_tag 'instagram.svg', :class => "material-icons mdl-list__item-icon"
+					=link_to "@#{contact.instagram}", "https://www.instagram.com/#{contact.instagram}"
+					.mdl-list__item-sub-title
+						Instagram
+	%div.mdl-card__actions.mdl-card--border
+		=link_to "edit", edit_contact_path(contact), class:"mdl-button mdl-js-button mdl-js-ripple-effect mdl-button--colored"
+		=link_to "delete", contact_path(contact.id), method: :delete, class:"mdl-button mdl-js-button mdl-js-ripple-effect mdl-button--colored"
+

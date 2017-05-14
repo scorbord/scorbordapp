@@ -1,6 +1,7 @@
 class Person < ActiveRecord::Base
 	belongs_to :user
 	has_many :memberships, class_name: "Member"
+	has_many :contacts, through: :memberships
 
 	attr_accessor :heightft
 	attr_accessor :heightin

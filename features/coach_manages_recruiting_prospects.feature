@@ -175,3 +175,87 @@ Feature: Coach manages recruiting prospects
 		And I click "view" in the "Donovan" row
 		When I click "delete" in the "Coach McCoach" card actions
 		Then I do not see "Coach McCoach"
+
+	Scenario: Coach adds a YouTube Highlight to a Prospectwith a long URL
+		Given I am logged in as a user
+		And I have a Soccer team named "The Kickers"
+		And the "The Kickers" team has the following prospects:
+			| first_name | last_name |
+			| Freddy     | Adu       |
+			| Landon     | Donovan   |
+		And I visit the prospects page
+		And I click "view" in the "Donovan" row
+		When I click "add a highlight"
+		And I fill in "Link" with "https://www.youtube.com/watch?v=SHU9pzmZcsQ"
+		And I press "Save"
+		Then I see the video "https://www.youtube.com/embed/SHU9pzmZcsQ?rel=0" embedded
+
+	Scenario: Coach adds a YouTube Highlight to a Prospect with a short URL
+		Given I am logged in as a user
+		And I have a Soccer team named "The Kickers"
+		And the "The Kickers" team has the following prospects:
+			| first_name | last_name |
+			| Freddy     | Adu       |
+			| Landon     | Donovan   |
+		And I visit the prospects page
+		And I click "view" in the "Donovan" row
+		When I click "add a highlight"
+		And I fill in "Link" with "https://youtu.be/-HXotI1O6Tk"
+		And I press "Save"
+		Then I see the video "https://www.youtube.com/embed/-HXotI1O6Tk?rel=0" embedded
+
+	Scenario: Coach adds a Vimeo Highlight to a Prospect
+		Given I am logged in as a user
+		And I have a Soccer team named "The Kickers"
+		And the "The Kickers" team has the following prospects:
+			| first_name | last_name |
+			| Freddy     | Adu       |
+			| Landon     | Donovan   |
+		And I visit the prospects page
+		And I click "view" in the "Donovan" row
+		When I click "add a highlight"
+		And I fill in "Link" with "https://vimeo.com/151912128"
+		And I press "Save"
+		Then I see the video "https://player.vimeo.com/video/151912128" embedded
+
+	Scenario: Coach adds a hudl Highlight to a Prospect with a short URL
+		Given I am logged in as a user
+		And I have a Soccer team named "The Kickers"
+		And the "The Kickers" team has the following prospects:
+			| first_name | last_name |
+			| Freddy     | Adu       |
+			| Landon     | Donovan   |
+		And I visit the prospects page
+		And I click "view" in the "Donovan" row
+		When I click "add a highlight"
+		And I fill in "Link" with "http://www.hudl.com/v/1ksW1K"
+		And I press "Save"
+		Then I see the video "//www.hudl.com/embed/video/3/382394/5721a9c9c124573b54362fe4" embedded
+
+	Scenario: Coach adds a hudl Highlight to a Prospect with a long URL
+		Given I am logged in as a user
+		And I have a Soccer team named "The Kickers"
+		And the "The Kickers" team has the following prospects:
+			| first_name | last_name |
+			| Freddy     | Adu       |
+			| Landon     | Donovan   |
+		And I visit the prospects page
+		And I click "view" in the "Donovan" row
+		When I click "add a highlight"
+		And I fill in "Link" with "http://www.hudl.com/video/3/382394/5721a9c9c124573b54362fe4"
+		And I press "Save"
+		Then I see the video "//www.hudl.com/embed/video/3/382394/5721a9c9c124573b54362fe4" embedded
+
+	Scenario: Coach deletes a highlight from a Prospect
+		Given I am logged in as a user
+		And I have a Soccer team named "The Kickers"
+		And the "The Kickers" team has the following prospects:
+			| first_name | last_name |
+			| Freddy     | Adu       |
+			| Landon     | Donovan   |
+		And the prospect "Donovan" has the highlight "https://www.youtube.com/watch?v=9bZkp7q19f0"
+		And I visit the prospects page
+		And I click "view" in the "Donovan" row
+		When I click "delete"
+		Then I do not see the video "https://www.youtube.com/embed/9bZkp7q19f0?rel=0" embedded
+

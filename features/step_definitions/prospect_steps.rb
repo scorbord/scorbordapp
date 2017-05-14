@@ -18,3 +18,8 @@ Given(/^the prospect "(.*?)" has the following coaches:$/) do | prospect_name, t
     @prospect.coaches.create(coach)
   end
 end
+
+Given(/^the prospect "(.*?)" has the highlight "(.*?)"$/) do |prospect_last_name, highlight_path|
+  @prospect = Prospect.find_by(last_name: prospect_last_name)
+  @prospect.highlights.create(path: highlight_path)
+end

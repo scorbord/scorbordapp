@@ -84,3 +84,11 @@ end
 When("I scroll up") do
   page.execute_script "window.scrollBy(0,-1)"
 end
+
+Then(/^I see the video "(.*?)" embedded$/) do |source|
+  expect(page).to have_xpath("//iframe[contains(@src,'#{source}')]")
+end
+
+Then(/^I do not see the video "(.*?)" embedded$/) do |source|
+  expect(page).to_not have_xpath("//iframe[contains(@src,'#{source}')]")
+end
